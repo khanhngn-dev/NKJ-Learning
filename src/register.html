@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Register</title>
+		<script src="https://kit.fontawesome.com/3449a8ce9f.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<!-- <div class="clumsy"></div> -->
+		<img class="img" srcset="img/register.png" alt="Register Image">
+		<form class="form">
+			<div class="head">
+				<h1 class="title big">WELCOME!</h1>
+				<h1 class="title small">Register</h1>
+			</div>
+      <div>
+        <input type="text" class="input" id="username" required/>
+        <label for="username" class="label">Username</label>
+      </div>
+      <div>
+        <input type="password" class="input" id="password" required/>
+        <label for="password" class="label">Password</label>
+				<i class="fas fa-eye" id="toggle-pw"></i>
+      </div>
+      <div>
+        <input type="password" class="input" id="password" required/>
+        <label for="password" class="label">Confirm Password</label>
+      </div>
+      <div class="footer">		
+        <input type=submit class="submit bold" value="Register"></input>
+      </div>
+		</form>
+		<script src="js/app.js"></script>
+	</body>
+</html>

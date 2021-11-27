@@ -2,7 +2,6 @@
   "name": "test",
   "version": "1.0.0",
   "main": "src",
-  "devDependencies": {},
   "scripts": {
     "start": "live-server src",
     "mon-start": "nodemon --inspect src"
@@ -13,6 +12,9 @@
   "dependencies": {
     "express": "^4.17.1",
     "live-server": "^1.2.1",
-    "nodemon": "^2.0.15"
-  },
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.7.1",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.4.1"
+  }
 }

@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "Nunito";
+	font-style: normal;
+}
+
+body {
+	height: 100vh;
+	padding: 0 4vw;
+	background: rgba(255, 184, 177, 0.78);
+}
+
+.big {
+	display: none;
+}
+
+.img {
+	display: block;
+	margin: auto;
+	padding: 0 3vw;
+	max-width: 70vw;
+	height: auto;
+}
+
+.form {
+	padding: 5px;
+	display: flex;
+	flex-flow: column;
+}
+
+.form .bold {
+	padding: 0 1vw;
+	font-size: 1.1em;
+	font-weight: bold;
+	color: #bc002d;
+}
+
+.form a {
+	padding: 0 1vw;
+	text-decoration: none;
+	color: #bc002d;
+	height: 50px;
+	line-height: 75px;
+}
+
+.form .head {
+	display: flex;
+}
+
+.title {
+	font-size: 50px;
+	color: #bc002d;
+	line-height: 50px;
+}
+
+.form div {
+	position: relative;
+}
+
+.form .label {
+	position: absolute;
+	top: 61px;
+	left: 20px;
+	color: #bc002d;
+	transition: all 0.5s ease;
+}
+
+.form .input {
+	width: 100%;
+	margin-top: 50px;
+	padding: 10px 0;
+	padding-left: 18px;
+	border-radius: 80px;
+	border: 2px solid #f87292;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+	outline: none;
+}
+
+.form .input:focus {
+	border: 2px solid #bc002d;
+}
+
+.form .input:focus + .label,
+.form .input:valid + .label {
+	transform: translate(5px, -44px) scale(1.3);
+}
+
+.form i {
+	position: absolute;
+	bottom: 12px;
+	right: 16px;
+	cursor: pointer;
+}
+
+.form .footer {
+	display: flex;
+	flex-flow: column;
+	margin-top: 30px;
+}
+
+.form .footer div {
+	padding: 0 5px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.form .remember {
+	border-radius: 50%;
+}
+
+.form .submit {
+	margin-top: 10px;
+	border-radius: 80px;
+	height: 50px;
+	background: #bc002d;
+	color: white;
+}
+.form .submit:hover {
+	background: #bc002caf;
+}
+.form .forgot {
+	line-height: 50px;
+}
+
+@media only screen and (min-width: 700px) {
+	.big {
+		display: initial;
+	}
+	
+	.small {
+		display: none;
+	}
+
+	body {
+		display: flex;
+		flex-flow: row-reverse;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.img {
+		width: 50%;
+		margin: 0;
+	}
+
+	.form {
+		min-width: 35vw;
+	}
+
+	.form a {
+		padding: 0;
+	}
+
+	.head {
+		flex-flow: column;
+		font-size: 0.7em;
+	}
+
+}
