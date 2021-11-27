@@ -14,10 +14,6 @@ body {
 	background: rgba(255, 184, 177, 0.78);
 }
 
-.big {
-	display: none;
-}
-
 .img {
 	display: block;
 	margin: auto;
@@ -125,6 +121,10 @@ body {
 }
 .form .forgot {
 	line-height: 50px;
+}
+
+.big {
+	display: none;
 }
 
 @media only screen and (min-width: 700px) {
