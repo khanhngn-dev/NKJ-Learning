@@ -107,22 +107,22 @@ body {
 }
 
 .form .footer .checkbox {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
 	top: 0;
 	left: 10px;
 }
 
 .checked {
 	position: absolute;
-  left: 10px;
-  height: 26px;
-  width: 26px;
-  background-color: #eee;
-  border-radius: 50%;
+	left: 10px;
+	height: 26px;
+	width: 26px;
+	background-color: #eee;
+	border-radius: 50%;
 }
 
 .form .footer .remember:hover .checked {
@@ -130,27 +130,27 @@ body {
 }
 
 .form .footer .remember input:checked ~ .checked {
-  background-color: white;
+	background-color: white;
 }
 
 .form .footer .remember .checked:after {
-  content: "";
-  position: absolute;
-  display: none;
+	content: "";
+	position: absolute;
+	display: none;
 	top: 3px;
-  left: 3px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #bc002d;
+	left: 3px;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: #bc002d;
 }
 
 .form .footer .remember input:checked ~ .checked:after {
-  display: block;
+	display: block;
 }
 
 .form .submit {
-	margin-top: 10px;
+	margin-top: 30px;
 	border-radius: 80px;
 	height: 50px;
 	background: #bc002d;
@@ -173,7 +173,7 @@ body {
 	.big {
 		display: initial;
 	}
-	
+
 	.small {
 		display: none;
 	}
@@ -202,5 +202,4 @@ body {
 		flex-flow: column;
 		font-size: 0.7em;
 	}
-
 }

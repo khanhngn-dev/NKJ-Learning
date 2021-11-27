@@ -1,23 +1,23 @@
+function showPassword(password, eye) {
+  if (password.type == 'password') {
+    password.type = 'text';
+    eye.className = 'fas fa-eye-slash';
+  } else {
+    password.type = 'password';
+    eye.className = 'fas fa-eye';
+  }
+}
 
-function toggleVisibility() {
-  var toggle = document.querySelector('#toggle-pw');
-  toggle.addEventListener('click', function() {
+function showPasswords() {
+  const eye = document.querySelector('#toggle-pw');
+  eye.addEventListener('click', function () {
     const passwords = document.querySelectorAll('#password');
-    passwords.forEach(password => {
-      if (password.type == 'password') {
-        password.type = 'text';
-        toggle.className = 'fas fa-eye-slash';
-      } else {
-        password.type = 'password';
-        toggle.className = 'fas fa-eye';
-      }
-    })
+    passwords.forEach(password => showPassword(password, eye))
   });
 }
 
 function start() {
-  toggleVisibility();
+  showPasswords();
 }
-
 
 window.onload = start();
