@@ -19,4 +19,5 @@ function start() {
   toggleVisibility();
 }
 
+
 window.onload = start();
