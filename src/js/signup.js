@@ -1,35 +1,60 @@
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
+
 const auth = getAuth();
 const signupForm = document.querySelector('.form');
-const email = signupForm.querySelector('#username').value;
-const password = signupForm.querySelector('#password').value;
-const confirmPassword = signupForm.querySelectorAll('#confirm-password').value;
 const error = document.querySelector('.error');
 
-function comparePassword(password, confirm) {
-  if (password !== confirm) {
-    error.innerHTML = "Passwords do not match";
+// Display passwords not match
+function checkError() {
+  if (localStorage.getItem('pwd') == '0') {
+    console.log(1)
+    error.style.display = 'initial';
+  } else {
+    error.style.display = 'none';
   }
 }
 
-function signup(auth, email, password) {
-  createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    console.log(userCredential)
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
+// Return true if the passwords match; else false
+function comparePassword(password, confirm) {
+  if (password && confirm && (password !== confirm)) {
+    localStorage.setItem('pwd', '0');
+    return false;
+  }
+  else {
+    localStorage.removeItem('pwd');
+    return true;
+  }
 }
 
-document.querySelector('.form').addEventListener('submit',(e) => {
-  console.log(123)
+function sendSignup(auth, email, password) {
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((cred) => {
+      console.log(cred.user);
+      signupForm.reset();
+    })
+    .catch((error) => {
+      console.error(error.message);
+    });
+}
 
-  comparePassword(password, confirmPassword);
+function signup() {
+  checkError();
 
-  e.preventDefault();
+  document.querySelector('.form').addEventListener('submit', (e) => {
+    // Stop the form from reloading the page
+    e.preventDefault();
 
-  signup(auth, email, password);
-})
+    const email = signupForm.querySelector('#email').value;
+    const password = signupForm.querySelector('#password').value;
+    const confirmPassword = signupForm.querySelector('#confirm-password').value;
+
+    if (comparePassword(password, confirmPassword)) {
+      sendSignup(auth, email, password);
+    }
+    else {
+      window.location.reload();
+    }
+  })
+}
+
+window.onload = signup()

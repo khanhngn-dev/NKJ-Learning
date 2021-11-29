@@ -12,27 +12,29 @@
 
 <body>
 	<!-- <div class="clumsy"></div> -->
-	<img class="img small" srcset="img/register.png" alt="Register Image">
-	<img class="img big" srcset="img/cream.png" alt="Register Image">
+	<img class="img small" srcset="img/signup.png" alt="Signup Image">
+	<img class="img big" srcset="img/cream.png" alt="Signup Image">
 	<form class="form">
 		<div class="head">
 			<h1 class="title big">WELCOME!</h1>
 			<h1 class="title small">Register</h1>
 			<h2>Already a user? <a class="bold" href="login.html">Sign in</a></h2>
-			<div class="error"></div>
+			<div class="error">Passwords do not match</div>
 		</div>
 		<div class="form-usernname">
-			<input type="text" class="input" id="username" required />
-			<label for="username" class="label">Username</label>
+			<input type="email" class="input" id="email" required placeholder=" " autocomplete="email" />
+			<label for="email" class="label">Email</label>
 		</div>
 		<div class="form-password">
-			<input type="password" class="input password" id="password" required />
+			<input type="password" class="input password" id="password" minlength="6" required placeholder=" "
+				autocomplete="new-password" />
 			<label for="password" class="label">Password</label>
 			<i class="fas fa-eye" id="toggle-pw"></i>
 		</div>
 		<div class="form-confirm">
-			<input type="password" class="input password" id="confirm-password" required />
-			<label for="password" class="label">Confirm Password</label>
+			<input type="password" class="input password" id="confirm-password" minlength="6" required placeholder=" "
+				autocomplete="new-password" />
+			<label for="confirm-password" class="label">Confirm Password</label>
 		</div>
 		<input type=submit class="submit bold" value="Register"></input>
 	</form>
@@ -55,9 +57,8 @@
 
 		// Initialize Firebase
 		const app = initializeApp(firebaseConfig);
-		const auth = getAuth();
 	</script>
-	<script src="js/signup.js"></script>
+	<script type="module" src="js/signup.js"></script>
 	<script src="js/app.js"></script>
 </body>
 

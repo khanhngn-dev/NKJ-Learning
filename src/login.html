@@ -16,17 +16,18 @@
 	<form class="form">
 		<div class="head">
 			<h1 class="title big">WELCOME BACK!</h1>
-			<h2 class="big">Don't have an account. <a href="register.html" class="bold">Sign up</a></h2>
+			<h2 class="big">Don't have an account. <a href="signup.html" class="bold">Sign up</a></h2>
 			<h1 class="title small">Login</h1>
-			<h2 class="small">New Here?<a href="register.html"><span class="bold">Register</span></a></h2>
+			<h2 class="small">New Here?<a href="signup.html"><span class="bold">Register</span></a></h2>
 			<div class="error"></div>
 		</div>
 		<div class="form-username">
-			<input type="text" class="input" id="username" required />
-			<label for="username" class="label">Username</label>
+			<input type="email" class="input" id="email" required placeholder=" " autocomplete="email" />
+			<label for="email" class="label">Username</label>
 		</div>
 		<div class="form-password">
-			<input type="password" class="input password" id="password" required />
+			<input type="password" class="input password" id="password" minlength="6" required placeholder=" "
+				autocomplete="current-password" />
 			<label for="password" class="label">Password</label>
 			<i class="fas fa-eye" id="toggle-pw"></i>
 		</div>
@@ -43,7 +44,6 @@
 	<script type="module">
 		// Import the functions you need from the SDKs you need
 		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
-		import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
 
 		// Your web app's Firebase configuration
 		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -59,9 +59,8 @@
 
 		// Initialize Firebase
 		const app = initializeApp(firebaseConfig);
-		const auth = getAuth();
 	</script>
-	<script src="js/login.js"></script>
+	<script type="module" src="js/login.js"></script>
 	<script src="js/app.js"></script>
 </body>
 
