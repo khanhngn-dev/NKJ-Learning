@@ -1,20 +1,25 @@
 {
-  "name": "test",
+  "name": "dsc-final",
   "version": "1.0.0",
-  "main": "src",
+  "description": "",
+  "main": "app.js",
   "scripts": {
     "start": "live-server src",
-    "mon-start": "nodemon --inspect src"
+    "prettier": "prettier --write \"src/**/*.{html,js,css}\""
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KhanhGN/DSC-Final.git"
   },
   "author": "",
   "license": "ISC",
-  "description": "",
+  "bugs": {
+    "url": "https://github.com/KhanhGN/DSC-Final/issues"
+  },
+  "homepage": "https://github.com/KhanhGN/DSC-Final#readme",
   "dependencies": {
-    "express": "^4.17.1",
     "live-server": "^1.2.1",
-    "morgan": "^1.10.0",
-    "nodemailer": "^6.7.1",
-    "nodemon": "^2.0.15",
-    "prettier": "^2.4.1"
+    "prettier": "^2.5.0"
   }
 }
