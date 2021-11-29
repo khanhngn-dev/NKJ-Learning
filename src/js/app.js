@@ -11,7 +11,7 @@ function showPassword(password, eye) {
 function showPasswords() {
   const eye = document.querySelector('#toggle-pw');
   eye.addEventListener('click', function () {
-    const passwords = document.querySelectorAll('#password');
+    const passwords = document.querySelectorAll('.password');
     passwords.forEach(password => showPassword(password, eye))
   });
 }

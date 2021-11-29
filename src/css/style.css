@@ -18,8 +18,23 @@ body {
 	display: block;
 	margin: auto;
 	padding: 0 3vw;
-	max-width: 70vw;
+	max-width: 58vw;
 	height: auto;
+}
+
+.bold {
+	padding: 0 1vw;
+	font-size: 1.1em;
+	font-weight: bold;
+	color: #bc002d;
+}
+
+a {
+	padding: 0 1vw;
+	text-decoration: none;
+	color: #bc002d;
+	height: 50px;
+	line-height: 75px;
 }
 
 .form {
@@ -28,29 +43,23 @@ body {
 	flex-flow: column;
 }
 
-.form .bold {
-	padding: 0 1vw;
-	font-size: 1.1em;
-	font-weight: bold;
-	color: #bc002d;
-}
-
-.form a {
-	padding: 0 1vw;
-	text-decoration: none;
-	color: #bc002d;
-	height: 50px;
-	line-height: 75px;
-}
-
-.form .head {
+.head {
 	display: flex;
+	flex-flow: column;
 }
 
 .title {
 	font-size: 50px;
 	color: #bc002d;
 	line-height: 50px;
+}
+
+.error {
+	display: none;
+	padding: 10px;
+	border: 1px solid red;
+	border-radius: 5px;
+	background: #eee7e7;
 }
 
 .form div {
@@ -191,15 +200,11 @@ body {
 	}
 
 	.form {
-		min-width: 35vw;
+		min-width: 40vw;
+		max-width: 42vw;
 	}
 
 	.form a {
 		padding: 0;
-	}
-
-	.head {
-		flex-flow: column;
-		font-size: 0.7em;
 	}
 }
