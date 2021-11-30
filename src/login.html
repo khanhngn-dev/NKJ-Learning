@@ -21,9 +21,9 @@
 			<h2 class="small">New Here?<a href="signup.html"><span class="bold">Register</span></a></h2>
 			<div class="error"></div>
 		</div>
-		<div class="form-username">
+		<div class="form-email">
 			<input type="email" class="input" id="email" required placeholder=" " autocomplete="email" />
-			<label for="email" class="label">Username</label>
+			<label for="email" class="label">Email</label>
 		</div>
 		<div class="form-password">
 			<input type="password" class="input password" id="password" minlength="6" required placeholder=" "
@@ -36,9 +36,21 @@
 				<input type="checkbox" class="checkbox" id="remember">
 				<span class="checked"></span>
 			</label>
-			<a href="forgot" class="forgot bold">Forgot Password?</a>
+			<a href="" class="forgot bold">Forgot Password?</a>
 		</div>
 		<input type=submit class="submit bold" value="Log in"></input>
+	</form>
+	<div class="overlay"></div>
+	<form class="form" id="forgot-form">
+		<div class=head>
+			<h1 class="title">Reset Password</h1>
+		</div>
+		<div class="form-email">
+			<input type="email" class="input" id="reset-email" required placeholder=" " autocomplete="email" />
+			<label for="reset-email" class="label">Email</label>
+			<div>Please enter the email that you want to reset your password, an email will be sent with the link for resetting your password</div>
+		</div>
+		<input type=submit class="submit bold" value="Reset password">
 	</form>
 
 	<script type="module">

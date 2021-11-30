@@ -12,13 +12,13 @@ function showPassword(eye, password) {
 }
 
 function showPasswords() {
-  eye.addEventListener('click', function() {
+  eye.addEventListener('click', function () {
     passwords.forEach(password => showPassword(eye, password));
   });
 }
 
 function start() {
-  showPasswords()
+  showPasswords();
 }
 
-window.onload = start()
+window.onload = start();

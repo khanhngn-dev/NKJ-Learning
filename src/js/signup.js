@@ -30,10 +30,13 @@ function sendSignup(auth, email, password) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((cred) => {
       console.log(cred.user);
-      signupForm.reset();
+      // on success redirects the user to the main page
     })
-    .catch((error) => {
-      console.error(error.message);
+    .catch((err) => {
+      var errMessage = err.message.substring(err.message.search(/\/[\w+-.]+/) + 1, err.message.search(/\)/)).replace(/-/g, ' ');
+      error.innerHTML = errMessage.charAt(0).toUpperCase() + errMessage.slice(1);
+      error.style.display = 'initial';
+      signupForm.reset();
     });
 }
 

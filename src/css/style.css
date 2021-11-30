@@ -37,6 +37,7 @@ a {
 	line-height: 75px;
 }
 
+/* Normal form */
 .form {
 	padding: 5px;
 	display: flex;
@@ -175,6 +176,52 @@ a {
 	line-height: 50px;
 }
 
+/* Forgot form */
+#forgot-form {
+	position: absolute;
+	top: 25vh;
+	left: 10vw;
+	padding: 20px;
+	width: 80vw;
+	height: 0;
+	border: 1px solid;
+	border-radius: 10px;
+	background: #ffdcdc;
+	display: flex;
+	flex-flow: column;
+	opacity: 0;
+	transition: all 0.5s ease;
+}
+
+#forgot-form * {
+	display: none;
+}
+
+.overlay {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.25);
+	display: none;
+}
+
+#forgot-form > div > div {
+	padding: 20px;
+}
+
+#forgot-form.show *,
+.show {
+	display: block;
+}
+
+#forgot-form.show {
+	opacity: 1;
+	height: 50vh;
+}
+
 .big {
 	display: none;
 }
@@ -207,5 +254,14 @@ a {
 
 	.form a {
 		padding: 0;
+	}
+
+	#forgot-form {
+		max-width: 80vw;
+		height: 0;
+	}
+
+	#forgot-form.show {
+		height: 50vh;
 	}
 }
