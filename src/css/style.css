@@ -234,6 +234,10 @@ a {
 	height: 70vh;
 }
 
+.form .submit:disabled {
+	background: #500000;
+}
+
 .big {
 	display: none;
 }

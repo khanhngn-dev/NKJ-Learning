@@ -12,10 +12,12 @@ var invalid = true;
 // Return true if the passwords match; else false
 function comparePassword(password, confirm) {
   if (password !== confirm) {
+    lockSubmit(signupForm.querySelector('.submit'));
     error.innerHTML = "Passwords do not match";
     error.style.display = "block";
     invalid = true;
   } else {
+    unlockSubmit(signupForm.querySelector('.submit'));
     error.style.display = "none";
     invalid = false;
   }
