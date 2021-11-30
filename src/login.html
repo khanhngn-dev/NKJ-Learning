@@ -11,15 +11,19 @@
 </head>
 
 <body>
-	<img class="img small" srcset="img/login.png" alt="Login Image">
-	<img class="img big" srcset="img/login_2.png" alt="Login Image">
+	<img class="img small" srcset="img/login.png" alt="Login Image" />
+	<img class="img big" srcset="img/login_2.png" alt="Login Image" />
 
 	<form class="form">
 		<div class="head">
 			<h1 class="title big">WELCOME BACK!</h1>
-			<h2 class="big">Don't have an account. <a href="signup.html" class="bold">Sign up</a></h2>
+			<h2 class="big">
+				Don't have an account. <a href="signup.html" class="bold">Sign up</a>
+			</h2>
 			<h1 class="title small">Login</h1>
-			<h2 class="small">New Here?<a href="signup.html"><span class="bold">Register</span></a></h2>
+			<h2 class="small">
+				New Here?<a href="signup.html"><span class="bold">Register</span></a>
+			</h2>
 			<div class="error"></div>
 		</div>
 
@@ -37,28 +41,33 @@
 
 		<div class="footer">
 			<label for="remember" class="bold remember">Remember Me
-				<input type="checkbox" class="checkbox" id="remember">
+				<input type="checkbox" class="checkbox" id="remember" />
 				<span class="checked"></span>
 			</label>
 			<a href="" class="forgot bold">Forgot Password?</a>
 		</div>
 
-		<input type=submit class="submit bold" value="Log in"></input>
+		<input type="submit" class="submit bold" value="Log in" />
 	</form>
 
 	<div class="overlay"></div>
-	
+
 	<form class="form" id="forgot-form">
-		<div class=head>
+		<div class="head">
 			<h1 class="title">Reset Password</h1>
 		</div>
+
 		<div class="form-email">
 			<input type="email" class="input" id="reset-email" required placeholder=" " autocomplete="email" />
 			<label for="reset-email" class="label">Email</label>
-			<div class="info">Please enter the email that you want to reset your password, an email will be sent with the link for resetting your password</div>
+			<div class="info">
+				Please enter the email that you want to reset your password, an email
+				will be sent with the link for resetting your password.
+			</div>
 			<div class="output"></div>
 		</div>
-		<input type=submit class="submit bold" value="Reset password">
+
+		<input type="submit" class="submit bold" value="Reset password" />
 	</form>
 
 	<script type="module">
@@ -74,7 +83,7 @@
 			storageBucket: "nkj-login.appspot.com",
 			messagingSenderId: "98244104367",
 			appId: "1:98244104367:web:dabf51724d7483ada5445a",
-			measurementId: "G-2GK50TGJ53"
+			measurementId: "G-2GK50TGJ53",
 		};
 
 		// Initialize Firebase

@@ -11,9 +11,9 @@
 </head>
 
 <body>
-	<!-- <div class="clumsy"></div> -->
-	<img class="img small" srcset="img/signup.png" alt="Signup Image">
-	<img class="img big" srcset="img/signup_2.png" alt="Signup Image">
+	<img class="img small" srcset="img/signup.png" alt="Signup Image" />
+	<img class="img big" srcset="img/signup_2.png" alt="Signup Image" />
+
 	<form class="form">
 		<div class="head">
 			<h1 class="title big">WELCOME!</h1>
@@ -21,22 +21,26 @@
 			<h2>Already a user? <a class="bold" href="login.html">Sign in</a></h2>
 			<div class="error">Passwords do not match</div>
 		</div>
+
 		<div class="form-usernname">
 			<input type="email" class="input" id="email" required placeholder=" " autocomplete="email" />
 			<label for="email" class="label">Email</label>
 		</div>
+
 		<div class="form-password">
 			<input type="password" class="input password" id="password" minlength="6" required placeholder=" "
 				autocomplete="new-password" />
 			<label for="password" class="label">Password</label>
 			<i class="fas fa-eye" id="toggle-pw"></i>
 		</div>
+
 		<div class="form-confirm">
 			<input type="password" class="input password" id="confirm-password" minlength="6" required placeholder=" "
 				autocomplete="new-password" />
 			<label for="confirm-password" class="label">Confirm Password</label>
 		</div>
-		<input type=submit class="submit bold" value="Register"></input>
+
+		<input type="submit" class="submit bold" value="Register" />
 	</form>
 
 	<script type="module">
@@ -52,7 +56,7 @@
 			storageBucket: "nkj-login.appspot.com",
 			messagingSenderId: "98244104367",
 			appId: "1:98244104367:web:dabf51724d7483ada5445a",
-			measurementId: "G-2GK50TGJ53"
+			measurementId: "G-2GK50TGJ53",
 		};
 
 		// Initialize Firebase

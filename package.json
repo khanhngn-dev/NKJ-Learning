@@ -20,6 +20,6 @@
   "homepage": "https://github.com/KhanhGN/DSC-Final#readme",
   "dependencies": {
     "live-server": "^1.2.1",
-    "prettier": "^2.5.0"
+    "prettier": "^2.5.0" 
   }
 }
