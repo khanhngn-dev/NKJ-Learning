@@ -4,6 +4,7 @@ const auth = getAuth();
 const loginForm = document.querySelector('.form');
 const forgotForm = document.querySelector('#forgot-form');
 const overlay = document.querySelector('.overlay');
+const output = document.querySelector('.output');
 
 function sendLogin(auth, email, password) {
   signInWithEmailAndPassword(auth, email, password)
@@ -62,11 +63,8 @@ function forgot() {
     e.preventDefault();
 
     const email = forgotForm.querySelector('#reset-email').value;
-    const output = document.querySelector('.output');
 
     sendResetPass(email, output);
-
-    showForgot()
   });
 }
 
