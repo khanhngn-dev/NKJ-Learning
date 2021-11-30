@@ -2,7 +2,6 @@ import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "htt
 
 const auth = getAuth();
 const loginForm = document.querySelector('.form');
-const error = document.querySelector('.error');
 const forgotForm = document.querySelector('#forgot-form');
 const overlay = document.querySelector('.overlay');
 
@@ -13,10 +12,7 @@ function sendLogin(auth, email, password) {
       // on success redirects the user to the main page
     })
     .catch((err) => {
-      var errMessage = err.message.substring(err.message.search(/\/[\w+-.]+/) + 1, err.message.search(/\)/)).replace(/-/g, ' ');
-      error.innerHTML = errMessage.charAt(0).toUpperCase() + errMessage.slice(1);
-      error.style.display = 'initial';
-      loginForm.reset();
+      displayInfo(err, loginForm, error);
     });
 }
 
@@ -29,9 +25,6 @@ function showForgot(e) {
     overlay.classList.add('show');
     forgotForm.classList.add('show');
   }
-
-
-
 }
 
 function login() {
@@ -44,16 +37,38 @@ function login() {
 
     sendLogin(auth, email, password);
   });
+}
 
+function sendResetPass(email, output) {
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      // Email sent
+      output.classList.remove('error');
+      const text = `An email has been sent to <span class="bold">${email}<span>`
+      displayInfo(text, forgotForm, output);
+    })
+    .catch((err) => {
+      output.classList.add('error');
+      displayInfo(err, forgotForm, output);
+    })
+};
+
+function forgot() {
+  // Toggle forgot password form
   document.querySelector('.forgot').addEventListener('click', (e) => showForgot(e));
-
   overlay.addEventListener('click', (e) => showForgot(e));
 
   forgotForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
+    const email = forgotForm.querySelector('#reset-email').value;
+    const output = document.querySelector('.output');
 
-  })
+    sendResetPass(email, output);
+
+    showForgot()
+  });
 }
 
 window.onload = login();
+window.onload = forgot();

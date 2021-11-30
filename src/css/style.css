@@ -58,9 +58,12 @@ a {
 .error {
 	display: none;
 	padding: 10px;
-	border: 1px solid red;
+	border: 1px solid #ff0000;
 	border-radius: 10px;
 	background: #eee7e7;
+	font-size: 1.1em;
+	font-weight: bold;
+	color: #bc002d;
 }
 
 .form div {
@@ -179,7 +182,7 @@ a {
 /* Forgot form */
 #forgot-form {
 	position: absolute;
-	top: 25vh;
+	top: 15vh;
 	left: 10vw;
 	padding: 20px;
 	width: 80vw;
@@ -208,8 +211,16 @@ a {
 	display: none;
 }
 
-#forgot-form > div > div {
-	padding: 20px;
+#forgot-form .info {
+	padding: 20px 10px 20px 10px;
+}
+
+#forgot-form .output {
+	padding: 10px;
+}
+
+#forgot-form .output span {
+	padding: 5px 0;
 }
 
 #forgot-form.show *,
@@ -219,7 +230,7 @@ a {
 
 #forgot-form.show {
 	opacity: 1;
-	height: 50vh;
+	height: 70vh;
 }
 
 .big {
@@ -257,11 +268,12 @@ a {
 	}
 
 	#forgot-form {
-		max-width: 80vw;
+		max-width: 60vw;
 		height: 0;
+		left: 20vw;
 	}
 
 	#forgot-form.show {
-		height: 50vh;
+		height: 70vh;
 	}
 }

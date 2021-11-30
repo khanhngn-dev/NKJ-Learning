@@ -2,7 +2,6 @@ import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com
 
 const auth = getAuth();
 const signupForm = document.querySelector('.form');
-const error = document.querySelector('.error');
 
 // Display passwords not match
 function checkError() {
@@ -33,10 +32,7 @@ function sendSignup(auth, email, password) {
       // on success redirects the user to the main page
     })
     .catch((err) => {
-      var errMessage = err.message.substring(err.message.search(/\/[\w+-.]+/) + 1, err.message.search(/\)/)).replace(/-/g, ' ');
-      error.innerHTML = errMessage.charAt(0).toUpperCase() + errMessage.slice(1);
-      error.style.display = 'initial';
-      signupForm.reset();
+      displayInfo(err, signupForm);
     });
 }
 

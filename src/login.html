@@ -13,6 +13,7 @@
 <body>
 	<img class="img small" srcset="img/login.png" alt="Login Image">
 	<img class="img big" srcset="img/login_2.png" alt="Login Image">
+
 	<form class="form">
 		<div class="head">
 			<h1 class="title big">WELCOME BACK!</h1>
@@ -21,16 +22,19 @@
 			<h2 class="small">New Here?<a href="signup.html"><span class="bold">Register</span></a></h2>
 			<div class="error"></div>
 		</div>
+
 		<div class="form-email">
 			<input type="email" class="input" id="email" required placeholder=" " autocomplete="email" />
 			<label for="email" class="label">Email</label>
 		</div>
+
 		<div class="form-password">
 			<input type="password" class="input password" id="password" minlength="6" required placeholder=" "
 				autocomplete="current-password" />
 			<label for="password" class="label">Password</label>
 			<i class="fas fa-eye" id="toggle-pw"></i>
 		</div>
+
 		<div class="footer">
 			<label for="remember" class="bold remember">Remember Me
 				<input type="checkbox" class="checkbox" id="remember">
@@ -38,9 +42,12 @@
 			</label>
 			<a href="" class="forgot bold">Forgot Password?</a>
 		</div>
+
 		<input type=submit class="submit bold" value="Log in"></input>
 	</form>
+
 	<div class="overlay"></div>
+	
 	<form class="form" id="forgot-form">
 		<div class=head>
 			<h1 class="title">Reset Password</h1>
@@ -48,7 +55,8 @@
 		<div class="form-email">
 			<input type="email" class="input" id="reset-email" required placeholder=" " autocomplete="email" />
 			<label for="reset-email" class="label">Email</label>
-			<div>Please enter the email that you want to reset your password, an email will be sent with the link for resetting your password</div>
+			<div class="info">Please enter the email that you want to reset your password, an email will be sent with the link for resetting your password</div>
+			<div class="output"></div>
 		</div>
 		<input type=submit class="submit bold" value="Reset password">
 	</form>
@@ -72,6 +80,7 @@
 		// Initialize Firebase
 		const app = initializeApp(firebaseConfig);
 	</script>
+	<script src="js/helper.js"></script>
 	<script type="module" src="js/login.js"></script>
 	<script src="js/app.js"></script>
 </body>
