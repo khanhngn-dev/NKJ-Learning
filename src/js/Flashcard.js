@@ -3,8 +3,8 @@ let $card = $('.flashcard');
 const definition = document.querySelector('.definition')
 const meaning = document.querySelector('.meaning')
 const current_number = document.querySelector('.current-display') 
-const current_number_progress = document.querySelector('.current-display-progress') 
-const progress_bar = document.querySelector('.progress-bar')
+const current_number_progresses = document.querySelectorAll('.current-display-progress') 
+const progress_bars = document.querySelectorAll('.progress-bar')
 
 let alphabet_definition = ['あ', 'い', 'う', 'え', 'お', 'か', 'き', 'く', 'け', 'こ', 'さ', 'し', 'す', 'せ', 'そ', 'た', 'ち', 'つ', 'て', 'と', 'な', 'に', 'ぬ', 'ね', 'の', 'は', 'ひ', 'ふ', 'へ', 'ほ', 'ま', 'み', 'む', 'め', 'も', 'や', 'ゆ', 'よ', 'ら', 'り', 'る', 'れ', 'ろ', 'わ', 'を', 'ん' ]
 
@@ -38,10 +38,10 @@ function decrease() {
         current_index --;
         current_display --;
         current_number.innerHTML = current_display;
-        current_number_progress.innerHTML = current_display;
+        current_number_progresses.forEach((progress) => progress.innerHTML = current_display);
         definition.innerHTML = alphabet_definition[current_index];
         meaning.innerHTML = alphabet_meaning[current_index];
-        progress_bar.value = current_display*100/46;   
+        progress_bars.forEach((bar) => bar.value = current_display*100/46); 
         setTimeout(function(){
             flashcard.style.transition = "all 0.5s ease";
         }, 0.5)        
@@ -59,10 +59,10 @@ function increase() {
         current_index ++;
         current_display ++;
         current_number.innerHTML = current_display;
-        current_number_progress.innerHTML = current_display;
+        current_number_progresses.forEach((progress) => progress.innerHTML = current_display);
         definition.innerHTML = alphabet_definition[current_index];
         meaning.innerHTML = alphabet_meaning[current_index];
-        progress_bar.value = current_display*100/46;
+        progress_bars.forEach((bar) => bar.value = current_display*100/46);
         setTimeout(function(){
             flashcard.style.transition = "all 0.5s ease";
         }, 0.5) 
