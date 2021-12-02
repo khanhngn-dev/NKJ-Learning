@@ -1,98 +1,170 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flashcard</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="css/Flashcard.css"/>    
-  </head>
-  <body>
-    <div class="header">
-        <div class="logo">
-            <a href="Home.html">NKJ</a>
-          </div>
-          <button class="drop-menu-header">
-            <i class="fas fa-caret-down"></i>
-          </button>  
-          <ul class="nav-bar">            
-          <li class="learning notImportant-header">
-            <a href="#">LEARNING</a>
-          </li>
-          <li class="create notImportant-header">
-            <a href="#">CREATE</a>
-          </li>
-          <li class="exercise notImportant-header">
-            <a href="#">EXERCISE</a>
-          </li>
-        </ul>
-        <div class="sign-up">
-            <button class="login-button bg-white rounded-pill"><a href="login.html">Login</a></button>
-            <button class="signup-button bg-white rounded-pill"><a href="signup.html">Signup</a></button>
-          </div>
-      </div>
-    </div>
-    <div class="learn-nav"> 
-            <a class = "hover-part" href="Home.html">HOME</a>
-            <a class = "hover-part current" href="Alphabet.html">ALPHABET</a>
-            <a class = "hover-part notImportant-nav">GRAMMAR</a>
-            <a class = "hover-part notImportant-nav">VOCABULARY</a>
-            <a class = "hover-part notImportant-nav" href="#">EXERCISE</a>
-          </div>
-    </div>
-    <div class="flashcards-nav">
-      <div class="flashcards-top">
-        <div class="flashcards-top-1">
-          <img src="img/image 5.png" alt="">
-          <div class="flashcards-word">FLASHCARDS</div>
-      </div>
-      <div class="flashcards-top-2">
-        <progress class = "progress-bar" value="32" max="100"> 32% </progress>
-        <div class="progress-detail">
-          <div>PROGRESS:</div>
-          <div><span class="current-display-progress">1</span>/46</div>
-        </div>
-      </div>
-      </div>  
-      <button class="flashcards-bot">
-        <img src="img/image 6.png" alt="">
-        <div>Shuffle</div>
-      </button>
-    </div>
-    <!-- <div class="outMenu"></div> -->
-    <div class="flashcard-container">
-      <div class="flashcard-progress">
-        <progress class = "progress-bar" value="32" max="100"> 32% </progress>
-        <div class="progress-detail">
-          <div>PROGRESS:</div>
-          <div><span>1</span>/46</div>
-        </div>
-        </div>
-        <div class="flashcard">
-              <div class="definition">hoho</div>
-              <div class="meaning">haha</div>
-            </div>
-        </div>
-        <div class="arrow">
-          <button class="left-arrow"><img src="img/image 8.png" alt=""></button>
-          <div class="current-flashcard"><span class="current-display">1</span>/46</div>
-          <button class="right-arrow"><img src="img/image 9.png" alt=""></button>
-        </div>
-    </div>
-        <script src="https://kit.fontawesome.com/3449a8ce9f.js" crossorigin="anonymous"></script>
-    <script src="js/Flashcard.js"></script> 
-  </body> 
-</html>
+const flashcard = document.querySelector(".flashcard");
+let $card = $(".flashcard");
+const definition = document.querySelector(".definition");
+const meaning = document.querySelector(".meaning");
+const current_number = document.querySelectorAll(".current-display");
+const progress_bar = document.querySelectorAll(".progress-bar");
+
+let alphabet_definition = [
+  "あ",
+  "い",
+  "う",
+  "え",
+  "お",
+  "か",
+  "き",
+  "く",
+  "け",
+  "こ",
+  "さ",
+  "し",
+  "す",
+  "せ",
+  "そ",
+  "た",
+  "ち",
+  "つ",
+  "て",
+  "と",
+  "な",
+  "に",
+  "ぬ",
+  "ね",
+  "の",
+  "は",
+  "ひ",
+  "ふ",
+  "へ",
+  "ほ",
+  "ま",
+  "み",
+  "む",
+  "め",
+  "も",
+  "や",
+  "ゆ",
+  "よ",
+  "ら",
+  "り",
+  "る",
+  "れ",
+  "ろ",
+  "わ",
+  "を",
+  "ん",
+];
+
+let alphabet_meaning = [
+  "a",
+  "i",
+  "u",
+  "e",
+  "o",
+  "ka",
+  "ki",
+  "ku",
+  "ke",
+  "ko",
+  "sa",
+  "shi",
+  "su",
+  "se",
+  "so",
+  "ta",
+  "chi",
+  "tsu",
+  "te",
+  "to",
+  "na",
+  "ni",
+  "nu",
+  "ne",
+  "no",
+  "ha",
+  "hi",
+  "fu",
+  "he",
+  "ho",
+  "ma",
+  "mi",
+  "mu",
+  "me",
+  "mo",
+  "ya",
+  "yu",
+  "yo",
+  "ra",
+  "ri",
+  "ru",
+  "re",
+  "ro",
+  "wa",
+  "wo",
+  "n",
+];
+
+$(".flashcard").click(flip);
+
+function flip() {
+  $card.toggleClass("is-active");
+  count++;
+}
+
+let current_index = 0;
+let current_display = 1;
+let count = 0;
+
+const left_arrow = document.querySelector(".left-arrow");
+const right_arrow = document.querySelector(".right-arrow");
+
+left_arrow.addEventListener("click", decrease);
+right_arrow.addEventListener("click", increase);
+
+function decrease() {
+  if (current_index == 0 || current_display == 1) return;
+  else {
+    if (count % 2 == 1) {
+      count++;
+      flashcard.style.transition = "all 0s";
+      $card.toggleClass("is-active");
+    }
+    current_index--;
+    current_display--;
+    current_number.forEach((a) => (a.innerHTML = current_display));
+    definition.innerHTML = alphabet_definition[current_index];
+    meaning.innerHTML = alphabet_meaning[current_index];
+    progress_bar.value = (current_display * 100) / 46;
+    setTimeout(function () {
+      flashcard.style.transition = "all 0.5s ease";
+    }, 0.5);
+  }
+}
+
+function increase() {
+  if (current_index == 45 || current_display == 46) return;
+  else {
+    if (count % 2 == 1) {
+      flashcard.style.transition = "all 0s";
+      $card.toggleClass("is-active");
+      count++;
+    }
+    current_index++;
+    current_display++;
+    current_number.forEach((a) => (a.innerHTML = current_display));
+    definition.innerHTML = alphabet_definition[current_index];
+    meaning.innerHTML = alphabet_meaning[current_index];
+    progress_bar.value = (current_display * 100) / 46;
+    setTimeout(function () {
+      flashcard.style.transition = "all 0.5s ease";
+    }, 0.5);
+  }
+}
+
+function load() {
+  definition.innerHTML = alphabet_definition[0];
+  meaning.innerHTML = alphabet_meaning[0];
+  progress_bar.forEach((a) => (a.value = (current_display * 100) / 46));
+  flashcard.style.transition = "all 0.5s ease";
+}
+
+window.onload = load();
