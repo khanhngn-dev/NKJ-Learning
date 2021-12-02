@@ -28,6 +28,7 @@ function sendSignup(auth, email, password) {
     .then((cred) => {
       console.log(cred.user);
       // on success redirects the user to the main page
+      window.location.assign('index.html');
     })
     .catch((err) => {
       displayInfo(err, signupForm);

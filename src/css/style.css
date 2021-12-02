@@ -10,8 +10,17 @@
 
 body {
 	height: 100vh;
-	padding: 2vh 4vw 0 4vw;
-	background: rgba(255, 184, 177, 0.78);
+	padding: 0vh 4vw 0 4vw;
+	background: #ffb8b1c7;
+}
+
+.logo {
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	font-weight: bold;
+	font-size: 40px;
+	color: #bc002d;
 }
 
 .img {
@@ -29,19 +38,19 @@ body {
 	color: #bc002d;
 }
 
-a {
-	padding: 0 1vw;
-	text-decoration: none;
-	color: #bc002d;
-	height: 50px;
-	line-height: 75px;
-}
-
 /* Normal form */
 .form {
 	padding: 5px;
 	display: flex;
 	flex-flow: column;
+}
+
+.form a {
+	padding: 0 1vw;
+	text-decoration: none;
+	color: #bc002d;
+	height: 50px;
+	line-height: 75px;
 }
 
 .head {
@@ -251,7 +260,7 @@ a {
 		display: none;
 	}
 
-	body {
+	main {
 		display: flex;
 		flex-flow: row-reverse;
 		justify-content: center;
