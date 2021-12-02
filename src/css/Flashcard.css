@@ -1,0 +1,348 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway";
+    font-style: normal;
+  }
+  
+  body {
+    height: 100vh;
+  }
+  
+  .header {
+    padding-left: 20px;
+    position: fixed;
+    background: #c00734;
+    height: 70px;
+    display: grid;
+    align-items: center;
+    width: 100vw;
+    z-index: 1000;
+  }
+  
+  .nav-bar {
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+  }
+  
+  .sign-up {
+    grid-column: 12/13;
+  }
+  
+  .nav-bar a {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+    color: #ffffff;
+    margin-left: 0;
+  }
+  
+  .logo a {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .signup-button {
+    margin-left: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .login-button {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .learn-nav {
+    position: fixed;
+    display: flex;
+    background-color: #ffb8b1;
+    height: 45px;
+    width: 100vw;
+    margin-top: 70px;
+    z-index: 10;
+  }
+  
+  .hover-part:hover {
+    background-color: orange;
+  }
+  
+  .learn-nav a {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 20%;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    color: #954a5c;
+  }
+  
+  .current {
+    background-color: orange;
+  }
+  
+  .flashcards-nav {
+    position: fixed;
+    background: #F38686;
+    width: 250px;
+    height: calc(100vh - 115px);
+    margin-left: 0;
+    margin-top: 115px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .flashcards-word {
+    font-weight: bold;
+  }
+  
+  .progress-detail {
+    color: white;
+  }
+  
+  .flashcards-top-1 {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 30px;
+  }
+  
+  .flashcards-bot {
+    position: relative;
+    width: 80%;
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+  .progress-detail {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  progress::-webkit-progress-value { background: #c00734; }
+  progress::-webkit-progress-bar {background-color: white}
+  
+  .progress-bar {
+    position: relative;
+    width: 100%;
+    border-radius: 20px;
+  }
+  
+  .flashcard-container {
+    padding-left: 250px;
+    padding-top: 150px;
+    height: 80%;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .flashcard {
+    position: relative;
+    width: 80%;
+    height: 90%;
+    transform-style: preserve-3d;
+    transition: all 1s ease;
+  }
+  
+  
+  .is-active {
+    transform: rotateX(180deg);
+  }
+  
+  .definition {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #EF7575;
+    font-size: 60px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5%;
+    backface-visibility: hidden;
+  }
+  
+  .meaning {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #EF7575;
+    font-size: 60px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+  }
+  
+  .arrow {
+    margin-left: 250px;
+    display: flex;
+    justify-content: center;
+    background: white;
+    height: 10%;
+    /* padding: 10px; */
+  }
+  
+  .left-arrow {
+    background: transparent;
+    border: none;
+    margin: 10px
+  }
+  
+  .right-arrow {
+    background: transparent;
+    border: none;
+    margin: 10px;
+  }
+  
+  .row-1 {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .drop-menu-header {
+    display: none;
+  }
+  
+  .sign-up a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .flashcard-progress {
+    display: none;
+  }
+  
+  .current-flashcard {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  @media (max-width: 768px) {
+    .nav-bar {
+      display: none;
+    }
+  
+    .flashcard-progress {
+      display: block;
+      padding-bottom: 20px;
+    }
+  
+    .flashcard-container {
+      flex-direction: column; 
+    }
+  
+    progress::-webkit-progress-bar {background-color: black}
+  
+    .flashcard-progress {
+      position: relative;
+      width: 80%;
+    }
+  
+    .progress-detail {
+      color: black;
+      font-weight: bold;
+    }
+    /* .flashcard progress {
+      padding-bottom:
+    } */
+  
+    .outMenu {
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      background-color: transparent;
+      position: absolute;
+    }
+  
+    .nav-bar.open {
+      display: block;
+      position: absolute;
+      margin-top: 150px;
+      background: #ffb8b1;
+      text-align: center;
+      padding: 0;
+      width: 100%;
+    }
+  
+    .notImportant-header {
+      transition: all 0.5s ease;
+    }
+  
+    .notImportant-header a {
+      color: #954a5c;
+    }
+  
+    
+    .flashcard-container {
+      padding-left: 0px;
+      z-index: 5;
+    }
+  
+    .arrow {
+      margin: 0;
+    }
+    .nav-bar.open a {
+      margin: 0;
+      padding: 0;
+    }
+  
+    .drop-menu-header {
+      display: block;
+      border-radius: 50%;
+      width: 28px;
+      z-index: 1000;
+    }
+  
+    .flashcards-nav.open {
+      display: flex;
+      height: 100vh;
+      z-index: 5;
+    }
+  
+    .notImportant-nav {
+      display: none !important;
+    }
+  
+    .learn-nav a {
+      width: 50%;
+    }
+  
+    .signup-button {
+      display: none;
+    }
+  
+    .flashcards-nav {
+      display: none;
+    }
+  }
+  

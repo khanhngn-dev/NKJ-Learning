@@ -40,7 +40,6 @@ body {
   margin-left: 0;
 }
 
-
 .logo a {
   font-style: normal;
   font-weight: bold;
@@ -87,6 +86,10 @@ body {
   color: #954a5c;
 }
 
+.current {
+  background-color:orange;
+}
+
 .alphabet-nav {
   position: fixed;
   flex-grow: 1;
@@ -119,14 +122,25 @@ body {
 }
 
 .flashcard-button {
-  margin-top: 1rem;
+  margin-top: 3rem;
   background: #eb342d;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
-  width: 40vw;
+  width: 500px;
   height: 10vh;
   color: white;
   font-weight: bold;
+  z-index: 5;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flashcard-button:hover {
+  color: black;
 }
 
 .row-1 {
@@ -172,6 +186,7 @@ body {
 
 .flashcard {
   margin-top: 50px;
+  z-index: 5;
 }
 
 .drop-menu-header {
@@ -219,10 +234,6 @@ body {
     color: #954a5c;
   }
 
-  .notImportant-nav { 
-    display: none;
-  }
-
   .nav-bar.open a {
     margin: 0;
     padding: 0;
@@ -247,6 +258,14 @@ body {
     border: none;
   }
 
+  .notImportant-nav { 
+    display: none !important;
+  }
+
+  .learn-nav a {
+    width: calc((100% - 28px) / 2);
+  }
+
   .signup-button {
     display: none;
   }
@@ -261,6 +280,11 @@ body {
   }
 
   .letter {
+    width: 90px;
+    height: 60px;
+  }
+
+  .letter-blank {
     width: 90px;
     height: 60px;
   }
