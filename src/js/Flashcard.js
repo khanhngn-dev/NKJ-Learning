@@ -153,7 +153,7 @@ function increase() {
     current_number.forEach((a) => (a.innerHTML = current_display));
     definition.innerHTML = alphabet_definition[current_index];
     meaning.innerHTML = alphabet_meaning[current_index];
-    progress_bar.value = (current_display * 100) / 46;
+    progress_bar.forEach((a) => (a.value = (current_display * 100) / 46));
     setTimeout(function () {
       flashcard.style.transition = "all 0.5s ease";
     }, 0.5);
