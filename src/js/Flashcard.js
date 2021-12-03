@@ -72,7 +72,7 @@ function increase() {
 function load() {
     definition.innerHTML = alphabet_definition[0];
     meaning.innerHTML = alphabet_meaning[0];
-    progress_bar.value = current_display*100/46;
+    progress_bars.forEach((bar) => bar.value = current_display*100/46);
     flashcard.style.transition = "all 0.5s ease"
 }
 
