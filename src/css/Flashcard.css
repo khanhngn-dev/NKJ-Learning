@@ -112,18 +112,25 @@ progress::-webkit-progress-bar {
 
 .flashcard {
 	position: relative;
-	width: 80%;
-	height: 90%;
+	width: 50vw;
+	height: 50vh;
 	transform-style: preserve-3d;
-	transition: all 1s ease;
+  border-radius: 5%;
+  perspective: 100vw;
 }
 
-.is-active {
-	transform: rotateX(180deg);
+.is-active .definition {
+	transform: rotateX(-180deg);
 }
 
-.definition {
+.is-active .meaning {
+  transform: rotateX(0deg);
+}
+
+.definition, .meaning {
 	position: absolute;
+  top: 0;
+  left: 0;
 	height: 100%;
 	width: 100%;
 	display: flex;
@@ -133,24 +140,14 @@ progress::-webkit-progress-bar {
 	font-size: 60px;
 	color: white;
 	font-weight: bold;
-	border-radius: 5%;
+	border-radius: 15px;
 	backface-visibility: hidden;
+	transition: all .6s ease;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.25)
 }
 
 .meaning {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background: #ef7575;
-	font-size: 60px;
-	color: white;
-	font-weight: bold;
-	border-radius: 5%;
 	transform: rotateX(180deg);
-	backface-visibility: hidden;
 }
 
 .arrow {

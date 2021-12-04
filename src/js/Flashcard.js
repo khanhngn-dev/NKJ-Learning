@@ -106,10 +106,6 @@ let alphabet_meaning = [
   "n",
 ];
 
-function flip() {
-  $card.toggleClass("is-active");
-}
-
 let current_index = 0;
 let current_display = current_index + 1;
 let count = 0;
@@ -117,11 +113,20 @@ let count = 0;
 const left_arrow = document.querySelector(".left-arrow");
 const right_arrow = document.querySelector(".right-arrow");
 
+function flip() {
+  $card.toggleClass("is-active");
+}
+
 function decrease() {
+  definition.style.transition = 'all 0s';
+  meaning.style.transition = 'all 0s';
   if (current_index == 0) {
     return;
   }
   else {
+    if ($card.is('.is-active')) {
+      flip();
+    }
     right_arrow.classList.remove('disabled');
     --current_index == 0 ? left_arrow.classList.add('disabled') : false;
     current_display--;
@@ -133,16 +138,22 @@ function decrease() {
     meaning.innerHTML = alphabet_meaning[current_index];
     progress_bars.forEach((bar) => (bar.value -= 1));
     setTimeout(function () {
-      flashcard.style.transition = "all 0.5s ease";
-    }, 0.5);
+      definition.style.transition = 'all 0.6s ease';
+      meaning.style.transition = 'all 0.6s ease';
+    }, 500);
   }
 }
 
 function increase() {
+  definition.style.transition = 'all 0s';
+  meaning.style.transition = 'all 0s';
   if (current_index == 45) {
     return;
   }
   else {
+    if ($card.is('.is-active')) {
+      flip();
+    }
     left_arrow.classList.remove('disabled');
     ++current_index == 45 ? right_arrow.classList.add('disabled') : false;
     current_display++;
@@ -154,8 +165,9 @@ function increase() {
     meaning.innerHTML = alphabet_meaning[current_index];
     progress_bars.forEach((bar) => (bar.value += 1));
     setTimeout(function () {
-      flashcard.style.transition = "all 0.5s ease";
-    }, 0.5);
+      definition.style.transition = 'all 0.6s ease';
+      meaning.style.transition = 'all 0.6s ease';
+    }, 500);
   }
 }
 
