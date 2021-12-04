@@ -2,103 +2,104 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="css/style.css" />
-	<title>Login</title>
-	<script src="https://kit.fontawesome.com/3449a8ce9f.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Login</title>
+  <script src="https://kit.fontawesome.com/3449a8ce9f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-	<header>
-		<a class="logo" href="index.html">NKJ</a>
-	</header>
+  <header>
+    <a class="logo" href="index.html">NKJ</a>
+  </header>
 
-	<main>
-		<img class="img small" srcset="img/login.png" alt="Login Image" />
-		<img class="img big" srcset="img/login_2.png" alt="Login Image" />
+  <main>
+    <img class="img small" srcset="img/login.png" alt="Login Image" />
+    <img class="img big" srcset="img/login_2.png" alt="Login Image" />
 
-		<form class="form">
-			<div class="head">
-				<h1 class="title big">WELCOME BACK!</h1>
-				<h2 class="big">
-					Don't have an account. <a href="signup.html" class="bold">Sign up</a>
-				</h2>
-				<h1 class="title small">Login</h1>
-				<h2 class="small">
-					New Here?<a href="signup.html"><span class="bold">Register</span></a>
-				</h2>
-				<div class="error"></div>
-			</div>
+    <form class="form">
+      <div class="head">
+        <h1 class="title big">WELCOME BACK!</h1>
+        <h2 class="big">
+          Don't have an account.
+          <a href="signup.html" class="bold">Sign up</a>
+        </h2>
+        <h1 class="title small">Login</h1>
+        <h2 class="small">
+          New Here?<a href="signup.html"><span class="bold">Register</span></a>
+        </h2>
+        <div class="error"></div>
+      </div>
 
-			<div class="form-email">
-				<input type="email" class="input" id="email" required placeholder=" " autocomplete="email" />
-				<label for="email" class="label">Email</label>
-			</div>
+      <div class="form-email">
+        <input type="email" class="input" id="email" required placeholder=" " autocomplete="email" />
+        <label for="email" class="label">Email</label>
+      </div>
 
-			<div class="form-password">
-				<input type="password" class="input password" id="password" minlength="6" required placeholder=" "
-					autocomplete="current-password" />
-				<label for="password" class="label">Password</label>
-				<i class="fas fa-eye" id="toggle-pw"></i>
-			</div>
+      <div class="form-password">
+        <input type="password" class="input password" id="password" minlength="6" required placeholder=" "
+          autocomplete="current-password" />
+        <label for="password" class="label">Password</label>
+        <i class="fas fa-eye" id="toggle-pw"></i>
+      </div>
 
-			<div class="footer">
-				<label for="remember" class="bold remember">Remember Me
-					<input type="checkbox" class="checkbox" id="remember" />
-					<span class="checked"></span>
-				</label>
-				<a href="" class="forgot bold">Forgot Password?</a>
-			</div>
+      <div class="footer">
+        <label for="remember" class="bold remember">Remember Me
+          <input type="checkbox" class="checkbox" id="remember" />
+          <span class="checked"></span>
+        </label>
+        <a href="" class="forgot bold">Forgot Password?</a>
+      </div>
 
-			<input type="submit" class="submit bold" value="Log in" />
-		</form>
+      <input type="submit" class="submit bold" value="Log in" />
+    </form>
 
-		<div class="overlay"></div>
+    <div class="overlay"></div>
 
-		<form class="form" id="forgot-form">
-			<div class="head">
-				<h1 class="title">Reset Password</h1>
-			</div>
+    <form class="form" id="forgot-form">
+      <div class="head">
+        <h1 class="title">Reset Password</h1>
+      </div>
 
-			<div class="form-email">
-				<input type="email" class="input" id="reset-email" required placeholder=" " autocomplete="email" />
-				<label for="reset-email" class="label">Email</label>
-				<div class="info">
-					Please enter the email that you want to reset your password, an email
-					will be sent with the link for resetting your password.
-				</div>
-				<div class="output"></div>
-			</div>
+      <div class="form-email">
+        <input type="email" class="input" id="reset-email" required placeholder=" " autocomplete="email" />
+        <label for="reset-email" class="label">Email</label>
+        <div class="info">
+          Please enter the email that you want to reset your password, an
+          email will be sent with the link for resetting your password.
+        </div>
+        <div class="output"></div>
+      </div>
 
-			<input type="submit" class="submit bold" value="Reset password" />
-		</form>
-	</main>
+      <input type="submit" class="submit bold" value="Reset password" />
+    </form>
+  </main>
 
-	<script type="module">
-		// Import the functions you need from the SDKs you need
-		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
 
-		// Your web app's Firebase configuration
-		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-		const firebaseConfig = {
-			apiKey: "AIzaSyBmQDYmuecPbLe9v5SrsVxQAqsOaCVjMkg",
-			authDomain: "nkj-login.firebaseapp.com",
-			projectId: "nkj-login",
-			storageBucket: "nkj-login.appspot.com",
-			messagingSenderId: "98244104367",
-			appId: "1:98244104367:web:dabf51724d7483ada5445a",
-			measurementId: "G-2GK50TGJ53",
-		};
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBmQDYmuecPbLe9v5SrsVxQAqsOaCVjMkg",
+      authDomain: "nkj-login.firebaseapp.com",
+      projectId: "nkj-login",
+      storageBucket: "nkj-login.appspot.com",
+      messagingSenderId: "98244104367",
+      appId: "1:98244104367:web:dabf51724d7483ada5445a",
+      measurementId: "G-2GK50TGJ53",
+    };
 
-		// Initialize Firebase
-		const app = initializeApp(firebaseConfig);
-	</script>
-	<script src="js/helper.js"></script>
-	<script type="module" src="js/login.js"></script>
-	<script type="module" src="js/forgot.js"></script>
-	<script src="js/app.js"></script>
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  </script>
+  <script src="js/helper.js"></script>
+  <script type="module" src="js/login.js"></script>
+  <script type="module" src="js/forgot.js"></script>
+  <script src="js/app.js"></script>
 </body>
 
 </html>
