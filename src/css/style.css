@@ -192,10 +192,10 @@ body {
 /* Forgot form */
 #forgot-form {
 	position: absolute;
-	top: 15vh;
+	top: 10vh;
 	left: 10vw;
-	padding: 20px;
 	width: 80vw;
+  padding: 20px;
 	height: 0;
 	border: 1px solid;
 	border-radius: 10px;

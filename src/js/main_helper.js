@@ -1,3 +1,5 @@
+const navButton = document.querySelector(".drop-menu-header");
+const navList = document.querySelector(".nav-bar");
 const outMenu = document.querySelector(".outMenu");
 
 function openMenu(list, otherList = undefined) {
@@ -9,4 +11,20 @@ function openMenu(list, otherList = undefined) {
 function closeMenu(list) {
   list.classList.remove('open');
   outMenu.classList.remove("open");
+}
+
+function clickDropDown(parent = navButton, list = navList, otherList = undefined) {
+  parent.addEventListener("click", function () {
+    if (!list.classList.contains("open")) {
+      openMenu(list, otherList);
+    } else {
+      closeMenu(list);
+    }
+  });
+}
+
+function clickOverlay() {
+  outMenu.addEventListener("click", function () {
+    closeMenu(document.querySelector('.open'));
+  });
 }

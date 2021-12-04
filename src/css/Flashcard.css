@@ -1,74 +1,19 @@
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	font-family: 'Raleway';
-	font-style: normal;
-}
-
-body {
-	height: 100vh;
-}
-
 .header {
-	padding-left: 20px;
+	top: 0;
 	position: fixed;
-	background: #c00734;
-	height: 70px;
-	display: grid;
-	align-items: center;
-	width: 100vw;
-	z-index: 1000;
-}
-
-.nav-bar {
-	margin: 0;
+	width: 100%;
 	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	list-style-type: none;
-}
-
-.sign-up {
-	grid-column: 12/13;
-}
-
-.nav-bar a {
-	font-style: normal;
-	font-weight: bold;
-	font-size: 18px;
-	text-decoration: none;
-	color: #ffffff;
-	margin-left: 0;
-}
-
-.logo a {
-	font-style: normal;
-	font-weight: bold;
-	font-size: 36px;
-	color: #ffffff;
-	text-decoration: none;
-}
-
-.signup-button {
-	margin-left: 25px;
-	padding-left: 15px;
-	padding-right: 15px;
-}
-
-.login-button {
-	padding-left: 15px;
-	padding-right: 15px;
+	flex-flow: column;
+	height: 115px;
 }
 
 .learn-nav {
-	position: fixed;
+	top: 0;
 	display: flex;
+	justify-content: center;
 	background-color: #ffb8b1;
 	height: 45px;
-	width: 100vw;
-	margin-top: 70px;
-	z-index: 10;
+	width: 100%;
 }
 
 .hover-part:hover {
@@ -77,12 +22,9 @@ body {
 
 .learn-nav a {
 	height: 45px;
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	width: 20%;
-	font-style: normal;
-	text-decoration: none;
+	flex: 25%;
+	text-align: center;
+	line-height: 45px;
 	font-weight: bold;
 	font-size: 14px;
 	color: #954a5c;
@@ -92,18 +34,29 @@ body {
 	background-color: orange;
 }
 
+.main {
+	padding-top: 115px;
+	height: 100vh;
+	position: relative;
+	justify-content: center;
+}
+
 .flashcards-nav {
-	position: fixed;
-	background: #f38686;
-	width: 250px;
-	height: calc(100vh - 115px);
-	margin-left: 0;
-	margin-top: 115px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	align-items: center;
+	width: 250px;
+	height: 100%;
+	list-style-type: none;
+	font-weight: bold;
+	font-size: 20px;
+	color: white;
+	text-align: center;
+	z-index: 1;
+	background: #d76262;
 }
 
 .flashcards-word {
@@ -149,11 +102,10 @@ progress::-webkit-progress-bar {
 }
 
 .flashcard-container {
-	padding-left: 250px;
-	padding-top: 150px;
+	flex: 75%;
 	height: 80%;
-	z-index: 3;
 	display: flex;
+	flex-flow: column;
 	justify-content: center;
 	align-items: center;
 }
@@ -202,42 +154,21 @@ progress::-webkit-progress-bar {
 }
 
 .arrow {
-	margin-left: 250px;
 	display: flex;
 	justify-content: center;
 	background: white;
 	height: 10%;
-	/* padding: 10px; */
 }
 
-.left-arrow {
-	background: transparent;
-	border: none;
-	margin: 10px;
-}
-
+.left-arrow,
 .right-arrow {
 	background: transparent;
 	border: none;
+  border-radius: 10px;
 	margin: 10px;
 }
 
-.row-1 {
-	position: relative;
-	width: 100%;
-	display: flex;
-	justify-content: space-around;
-}
-
-.drop-menu-header {
-	display: none;
-}
-
-.sign-up a {
-	text-decoration: none;
-	color: black;
-}
-
+.drop-menu-header,
 .flashcard-progress {
 	display: none;
 }
@@ -246,106 +177,31 @@ progress::-webkit-progress-bar {
 	display: flex;
 	align-items: center;
 	font-size: 20px;
-	padding-left: 15px;
-	padding-right: 15px;
+	padding: 0 15px;
+}
+
+.disabled {
+  background: grey;
+  pointer-events: none;
 }
 
 @media (max-width: 768px) {
-	.nav-bar {
+	.flashcards-nav {
 		display: none;
 	}
 
 	.flashcard-progress {
 		display: block;
 		padding-bottom: 20px;
-	}
-
-	.flashcard-container {
-		flex-direction: column;
-	}
-
-	progress::-webkit-progress-bar {
-		background-color: black;
-	}
-
-	.flashcard-progress {
-		position: relative;
-		width: 80%;
+    width: 80%;
 	}
 
 	.progress-detail {
 		color: black;
 		font-weight: bold;
 	}
-	/* .flashcard progress {
-      padding-bottom:
-    } */
-
-	.outMenu {
-		width: 100vw;
-		height: 100vh;
-		z-index: 1;
-		background-color: transparent;
-		position: absolute;
-	}
-
-	.nav-bar.open {
-		display: block;
-		position: absolute;
-		margin-top: 150px;
-		background: #ffb8b1;
-		text-align: center;
-		padding: 0;
-		width: 100%;
-	}
-
-	.notImportant-header {
-		transition: all 0.5s ease;
-	}
-
-	.notImportant-header a {
-		color: #954a5c;
-	}
-
-	.flashcard-container {
-		padding-left: 0px;
-		z-index: 5;
-	}
-
-	.arrow {
-		margin: 0;
-	}
-	.nav-bar.open a {
-		margin: 0;
-		padding: 0;
-	}
 
 	.drop-menu-header {
 		display: block;
-		border-radius: 50%;
-		width: 28px;
-		z-index: 1000;
-	}
-
-	.flashcards-nav.open {
-		display: flex;
-		height: 100vh;
-		z-index: 5;
-	}
-
-	.notImportant-nav {
-		display: none !important;
-	}
-
-	.learn-nav a {
-		width: 50%;
-	}
-
-	.signup-button {
-		display: none;
-	}
-
-	.flashcards-nav {
-		display: none;
 	}
 }

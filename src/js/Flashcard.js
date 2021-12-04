@@ -106,32 +106,24 @@ let alphabet_meaning = [
   "n",
 ];
 
-$(".flashcard").click(flip);
-
 function flip() {
   $card.toggleClass("is-active");
-  count++;
 }
 
 let current_index = 0;
-let current_display = 1;
+let current_display = current_index + 1;
 let count = 0;
 
 const left_arrow = document.querySelector(".left-arrow");
 const right_arrow = document.querySelector(".right-arrow");
 
-left_arrow.addEventListener("click", decrease);
-right_arrow.addEventListener("click", increase);
-
 function decrease() {
-  if (current_index == 0 || current_display == 1) return;
+  if (current_index == 0) {
+    return;
+  }
   else {
-    if (count % 2 == 1) {
-      count++;
-      flashcard.style.transition = "all 0s";
-      $card.toggleClass("is-active");
-    }
-    current_index--;
+    right_arrow.classList.remove('disabled');
+    --current_index == 0 ? left_arrow.classList.add('disabled') : false;
     current_display--;
     current_number.innerHTML = current_display;
     current_number_progresses.forEach(
@@ -139,7 +131,7 @@ function decrease() {
     );
     definition.innerHTML = alphabet_definition[current_index];
     meaning.innerHTML = alphabet_meaning[current_index];
-    progress_bars.forEach((bar) => (bar.value = (current_display * 100) / 46));
+    progress_bars.forEach((bar) => (bar.value -= 1));
     setTimeout(function () {
       flashcard.style.transition = "all 0.5s ease";
     }, 0.5);
@@ -147,14 +139,12 @@ function decrease() {
 }
 
 function increase() {
-  if (current_index == 45 || current_display == 46) return;
+  if (current_index == 45) {
+    return;
+  }
   else {
-    if (count % 2 == 1) {
-      flashcard.style.transition = "all 0s";
-      $card.toggleClass("is-active");
-      count++;
-    }
-    current_index++;
+    left_arrow.classList.remove('disabled');
+    ++current_index == 45 ? right_arrow.classList.add('disabled') : false;
     current_display++;
     current_number.innerHTML = current_display;
     current_number_progresses.forEach(
@@ -162,7 +152,7 @@ function increase() {
     );
     definition.innerHTML = alphabet_definition[current_index];
     meaning.innerHTML = alphabet_meaning[current_index];
-    progress_bars.forEach((bar) => (bar.value = (current_display * 100) / 46));
+    progress_bars.forEach((bar) => (bar.value += 1));
     setTimeout(function () {
       flashcard.style.transition = "all 0.5s ease";
     }, 0.5);
@@ -170,9 +160,17 @@ function increase() {
 }
 
 function load() {
+  clickDropDown();
+  clickOverlay();
+
+  $(".flashcard").click(flip);
+
+  left_arrow.addEventListener("click", decrease);
+  right_arrow.addEventListener("click", increase);
+
   definition.innerHTML = alphabet_definition[0];
   meaning.innerHTML = alphabet_meaning[0];
-  progress_bars.forEach((bar) => (bar.value = (current_display * 100) / 46));
+  progress_bars.forEach((bar) => (bar.value = current_display));
   flashcard.style.transition = "all 0.5s ease";
 }
 
