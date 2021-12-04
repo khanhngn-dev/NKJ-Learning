@@ -7,6 +7,10 @@ const current_number_progresses = document.querySelectorAll(
   ".current-display-progress"
 );
 const progress_bars = document.querySelectorAll(".progress-bar");
+const signup = document.querySelector(".sign-up");
+const user = document.querySelector(".user");
+const user_name = document.querySelector("#user-name");
+
 
 let alphabet_definition = [
   "あ",
@@ -106,9 +110,49 @@ let alphabet_meaning = [
   "n",
 ];
 
-let current_index = 0;
-let current_display = current_index + 1;
-let count = 0;
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc
+} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBmQDYmuecPbLe9v5SrsVxQAqsOaCVjMkg",
+  authDomain: "nkj-login.firebaseapp.com",
+  projectId: "nkj-login",
+  storageBucket: "nkj-login.appspot.com",
+  messagingSenderId: "98244104367",
+  appId: "1:98244104367:web:dabf51724d7483ada5445a",
+  measurementId: "G-2GK50TGJ53",
+};
+
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore(firebaseApp);
+const uid = localStorage.getItem("loggedIn");
+let userRef, userSnap;
+
+if (uid != null) {
+  userRef = doc(db, "users", uid);
+  userSnap = await getDoc(userRef);
+  signup.style.display = "none";
+  user.style.display = "flex";
+  user_name.innerHTML = userSnap.data().email;
+  if (userSnap.data()["current index"] != undefined) {
+    var current_index = userSnap.data()["current index"];
+    var current_display = userSnap.data()["current display"];
+  } else {
+    var current_index = 0;
+    var current_display = 1;
+  }
+} else {
+  // doc.data() will be undefined in this case
+  signup.style.display = "block";
+  user.style.display = "none";
+  var current_index = 0;
+  var current_display = 1;
+}
 
 const left_arrow = document.querySelector(".left-arrow");
 const right_arrow = document.querySelector(".right-arrow");
@@ -118,17 +162,16 @@ function flip() {
 }
 
 function decrease() {
-  definition.style.transition = 'all 0s';
-  meaning.style.transition = 'all 0s';
+  definition.style.transition = "all 0s";
+  meaning.style.transition = "all 0s";
   if (current_index == 0) {
     return;
-  }
-  else {
-    if ($card.is('.is-active')) {
+  } else {
+    if ($card.is(".is-active")) {
       flip();
     }
-    right_arrow.classList.remove('disabled');
-    --current_index == 0 ? left_arrow.classList.add('disabled') : false;
+    right_arrow.classList.remove("disabled");
+    --current_index == 0 ? left_arrow.classList.add("disabled") : false;
     current_display--;
     current_number.innerHTML = current_display;
     current_number_progresses.forEach(
@@ -137,25 +180,34 @@ function decrease() {
     definition.innerHTML = alphabet_definition[current_index];
     meaning.innerHTML = alphabet_meaning[current_index];
     progress_bars.forEach((bar) => (bar.value -= 1));
+    if (uid != null) {
+      setDoc(
+        userRef,
+        {
+          "current index": current_index,
+          "current display": current_display,
+        },
+        { merge: true }
+      );
+    }
     setTimeout(function () {
-      definition.style.transition = 'all 0.6s ease';
-      meaning.style.transition = 'all 0.6s ease';
+      definition.style.transition = "all 0.6s ease";
+      meaning.style.transition = "all 0.6s ease";
     }, 500);
   }
 }
 
 function increase() {
-  definition.style.transition = 'all 0s';
-  meaning.style.transition = 'all 0s';
+  definition.style.transition = "all 0s";
+  meaning.style.transition = "all 0s";
   if (current_index == 45) {
     return;
-  }
-  else {
-    if ($card.is('.is-active')) {
+  } else {
+    if ($card.is(".is-active")) {
       flip();
     }
-    left_arrow.classList.remove('disabled');
-    ++current_index == 45 ? right_arrow.classList.add('disabled') : false;
+    left_arrow.classList.remove("disabled");
+    ++current_index == 45 ? right_arrow.classList.add("disabled") : false;
     current_display++;
     current_number.innerHTML = current_display;
     current_number_progresses.forEach(
@@ -164,9 +216,19 @@ function increase() {
     definition.innerHTML = alphabet_definition[current_index];
     meaning.innerHTML = alphabet_meaning[current_index];
     progress_bars.forEach((bar) => (bar.value += 1));
+    if (uid != null) {
+      setDoc(
+        userRef,
+        {
+          "current index": current_index,
+          "current display": current_display,
+        },
+        { merge: true }
+      );
+    }
     setTimeout(function () {
-      definition.style.transition = 'all 0.6s ease';
-      meaning.style.transition = 'all 0.6s ease';
+      definition.style.transition = "all 0.6s ease";
+      meaning.style.transition = "all 0.6s ease";
     }, 500);
   }
 }
@@ -180,8 +242,12 @@ function load() {
   left_arrow.addEventListener("click", decrease);
   right_arrow.addEventListener("click", increase);
 
-  definition.innerHTML = alphabet_definition[0];
-  meaning.innerHTML = alphabet_meaning[0];
+  definition.innerHTML = alphabet_definition[current_index];
+  meaning.innerHTML = alphabet_meaning[current_index];
+  current_number.innerHTML = current_display;
+  current_number_progresses.forEach(
+    (progress) => (progress.innerHTML = current_display)
+  );
   progress_bars.forEach((bar) => (bar.value = current_display));
   flashcard.style.transition = "all 0.5s ease";
 }

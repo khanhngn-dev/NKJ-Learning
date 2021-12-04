@@ -41,6 +41,12 @@
 	justify-content: center;
 }
 
+.user {
+    grid-column: 12/13;
+    color: white;
+    display: none;
+}  
+
 .flashcards-nav {
 	margin: 0;
 	padding: 0;
@@ -180,6 +186,13 @@ progress::-webkit-progress-bar {
 .disabled {
   background: grey;
   pointer-events: none;
+}
+
+.user-menu {
+    background: transparent;
+    border: none;
+    display: block;
+    margin-left: 10px;
 }
 
 @media (max-width: 768px) {

@@ -41,6 +41,12 @@
 	justify-content: center;
 }
 
+.user {
+    grid-column: 12/13;
+    color: white;
+    display: none;
+  }
+
 .alphabet-nav {
 	margin: 0;
 	padding: 0;
@@ -140,6 +146,14 @@
   display: none;
 }
 
+.user-menu { 
+    display: flex;
+    background: transparent;
+    border: none;
+    margin-left: 10px;
+    align-items: center;
+  }
+
 @media (max-width: 768px) {
   .alphabet-nav {
     position: absolute;
@@ -157,6 +171,8 @@
     width: 150px;
     opacity: 1;
 	}
+
+
 
 	.drop-menu-nav {
 		display: block;

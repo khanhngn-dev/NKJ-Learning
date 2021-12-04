@@ -3,6 +3,22 @@ import {
   createUserWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+import { getFirestore, collection, doc, getDoc, setDoc, deleteDoc, updateDoc, deleteField, getDocFromCache  } from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBmQDYmuecPbLe9v5SrsVxQAqsOaCVjMkg",
+  authDomain: "nkj-login.firebaseapp.com",
+  projectId: "nkj-login",
+  storageBucket: "nkj-login.appspot.com",
+  messagingSenderId: "98244104367",
+  appId: "1:98244104367:web:dabf51724d7483ada5445a",
+  measurementId: "G-2GK50TGJ53"
+};
+
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore(firebaseApp);
+
 const auth = getAuth();
 const signupForm = document.querySelector(".form");
 const password = signupForm.querySelector("#password");
@@ -12,12 +28,12 @@ var invalid = true;
 // Return true if the passwords match; else false
 function comparePassword(password, confirm) {
   if (password !== confirm) {
-    lockSubmit(signupForm.querySelector(".submit"));
+    lockSubmit(signupForm.querySelector('.submit'));
     error.innerHTML = "Passwords do not match";
     error.style.display = "block";
     invalid = true;
   } else {
-    unlockSubmit(signupForm.querySelector(".submit"));
+    unlockSubmit(signupForm.querySelector('.submit'));
     error.style.display = "none";
     invalid = false;
   }
@@ -26,9 +42,10 @@ function comparePassword(password, confirm) {
 function sendSignup(auth, email, password) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((cred) => {
-      console.log(cred.user);
+      setDoc(doc(db, "users", `${cred.user.uid}`), {
+        "email": cred.user.email
+      });
       // on success redirects the user to the main page
-      window.location.assign("index.html");
     })
     .catch((err) => {
       displayInfo(err, signupForm);
