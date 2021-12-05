@@ -15,7 +15,7 @@ function start() {
   clickOverlay();
 
   soundButton.forEach((button) => {
-    button.addEventListener("click", (button) => loadSound(button));
+    button.addEventListener("click", () => loadSound(button));
   });
 }
 
