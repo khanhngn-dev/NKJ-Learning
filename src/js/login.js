@@ -9,7 +9,6 @@ const loginForm = document.querySelector('.form');
 function sendLogin(auth, email, password) {
   signInWithEmailAndPassword(auth, email, password)
     .then((cred) => {
-      console.log(cred.user);
       localStorage.setItem('loggedIn', `${cred.user.uid}`)
       window.location.assign('index.html');
     })
