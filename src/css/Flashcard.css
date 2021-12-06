@@ -41,12 +41,6 @@
 	justify-content: center;
 }
 
-.user {
-    grid-column: 12/13;
-    color: white;
-    display: none;
-}  
-
 .flashcards-nav {
 	margin: 0;
 	padding: 0;
@@ -121,8 +115,8 @@ progress::-webkit-progress-bar {
 	width: 50vw;
 	height: 50vh;
 	transform-style: preserve-3d;
-  border-radius: 5%;
-  perspective: 100vw;
+	border-radius: 5%;
+	perspective: 100vw;
 }
 
 .is-active .definition {
@@ -130,13 +124,14 @@ progress::-webkit-progress-bar {
 }
 
 .is-active .meaning {
-  transform: rotateX(0deg);
+	transform: rotateX(0deg);
 }
 
-.definition, .meaning {
+.definition,
+.meaning {
 	position: absolute;
-  top: 0;
-  left: 0;
+	top: 0;
+	left: 0;
 	height: 100%;
 	width: 100%;
 	display: flex;
@@ -148,8 +143,8 @@ progress::-webkit-progress-bar {
 	font-weight: bold;
 	border-radius: 15px;
 	backface-visibility: hidden;
-	transition: all .6s ease;
-  box-shadow: 4px 4px 10px rgba(0,0,0,0.25)
+	transition: all 0.6s ease;
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 .meaning {
@@ -167,7 +162,7 @@ progress::-webkit-progress-bar {
 .right-arrow {
 	background: transparent;
 	border: none;
-  border-radius: 10px;
+	border-radius: 10px;
 	margin: 10px;
 }
 
@@ -184,15 +179,8 @@ progress::-webkit-progress-bar {
 }
 
 .disabled {
-  background: grey;
-  pointer-events: none;
-}
-
-.user-menu {
-    background: transparent;
-    border: none;
-    display: block;
-    margin-left: 10px;
+	background: grey;
+	pointer-events: none;
 }
 
 @media (max-width: 768px) {
@@ -203,7 +191,7 @@ progress::-webkit-progress-bar {
 	.flashcard-progress {
 		display: block;
 		padding-bottom: 20px;
-    width: 80%;
+		width: 80%;
 	}
 
 	.progress-detail {
