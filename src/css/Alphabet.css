@@ -73,11 +73,11 @@
 	flex-flow: column;
 	justify-content: center;
 	overflow-y: scroll;
-	padding: 10vh;
+	padding: 20px;
 }
 
 .title {
-	padding-top: 100px;
+	/* padding-top: 100px; */
 	font-weight: bold;
 	font-size: 50px;
 	text-align: center;
@@ -96,7 +96,7 @@
 .letter {
 	color: white;
 	width: 100%;
-	height: 80px;
+	height: 65px;
 	background-color: #ea2f4c;
 	border-radius: 10px;
 	display: flex;
@@ -121,8 +121,8 @@
 }
 
 .flashcard-button {
-  align-self: center;
-  display: block;
+  	align-self: center;
+  	display: block;
 	margin: 2vw 10px;
 	border-radius: 15px;
 	width: 25vh;
