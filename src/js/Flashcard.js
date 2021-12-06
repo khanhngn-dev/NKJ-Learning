@@ -24,10 +24,6 @@ const current_number_progresses = document.querySelectorAll(
   ".current-display-progress"
 );
 const progress_bars = document.querySelectorAll(".progress-bar");
-const signup = document.querySelector(".sign-up");
-const user = document.querySelector(".user");
-const user_name = document.querySelector("#user-name");
-
 
 const alphabet_definition = [
   "あ",
@@ -127,33 +123,12 @@ const alphabet_meaning = [
   "n",
 ];
 
-
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
+
 const uid = localStorage.getItem("loggedIn");
 var userRef, userSnap;
-var current_display, current_index;
-
-if (uid != null) {
-  userRef = doc(db, "users", uid);
-  userSnap = await getDoc(userRef);
-  signup.style.display = "none";
-  user.style.display = "flex";
-  user_name.innerHTML = userSnap.data().email;
-  if (userSnap.data()["current index"] != undefined) {
-    current_index = userSnap.data()["current index"];
-    current_display = userSnap.data()["current display"];
-  } else {
-    current_index = 0;
-    current_display = 1;
-  }
-} else {
-  // doc.data() will be undefined in this case
-  signup.style.display = "block";
-  user.style.display = "none";
-  current_index = 0;
-  current_display = 1;
-}
+var current_display = 1, current_index = 0;
 
 const left_arrow = document.querySelector(".left-arrow");
 const right_arrow = document.querySelector(".right-arrow");
@@ -162,7 +137,16 @@ function flip() {
   $card.toggleClass("is-active");
 }
 
-function updateProgress(num) {
+async function getUser() {
+  if (uid != null) {
+    userRef = doc(db, "users", uid);
+    userSnap = await getDoc(userRef);
+    current_index = userSnap.data()["current index"] || 0;
+    current_display = userSnap.data()["current display"] || 1;
+  }
+}
+
+function updateProgress() {
   current_number.innerHTML = current_display;
   current_number_progresses.forEach(
     (progress) => (progress.innerHTML = current_display)
@@ -239,8 +223,11 @@ function load() {
   left_arrow.addEventListener("click", decrease);
   right_arrow.addEventListener("click", increase);
 
-  updateProgress();
-  updateCard();
+  getUser()
+    .then(() => {
+      updateProgress();
+      updateCard();
+    });
 }
 
 window.onload = load();

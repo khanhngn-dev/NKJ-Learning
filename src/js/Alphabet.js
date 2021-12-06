@@ -19,4 +19,4 @@ function start() {
   });
 }
 
-window.onload = start;
+window.onload = start();
