@@ -22,7 +22,6 @@ function showForgot(e) {
 function sendResetPass(email, output) {
   sendPasswordResetEmail(auth, email)
     .then(() => {
-      // Email sent
       output.classList.remove("error");
       const text = `An email has been sent to <span class='bold'>${email}<span>`;
       displayInfo(text, forgotForm, output);
@@ -35,7 +34,6 @@ function sendResetPass(email, output) {
 }
 
 function forgot() {
-  // Toggle forgot password form
   document
     .querySelector(".forgot")
     .addEventListener("click", (e) => showForgot(e));

@@ -1,10 +1,9 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+import { getFirestore, collection, doc, getDoc, setDoc, deleteDoc, updateDoc, deleteField, getDocFromCache } from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
 import {
   getAuth,
   createUserWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-import { getFirestore, collection, doc, getDoc, setDoc, deleteDoc, updateDoc, deleteField, getDocFromCache  } from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBmQDYmuecPbLe9v5SrsVxQAqsOaCVjMkg",
@@ -18,7 +17,6 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
-
 const auth = getAuth();
 const signupForm = document.querySelector(".form");
 const password = signupForm.querySelector("#password");
@@ -45,7 +43,9 @@ function sendSignup(auth, email, password) {
       setDoc(doc(db, "users", `${cred.user.uid}`), {
         "email": cred.user.email
       });
-      // on success redirects the user to the main page
+    })
+    .then(() => {
+      window.location.assign('login.html');
     })
     .catch((err) => {
       displayInfo(err, signupForm);
@@ -53,6 +53,8 @@ function sendSignup(auth, email, password) {
 }
 
 function signup() {
+  showPasswords();
+
   password.addEventListener("keyup", () =>
     comparePassword(password.value, confirmPassword.value)
   );
@@ -61,7 +63,6 @@ function signup() {
   );
 
   document.querySelector(".form").addEventListener("submit", (e) => {
-    // Stop the form from reloading the page
     e.preventDefault();
 
     const email = signupForm.querySelector("#email").value;

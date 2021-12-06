@@ -3,4 +3,4 @@ function start() {
   clickOverlay();
 }
 
-window.onload = start;
+window.onload = start();
