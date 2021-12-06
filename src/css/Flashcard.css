@@ -112,7 +112,7 @@ progress::-webkit-progress-bar {
 
 .flashcard {
 	position: relative;
-	width: 50vw;
+	width: 70%;
 	height: 50vh;
 	transform-style: preserve-3d;
 	border-radius: 5%;
@@ -152,9 +152,11 @@ progress::-webkit-progress-bar {
 }
 
 .arrow {
+  margin-top: 20px;
 	display: flex;
 	justify-content: center;
 	background: white;
+	align-items: center;
 	height: 10%;
 }
 

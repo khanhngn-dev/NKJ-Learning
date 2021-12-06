@@ -67,8 +67,8 @@
 
 .alphabet-table {
 	height: 100%;
-	flex: 75%;
 	display: flex;
+  flex-grow: 1;
 	flex-flow: column;
 	justify-content: center;
 	overflow-y: scroll;
@@ -100,10 +100,12 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	transition: all 0.3s ease;
+	font-weight: bold;
 }
 
-.letter * {
-	font-weight: bold;
+.letter:hover {
+	background: orange;
 }
 
 .hira-letter {
@@ -116,10 +118,11 @@
 }
 
 .flashcard-button {
-	align-self: flex-end;
+  align-self: center;
+  display: block;
 	margin: 2vw 10px;
 	border-radius: 15px;
-	width: 25%;
+	width: 25vh;
 	height: 5vh;
 	background: #eb342d;
 	text-align: center;
@@ -163,4 +166,18 @@
 		width: 40px;
 		background-color: transparent;
 	}
+
+  .alphabet-table {
+    display: block;
+  }
+
+  .alphabet {
+    grid-auto-flow: column;
+    grid-template-rows: repeat(11,1fr);
+    grid-template-columns: repeat(5,1fr);
+  }
+
+  .flashcard-button {
+    margin: 20px auto;
+  }
 }
