@@ -1,6 +1,6 @@
 function start() {
-  clickDropDown();
-  clickOverlay();
+	clickDropDown();
+	clickOverlay();
 }
 
 window.onload = start();

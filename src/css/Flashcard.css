@@ -28,7 +28,7 @@
 	font-weight: bold;
 	font-size: 14px;
 	color: #954a5c;
-  display: flex;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 }
@@ -164,7 +164,7 @@ progress::-webkit-progress-bar {
 }
 
 .arrow {
-  margin-top: 20px;
+	margin-top: 20px;
 	display: flex;
 	justify-content: center;
 	background: white;
@@ -203,7 +203,7 @@ progress::-webkit-progress-bar {
 
 @media (max-width: 768px) {
 	.learn-nav a i {
-    margin: 0;
+		margin: 0;
 	}
 
 	.learn-nav a .text {
