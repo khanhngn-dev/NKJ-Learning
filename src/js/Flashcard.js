@@ -24,6 +24,7 @@ const current_number_progresses = document.querySelectorAll(
   ".current-display-progress"
 );
 const progress_bars = document.querySelectorAll(".progress-bar");
+const shuffleButton = document.querySelector(".flashcards-bot")
 
 const alphabet_definition = [
   "あ",
@@ -128,7 +129,8 @@ const db = getFirestore(firebaseApp);
 
 const uid = localStorage.getItem("loggedIn");
 var userRef, userSnap;
-var current_display = 1, current_index = 0;
+var current_display = 1, current_index = 0, shuffleIndex = 0;
+var shuffleCount = 0;
 
 const left_arrow = document.querySelector(".left-arrow");
 const right_arrow = document.querySelector(".right-arrow");
@@ -154,10 +156,14 @@ function updateProgress() {
   progress_bars.forEach((bar) => (bar.value = current_display));
 }
 
-function updateCard() {
+function updateMainFlashCard() {
   definition.innerHTML = alphabet_definition[current_index];
   meaning.innerHTML = alphabet_meaning[current_index];
 }
+
+// function updateMainFlashCard() {
+//   updateCard(alphabet_definition, alphabet_meaning);
+// }
 
 function saveProgress() {
   if (uid != null) {
@@ -188,7 +194,7 @@ function decrease() {
   current_index--;
   current_display--;
   updateProgress();
-  updateCard();
+  updateMainFlashCard();
   saveProgress();
   setTimeout(function () {
     setCardStyle(0.6);
@@ -206,7 +212,7 @@ function increase() {
   current_index++;
   current_display++;
   updateProgress();
-  updateCard();
+  updateMainFlashCard();
   saveProgress();
   setTimeout(function () {
     setCardStyle(0.6);
@@ -221,6 +227,97 @@ document.body.onkeyup = function(e){
   else if (e.keyCode == 39) increase();
 }
 
+function randomIntFromInterval(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+// Create a consecutive array
+function generateArray(N) {
+  var array = [];
+  for (let i = 0; i < N; i++) {
+    array.push(i);
+  }
+  return array;
+}
+
+// Shuffle an array
+function shuffleArray(random) {
+  shuffleCount ++;
+  var L = random.length;
+  for (var i = 0; i < L; i++) {
+  var j = randomIntFromInterval(0, L - 1);
+  var b = random[j];
+  random[j] = random[i];
+  random[i] = b;
+}
+  return random;
+}
+
+let randomArray = [];
+
+function shuffleFlashCard() {
+  randomArray = shuffleArray(generateArray(46));
+  shuffleIndex = 0;
+  current_index = randomArray[shuffleIndex];
+  current_display = current_index + 1;
+  current_number.innerHTML = shuffleIndex + 1;
+  current_number_progresses.forEach(
+    (progress) => (progress.innerHTML = (shuffleIndex + 1))
+  );
+  progress_bars.forEach((bar) => (bar.value = (shuffleIndex + 1)));
+  updateMainFlashCard();
+  left_arrow.removeEventListener("click", decrease);
+  right_arrow.removeEventListener("click", increase);
+  left_arrow.addEventListener("click", decreaseShuffle);
+  right_arrow.addEventListener("click", increaseShuffle);
+}
+
+function decreaseShuffle() {
+  if (shuffleIndex == 0) {
+    return;
+  }
+  if ($card.is(".is-active")) {
+    flip();
+  }
+  setCardStyle(0);
+  shuffleIndex --;
+  current_index = randomArray[shuffleIndex];
+  current_display = current_index + 1;
+  current_number.innerHTML = shuffleIndex + 1;
+  current_number_progresses.forEach(
+    (progress) => (progress.innerHTML = shuffleIndex + 1)
+  );
+  progress_bars.forEach((bar) => (bar.value = shuffleIndex + 1));
+  updateMainFlashCard();
+  saveProgress();
+  setTimeout(function () {
+    setCardStyle(0.6);
+  }, 100);
+}
+
+function increaseShuffle() {
+  if (shuffleIndex == 45) {
+    return;
+  }
+  setCardStyle(0);
+  if ($card.is(".is-active")) {
+    flip();
+  }
+  shuffleIndex ++;
+  current_index = randomArray[shuffleIndex];
+  current_display = current_index + 1;
+  current_number.innerHTML = shuffleIndex;
+  current_number_progresses.forEach(
+    (progress) => (progress.innerHTML = shuffleIndex + 1)
+  );
+  progress_bars.forEach((bar) => (bar.value = shuffleIndex + 1));
+  updateMainFlashCard();
+  saveProgress();
+  setTimeout(function () {
+    setCardStyle(0.6);
+  }, 100);
+}
+
 function load() {
   clickDropDown();
   clickOverlay();
@@ -229,11 +326,12 @@ function load() {
 
   left_arrow.addEventListener("click", decrease);
   right_arrow.addEventListener("click", increase);
+  shuffleButton.addEventListener("click", shuffleFlashCard);
 
   getUser()
     .then(() => {
       updateProgress();
-      updateCard();
+      updateMainFlashCard();
     });
 }
 
