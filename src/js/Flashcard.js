@@ -219,17 +219,17 @@ function increase() {
   }, 100);
 }
 
-function addKeyBoardEvent(e){
-  if(e.keyCode == 32 || e.keyCode == 38 || e.keyCode == 40){
-      flip()
+function addKeyBoardEvent(e) {
+  if (e.keyCode == 32 || e.keyCode == 38 || e.keyCode == 40) {
+    flip()
   }
   else if (e.keyCode == 37) decrease();
   else if (e.keyCode == 39) increase();
 }
 
-function addKeyBoardEventShuffle(e){
-  if(e.keyCode == 32 || e.keyCode == 38 || e.keyCode == 40){
-      flip()
+function addKeyBoardEventShuffle(e) {
+  if (e.keyCode == 32 || e.keyCode == 38 || e.keyCode == 40) {
+    flip()
   }
   else if (e.keyCode == 37) decreaseShuffle();
   else if (e.keyCode == 39) increaseShuffle();
@@ -254,14 +254,15 @@ function generateArray(N) {
 
 // Shuffle an array
 function shuffleArray(random) {
-  shuffleCount ++;
+  shuffleCount++;
   var L = random.length;
   for (var i = 0; i < L; i++) {
-  var j = randomIntFromInterval(0, L - 1);
-  var b = random[j];
-  random[j] = random[i];
-  random[i] = b;
-}
+    var j = randomIntFromInterval(0, L - 1);
+    var b = random[j];
+    random[j] = random[i];
+    random[i] = b;
+  }
+  console.log(random);
   return random;
 }
 
@@ -284,7 +285,7 @@ function shuffleFlashCard() {
   right_arrow.addEventListener("click", increaseShuffle);
 
   document.body.removeEventListener('keyup', addKeyBoardEvent);
-  document.body.addEventListener('keyup', addKeyBoardEventShuffle); 
+  document.body.addEventListener('keyup', addKeyBoardEventShuffle);
 }
 
 function decreaseShuffle() {
@@ -295,7 +296,7 @@ function decreaseShuffle() {
     flip();
   }
   setCardStyle(0);
-  shuffleIndex --;
+  shuffleIndex--;
   current_index = randomArray[shuffleIndex];
   current_display = current_index + 1;
   current_number.innerHTML = shuffleIndex + 1;
@@ -318,7 +319,7 @@ function increaseShuffle() {
   if ($card.is(".is-active")) {
     flip();
   }
-  shuffleIndex ++;
+  shuffleIndex++;
   current_index = randomArray[shuffleIndex];
   current_display = current_index + 1;
   current_number.innerHTML = shuffleIndex + 1;
