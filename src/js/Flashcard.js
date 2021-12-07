@@ -213,6 +213,13 @@ function increase() {
   }, 100);
 }
 
+document.body.onkeyup = function(e){
+  if(e.keyCode == 32 || e.keyCode == 38 || e.keyCode == 40){
+      flip()
+  }
+  else if (e.keyCode == 37) decrease();
+  else if (e.keyCode == 39) increase();
+}
 
 function load() {
   clickDropDown();
