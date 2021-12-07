@@ -194,9 +194,6 @@
 		grid-template-columns: repeat(5, 1fr);
 	}
 
-	.flashcard-button {
-	}
-
 	.title {
 		padding-top: 0;
 	}
