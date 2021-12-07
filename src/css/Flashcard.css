@@ -197,6 +197,10 @@ progress::-webkit-progress-bar {
 	pointer-events: none;
 }
 
+.flashcards-bot-mobile {
+	display: none;
+}
+
 @media (max-width: 768px) {
 	.learn-nav a i {
     margin: 0;
@@ -212,9 +216,14 @@ progress::-webkit-progress-bar {
 
 	.flashcard-progress {
 		display: block;
-		padding-bottom: 20px;
 		width: 80%;
 	}
+
+	/* .flashcards-bot-mobile {
+		display: block;
+		width: 40%;
+		margin: 10px;
+	} */
 
 	.progress-detail {
 		color: black;
