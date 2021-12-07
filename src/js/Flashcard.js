@@ -219,13 +219,25 @@ function increase() {
   }, 100);
 }
 
-document.body.onkeyup = function(e){
+function addKeyBoardEvent(e){
   if(e.keyCode == 32 || e.keyCode == 38 || e.keyCode == 40){
       flip()
   }
   else if (e.keyCode == 37) decrease();
   else if (e.keyCode == 39) increase();
 }
+
+function addKeyBoardEventShuffle(e){
+  if(e.keyCode == 32 || e.keyCode == 38 || e.keyCode == 40){
+      flip()
+  }
+  else if (e.keyCode == 37) decreaseShuffle();
+  else if (e.keyCode == 39) increaseShuffle();
+}
+
+
+
+document.body.addEventListener('keyup', addKeyBoardEvent);
 
 function randomIntFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -270,6 +282,9 @@ function shuffleFlashCard() {
   right_arrow.removeEventListener("click", increase);
   left_arrow.addEventListener("click", decreaseShuffle);
   right_arrow.addEventListener("click", increaseShuffle);
+
+  document.body.removeEventListener('keyup', addKeyBoardEvent);
+  document.body.addEventListener('keyup', addKeyBoardEventShuffle); 
 }
 
 function decreaseShuffle() {
