@@ -306,7 +306,7 @@ function increaseShuffle() {
   shuffleIndex ++;
   current_index = randomArray[shuffleIndex];
   current_display = current_index + 1;
-  current_number.innerHTML = shuffleIndex;
+  current_number.innerHTML = shuffleIndex + 1;
   current_number_progresses.forEach(
     (progress) => (progress.innerHTML = shuffleIndex + 1)
   );
