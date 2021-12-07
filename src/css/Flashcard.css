@@ -204,4 +204,8 @@ progress::-webkit-progress-bar {
 	.drop-menu-header {
 		display: block;
 	}
+
+	progress::-webkit-progress-bar {
+		background-color: lightgray;
+	}
 }
