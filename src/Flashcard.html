@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flashcard</title>
+  <title>NKJ Flashcard</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
   <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
@@ -14,7 +14,7 @@
     crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="css/index.css" />
-  <link rel="stylesheet" href="css/Flashcard.css" />
+  <link rel="stylesheet" href="css/flashcard.css" />
 </head>
 
 <body>
@@ -53,10 +53,22 @@
       </div>
     </div>
     <div class="learn-nav">
-      <a class="hover-part current" href="Alphabet.html">ALPHABET</a>
-      <a class="hover-part notImportant-nav">GRAMMAR</a>
-      <a class="hover-part notImportant-nav">VOCABULARY</a>
-      <a class="hover-part notImportant-nav" href="#">EXERCISE</a>
+      <a class="hover-part current" href="alphabet.html">
+        <i class="fas fa-font"></i>
+        <span class="text">ALPHABET</span>
+      </a>
+      <a class="hover-part notImportant-nav" href="#">
+        <i class="fas fa-spell-check"></i>
+        <span class="text">GRAMMAR</span>
+      </a>
+      <a class="hover-part notImportant-nav" href="#">
+        <i class="fas fa-book"></i>
+        <span class="text">VOCABULARY</span>
+      </a>
+      <a class="hover-part notImportant-nav" href="#">
+        <i class="fas fa-marker"></i>
+        <span class="text">EXERCISE</span>
+      </a>
     </div>
   </div>
   <div class="main">
@@ -121,7 +133,7 @@
   </script>
   <script type="module" src="js/checkuser.js"></script>
   <script src="js/main_helper.js"></script>
-  <script type=module src="js/Flashcard.js"></script>
+  <script type=module src="js/flashcard.js"></script>
 </body>
 
 </html>

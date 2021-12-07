@@ -28,6 +28,18 @@
 	font-weight: bold;
 	font-size: 14px;
 	color: #954a5c;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.learn-nav a i {
+	font-size: 30px;
+	margin-right: 8px;
+}
+
+.learn-nav a .text {
+	margin-left: 8px;
 }
 
 .current {
@@ -66,10 +78,8 @@
 }
 
 .alphabet-table {
-	display: relative;
 	height: 100%;
-	display: flex;
-  	flex-grow: 1;
+	flex-grow: 1;
 	flex-flow: column;
 	justify-content: center;
 	overflow-y: scroll;
@@ -96,7 +106,7 @@
 .letter {
 	color: white;
 	width: 100%;
-	height: 65px;
+	height: 80px;
 	background-color: #ea2f4c;
 	border-radius: 10px;
 	display: flex;
@@ -121,15 +131,15 @@
 }
 
 .flashcard-button {
-  	align-self: center;
-  	display: block;
-	margin: 2vw 10px;
+	align-self: center;
+	display: block;
+  margin: 20px auto;
 	border-radius: 15px;
-	width: 25vh;
-	height: 5vh;
+	width: 200px;
+	height: 60px;
 	background: #eb342d;
 	text-align: center;
-	line-height: 5vh;
+	line-height: 60px;
 	color: white;
 	font-weight: bold;
 }
@@ -147,6 +157,14 @@
 }
 
 @media (max-width: 768px) {
+	.learn-nav a i {
+    margin: 0;
+	}
+
+	.learn-nav a .text {
+		display: none;
+	}
+
 	.alphabet-nav {
 		position: absolute;
 		top: 0;
@@ -170,19 +188,14 @@
 		background-color: transparent;
 	}
 
-  	.alphabet-table {
-    display: block;
-  	}
+	.alphabet {
+		grid-auto-flow: column;
+		grid-template-rows: repeat(11, 1fr);
+		grid-template-columns: repeat(5, 1fr);
+	}
 
- 	 .alphabet {
-    grid-auto-flow: column;
-    grid-template-rows: repeat(11,1fr);
-    grid-template-columns: repeat(5,1fr);
-  	}
-
- 	 .flashcard-button {
-    margin: 20px auto;
- 	}
+	.flashcard-button {
+	}
 
 	.title {
 		padding-top: 0;

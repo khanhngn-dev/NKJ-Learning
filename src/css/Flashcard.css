@@ -28,6 +28,18 @@
 	font-weight: bold;
 	font-size: 14px;
 	color: #954a5c;
+  display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.learn-nav a i {
+	font-size: 30px;
+	margin-right: 8px;
+}
+
+.learn-nav a .text {
+	margin-left: 8px;
 }
 
 .current {
@@ -186,6 +198,14 @@ progress::-webkit-progress-bar {
 }
 
 @media (max-width: 768px) {
+	.learn-nav a i {
+    margin: 0;
+	}
+
+	.learn-nav a .text {
+		display: none;
+	}
+
 	.flashcards-nav {
 		display: none;
 	}
