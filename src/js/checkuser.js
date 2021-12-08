@@ -16,7 +16,7 @@ function checkLogin() {
 			loginButton.style.display = 'none';
 			logoutButton.style.display = 'block';
 			user.style.display = 'flex';
-			user_name.appendChild(document.createTextNode(cred.email.match(/[\w-.]+/)));
+			user_name.appendChild(document.createTextNode(cred.displayName));
 		} else {
 			loginButton.style.display = 'block';
 			logoutButton.style.display = 'none';
