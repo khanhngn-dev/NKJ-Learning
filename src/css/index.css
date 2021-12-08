@@ -30,11 +30,6 @@ a {
 	z-index: 2;
 }
 
-.header {
-	position: fixed;
-}
-
-
 .drop-menu-header {
 	display: none;
 }
@@ -113,7 +108,7 @@ a {
 }
 
 .main {
-	padding: 0;
+	padding: 70px;
 	display: flex;
 	position: relative;
 	justify-content: space-evenly;

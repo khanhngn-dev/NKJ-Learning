@@ -2,6 +2,10 @@ body {
     background-color: black;
 }
 
+.header {
+	position: fixed;
+}
+
 .create-part {
     color: white;
 }
