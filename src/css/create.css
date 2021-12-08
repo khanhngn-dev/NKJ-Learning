@@ -1,0 +1,128 @@
+body {
+    background-color: black;
+}
+
+.create-part {
+    color: white;
+}
+
+.create-button, .add-button {
+    background-color: #c00734;
+    padding: 5px 20px 5px 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.main {
+    display: block;
+    padding-top: 70px;
+}
+
+.main-left {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: calc(100% - 70px);
+    width: 30%;
+}
+
+.body-image {
+    margin: 20px;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+
+}
+
+.create-part {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create-part div {
+    margin-bottom: 10px;
+}
+
+.studyset-name {
+    padding: 10px;
+}
+
+.main-right {
+    padding-top: 50px;
+    padding-left: 30%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create-container {
+    margin: 20px;
+    background-color:#FFB8B1;
+    width: 90%; 
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 30px;
+}
+
+form {
+    width: 85%;
+}
+
+label {
+    border-top: 2px solid black;
+    font-size: 0.8rem;
+    font-weight: bold;
+    width: 100%;
+}
+
+.container-top {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid #000000;
+}
+
+.index {
+    margin-left: 20px;
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+
+.delete {
+    background-color: transparent;
+    margin-right: 20px;
+    padding-bottom: 5px;
+}
+
+.card-input {
+    width: 100%;
+    background-color: transparent;
+}
+
+.draggable {
+    cursor: move;
+}
+  
+.draggable.dragging {
+    opacity: .5;
+}
+
