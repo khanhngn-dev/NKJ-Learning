@@ -1,36 +1,32 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js';
 import {
 	getFirestore,
 	doc,
 	setDoc,
-} from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
+} from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
 import {
 	getAuth,
 	createUserWithEmailAndPassword,
 	onAuthStateChanged,
+	updateProfile,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js';
 
-const firebaseConfig = {
-	apiKey: 'AIzaSyBmQDYmuecPbLe9v5SrsVxQAqsOaCVjMkg',
-	authDomain: 'nkj-login.firebaseapp.com',
-	projectId: 'nkj-login',
-	storageBucket: 'nkj-login.appspot.com',
-	messagingSenderId: '98244104367',
-	appId: '1:98244104367:web:dabf51724d7483ada5445a',
-	measurementId: 'G-2GK50TGJ53',
-};
-
-const firebaseApp = initializeApp(firebaseConfig);
-const db = getFirestore(firebaseApp);
+const db = getFirestore();
 const auth = getAuth();
 const signupForm = document.querySelector('.form');
 const password = signupForm.querySelector('#password');
 const confirmPassword = signupForm.querySelector('#confirm-password');
-var invalid = true;
+const infoForm = document.querySelector('#info-form');
+const overlay = document.querySelector('.overlay');
+var invalid = true,
+	info,
+	unsub;
 
 function checkLogin() {
-	onAuthStateChanged(auth, (cred) => {
-		cred ? window.location.assign('index.html') : false;
+	// Return of StateChange is an unsubscribe function
+	unsub = onAuthStateChanged(auth, (cred) => {
+		if (cred) {
+			window.location.assign('index.html');
+		}
 	});
 }
 
@@ -49,18 +45,42 @@ function comparePassword(password, confirm) {
 }
 
 function sendSignup(auth, email, password) {
+	// Call the unsub if a signup is happening
+	unsub();
 	createUserWithEmailAndPassword(auth, email, password)
 		.then((cred) => {
+			// Set login state
+			localStorage.setItem('loggedIn', `${cred.user.uid}`);
+			// Set default values
 			setDoc(doc(db, 'users', `${cred.user.uid}`), {
-				email: cred.user.email,
+				'current index': 0,
+				'current display': 1,
 			});
-		})
-		.then(() => {
-			window.location.assign('login.html');
+			// Get a reference of the created user
+			info = cred.user;
+			setProfile();
 		})
 		.catch((err) => {
-			displayInfo(err, signupForm);
+			displayInfo(err, signupForm, error);
 		});
+}
+
+function setProfile() {
+	overlay.classList.add('show');
+	infoForm.classList.add('show');
+
+	infoForm.addEventListener('submit', (e) => {
+		e.preventDefault();
+		updateProfile(info, {
+			displayName: infoForm.username.value,
+		})
+			.then(() => {
+				window.location.assign('index.html');
+			})
+			.catch((err) => {
+				displayInfo(err, signupForm, error);
+			});
+	});
 }
 
 function signup() {
@@ -79,8 +99,7 @@ function signup() {
 		const email = signupForm.querySelector('#email').value;
 
 		if (!invalid) {
-			sendSignup(auth, email, password.value);
-		}
+			sendSignup(auth, email, password.value);		}
 	});
 }
 

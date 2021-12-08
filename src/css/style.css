@@ -190,7 +190,8 @@ body {
 }
 
 /* Forgot form */
-#forgot-form {
+#forgot-form,
+#info-form {
 	position: absolute;
 	top: 10vh;
 	width: 80vw;
@@ -205,7 +206,8 @@ body {
 	transition: all 0.5s ease;
 }
 
-#forgot-form * {
+#forgot-form *,
+#info-form * {
 	display: none;
 }
 
@@ -220,30 +222,65 @@ body {
 	display: none;
 }
 
-#forgot-form .info {
+#forgot-form .info,
+#info-form .info {
 	padding: 20px 10px 20px 10px;
 }
 
-#forgot-form .output {
+#forgot-form .output,
+#info-form .output {
 	padding: 10px;
 }
 
-#forgot-form .output span {
+#forgot-form .output span,
+#info-form .output span {
 	padding: 5px 0;
 }
 
+#info-form #profile-upload {
+	color: #bc002d;
+	transform: translate(15px, 44px);
+	font-size: 1.3em;
+}
+
+#info-form #profile-picture {
+	background: white;
+}
+
 #forgot-form.show *,
+#info-form.show *,
 .show {
 	display: block;
 }
 
-#forgot-form.show {
+#forgot-form.show,
+#info-form.show {
 	opacity: 1;
 	height: 70vh;
 }
 
 .form .submit:disabled {
 	background: #500000;
+}
+
+#info-form.show .pfp-preset {
+	padding-top: 20px;
+	display: flex;
+	flex-flow: wrap;
+}
+
+#info-form.show .pfp-preset label {
+	width: 33%;
+	border: 4px solid #ffdcdc;
+}
+
+#info-form.show .pfp-preset img {
+	width: 100%;
+	overflow: hidden;
+}
+
+#info-form.show .pfp-preset label.select {
+	background: grey;
 }
 
 .big {

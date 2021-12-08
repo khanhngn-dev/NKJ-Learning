@@ -1,20 +1,9 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js';
 import {
 	getFirestore,
 	doc,
 	getDoc,
 	setDoc,
-} from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js';
-
-const firebaseConfig = {
-	apiKey: 'AIzaSyBmQDYmuecPbLe9v5SrsVxQAqsOaCVjMkg',
-	authDomain: 'nkj-login.firebaseapp.com',
-	projectId: 'nkj-login',
-	storageBucket: 'nkj-login.appspot.com',
-	messagingSenderId: '98244104367',
-	appId: '1:98244104367:web:dabf51724d7483ada5445a',
-	measurementId: 'G-2GK50TGJ53',
-};
+} from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
 
 const $card = $('.flashcard');
 const definition = document.querySelector('.definition');
@@ -124,15 +113,12 @@ const alphabet_meaning = [
 	'n',
 ];
 
-const firebaseApp = initializeApp(firebaseConfig);
-const db = getFirestore(firebaseApp);
-
+const db = getFirestore();
 const uid = localStorage.getItem('loggedIn');
 var userRef, userSnap;
 var current_display = 1,
 	current_index = 0,
 	shuffleIndex = 0;
-var shuffleCount = 0;
 
 const left_arrow = document.querySelector('.left-arrow');
 const right_arrow = document.querySelector('.right-arrow');
@@ -160,10 +146,6 @@ function updateMainFlashCard() {
 	definition.innerHTML = alphabet_definition[current_index];
 	meaning.innerHTML = alphabet_meaning[current_index];
 }
-
-// function updateMainFlashCard() {
-//   updateCard(alphabet_definition, alphabet_meaning);
-// }
 
 function saveProgress() {
 	if (uid != null) {
