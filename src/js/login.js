@@ -9,7 +9,9 @@ const loginForm = document.querySelector('.form');
 
 function checkLogin() {
 	onAuthStateChanged(auth, (cred) => {
-		cred ? window.location.assign('index.html') : false;
+		if (cred) {
+			window.location.assign('index.html');
+		}
 	});
 }
 
@@ -17,7 +19,6 @@ function sendLogin(auth, email, password) {
 	signInWithEmailAndPassword(auth, email, password)
 		.then((cred) => {
 			localStorage.setItem('loggedIn', `${cred.user.uid}`);
-			window.location.assign('index.html');
 		})
 		.catch((err) => {
 			displayInfo(err, loginForm, error);
