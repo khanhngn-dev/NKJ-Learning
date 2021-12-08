@@ -58,6 +58,7 @@ function sendSignup(auth, email, password) {
 			});
 			// Get a reference of the created user
 			info = cred.user;
+			setProfile();
 		})
 		.catch((err) => {
 			displayInfo(err, signupForm, error);
@@ -98,10 +99,7 @@ function signup() {
 		const email = signupForm.querySelector('#email').value;
 
 		if (!invalid) {
-			sendSignup(auth, email, password.value);
-
-			setProfile();
-		}
+			sendSignup(auth, email, password.value);		}
 	});
 }
 
