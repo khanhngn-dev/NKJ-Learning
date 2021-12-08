@@ -1,5 +1,5 @@
-const draggables = document.querySelectorAll('.draggable')
-const containers = document.querySelectorAll('.container')
+var draggables = document.querySelectorAll('.draggable')
+var containers = document.querySelectorAll('.container')
 
 draggables.forEach(draggable => {
   draggable.addEventListener('dragstart', () => {
@@ -38,12 +38,13 @@ function getDragAfterElement(container, y) {
   }, { offset: Number.NEGATIVE_INFINITY }).element
 }
 
+function scrollDrag() {
+  
+}
 var stop = true;
+
     $(".draggable").on("drag", function (e) {
-
         stop = true;
-        console.log(e.originalEvent.clientY)
-
         if (e.originalEvent.clientY < 100) {
             stop = false;
             scroll(-100)
@@ -62,6 +63,5 @@ var stop = true;
 
     var scroll = function (step) {
         var scrollY = $(window).scrollTop();
-        console.log(scrollY)
         $(window).scrollTop(scrollY + step);
     }
