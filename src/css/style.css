@@ -195,6 +195,7 @@ body {
 	position: absolute;
 	top: 10vh;
 	width: 80vw;
+	left: 10vw;
 	padding: 20px;
 	height: 0;
 	border: 1px solid;
@@ -253,10 +254,15 @@ body {
 	display: block;
 }
 
-#forgot-form.show,
-#info-form.show {
+#forgot-form.show {
 	opacity: 1;
 	height: 70vh;
+}
+
+#info-form.show {
+	opacity: 1;
+	height: 90vh;
+	top: 5vh;
 }
 
 .form .submit:disabled {
@@ -281,6 +287,18 @@ body {
 
 #info-form.show .pfp-preset label.select {
 	background: grey;
+}
+
+#info-form .preview .error {
+	text-align: center;
+	margin-top: 30px;
+}
+
+#info-form .preview img {
+	display: block;
+	margin: auto;
+	margin-top: 10px;
+	width: 40vw;
 }
 
 .big {
@@ -317,7 +335,8 @@ body {
 		padding: 0;
 	}
 
-	#forgot-form {
+	#forgot-form,
+	#info-form {
 		max-width: 60vw;
 		height: 0;
 		left: 20vw;
@@ -325,5 +344,10 @@ body {
 
 	#forgot-form.show {
 		height: 70vh;
+	}
+
+	#info-form .preview img {
+		margin-top: 30px;
+		width: 20vw;
 	}
 }
