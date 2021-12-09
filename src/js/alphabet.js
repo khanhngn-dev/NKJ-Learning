@@ -12,7 +12,6 @@ const soundButtons = document.querySelectorAll('.letter');
 function loadSound(button) {
 	getDownloadURL(ref(storage, 'mp3/hiragana/' + `${button.childNodes[1].innerText}` + '.mp3')).then(
 		(url) => {
-			console.log(url);
 			var audio = new Audio(url);
 			button.appendChild(audio);
 		}

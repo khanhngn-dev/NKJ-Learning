@@ -19,7 +19,6 @@ function checkLogin() {
 			logoutButton.style.display = 'block';
 			user.style.display = 'flex';
 			user_name.appendChild(document.createTextNode(cred.displayName || cred.email));
-			console.log(cred);
 			if (cred.photoURL) {
 				user_pfp.setAttribute('src', cred.photoURL);
 				default_icon.style.display = 'none';
