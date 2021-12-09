@@ -14,15 +14,6 @@ body {
 	background: #ffb8b1c7;
 }
 
-.logo {
-	display: block;
-	text-decoration: none;
-	text-align: center;
-	font-weight: bold;
-	font-size: 40px;
-	color: #bc002d;
-}
-
 .img {
 	display: block;
 	margin: auto;
@@ -50,7 +41,7 @@ body {
 	text-decoration: none;
 	color: #bc002d;
 	height: 50px;
-	line-height: 75px;
+	line-height: 65px;
 }
 
 .head {
@@ -61,7 +52,7 @@ body {
 .title {
 	font-size: 50px;
 	color: #bc002d;
-	line-height: 50px;
+	line-height: 60px;
 }
 
 .error {
@@ -288,6 +279,11 @@ body {
 }
 
 @media only screen and (min-width: 700px) {
+	body {
+	display: flex;
+	align-items: center;
+	}
+
 	.big {
 		display: initial;
 	}
