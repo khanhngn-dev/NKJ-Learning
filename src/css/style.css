@@ -298,8 +298,8 @@ body {
 
 @media only screen and (min-width: 700px) {
 	body {
-	display: flex;
-	align-items: center;
+		display: flex;
+		align-items: center;
 	}
 
 	.big {

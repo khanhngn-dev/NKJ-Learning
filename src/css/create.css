@@ -3,161 +3,161 @@
 }
 
 .create-part {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 .sentence {
-    font-size: 1.2rem;
-    text-align: center;
+	font-size: 1.2rem;
+	text-align: center;
 }
 
-.create-button, .add-button {
-    background-color: #FA0000;
-    padding: 5px 20px 5px 20px;
-    color: white;
-    font-weight: bold;
-    font-size: 0.8em;
+.create-button,
+.add-button {
+	background-color: #fa0000;
+	padding: 5px 20px 5px 20px;
+	color: white;
+	font-weight: bold;
+	font-size: 0.8em;
 }
 
 .main {
-    display: block;
-    padding-top: 70px;
-    height: auto;
+	display: block;
+	padding-top: 70px;
+	height: auto;
 }
 
 .main-left {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: calc(100% - 70px);
-    width: 30%;
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: calc(100% - 70px);
+	width: 30%;
 }
 
 .body-image {
-    margin: 20px;
+	margin: 20px;
 }
 
 img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
 }
 
 .create-part {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .create-part div {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .studyset-name {
-    padding: 0.2em;
-    border: 1px solid black;
+	padding: 0.2em;
+	border: 1px solid black;
 }
 
 .main-right {
-    padding-top: 50px;
-    padding-bottom: 20px;
-    padding-left: 30%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+	padding-top: 50px;
+	padding-bottom: 20px;
+	padding-left: 30%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .create-container {
-    margin: 20px;
-    background-color:#FFB8B1;
-    width: 90%; 
-    height: 25vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    border-radius: 30px;
+	margin: 20px;
+	background-color: #ffb8b1;
+	width: 90%;
+	height: 25vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	border-radius: 30px;
 }
 
 form {
-    width: 85%;
+	width: 85%;
 }
 
 label {
-    border-top: 2px solid black;
-    font-size: 0.8rem;
-    font-weight: bold;
-    width: 100%;
+	border-top: 2px solid black;
+	font-size: 0.8rem;
+	font-weight: bold;
+	width: 100%;
 }
 
 .container-top {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    border-bottom: 1px solid #000000;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	border-bottom: 1px solid #000000;
 }
 
 .index {
-    margin-left: 20px;
-    padding-bottom: 5px;
-    font-weight: bold;
+	margin-left: 20px;
+	padding-bottom: 5px;
+	font-weight: bold;
 }
 
 .delete {
-    background-color: transparent;
-    margin-right: 20px;
-    padding-bottom: 5px;
+	background-color: transparent;
+	margin-right: 20px;
+	padding-bottom: 5px;
 }
 
 .card-input {
-    width: 100%;
-    background-color: transparent;
+	width: 100%;
+	background-color: transparent;
 }
 
 .draggable {
-    cursor: move;
+	cursor: move;
 }
-  
+
 .draggable.dragging {
-    opacity: .5;
+	opacity: 0.5;
 }
 
 .mobile {
-    display: none;
+	display: none;
 }
 
 @media screen and (max-width: 767px) {
-    main {
-        padding: 0;
-    }
+	main {
+		padding: 0;
+	}
 
-    .main-left {
-        display: none;
-    }
+	.main-left {
+		display: none;
+	}
 
-    .main-right {
-        padding-left: 0;
-        padding-top: 0;
-    }
+	.main-right {
+		padding-left: 0;
+		padding-top: 0;
+	}
 
-    .mobile {
-        display: flex;
-    }
+	.mobile {
+		display: flex;
+	}
 
-    .create-container {
-        width: 100%;
-    }
+	.create-container {
+		width: 100%;
+	}
 }

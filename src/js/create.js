@@ -1,14 +1,14 @@
 const create_button = document.querySelector('.create-button');
 const add_button = document.querySelector('.add-button');
 const container = document.querySelector('.container');
-var draggables = document.querySelectorAll('.draggable')
-var delete_buttons = document.querySelectorAll('.delete')
+var draggables = document.querySelectorAll('.draggable');
+var delete_buttons = document.querySelectorAll('.delete');
 
 var i = 10;
 var stop = true;
 
 function createCard() {
-    i++;
+	i++;
 	//Label for meaning
 	label_meaning = document.createElement('label');
 	label_meaning.for = 'meaning';
@@ -64,7 +64,7 @@ function createCard() {
 	index.className = 'index';
 	// index.innerHTML = i;
 
-	delete_button.appendChild(bin_icon)
+	delete_button.appendChild(bin_icon);
 
 	//Container for index and delete button
 	container_top = document.createElement('div');
@@ -82,45 +82,42 @@ function createCard() {
 	create_container.appendChild(container_top);
 	create_container.appendChild(form);
 
-	container.appendChild(create_container);  
+	container.appendChild(create_container);
 
-    draggables = document.querySelectorAll('.draggable');
-    containers = document.querySelectorAll('.container');
-	delete_buttons = document.querySelectorAll('.delete')
-	delete_buttons.forEach(a => a.addEventListener('click', deleteCard))
+	draggables = document.querySelectorAll('.draggable');
+	containers = document.querySelectorAll('.container');
+	delete_buttons = document.querySelectorAll('.delete');
+	delete_buttons.forEach((a) => a.addEventListener('click', deleteCard));
 
-    create_container.addEventListener('dragstart', () => {
-    create_container.classList.add('dragging')
-    })    
-    create_container.addEventListener('dragend', () => {
-    create_container.classList.remove('dragging')
-    })
+	create_container.addEventListener('dragstart', () => {
+		create_container.classList.add('dragging');
+	});
+	create_container.addEventListener('dragend', () => {
+		create_container.classList.remove('dragging');
+	});
 
-    var stop = true;
-    $(".draggable").on("drag", function (e) {
+	var stop = true;
+	$('.draggable').on('drag', function (e) {
+		stop = true;
+		if (e.originalEvent.clientY < 100) {
+			stop = false;
+			scroll(-100);
+		}
 
-        stop = true;
-        if (e.originalEvent.clientY < 100) {
-            stop = false;
-            scroll(-100)
-        }
+		if (e.originalEvent.clientY > $(window).height() - 100) {
+			stop = false;
+			scroll(100);
+		}
+	});
 
-        if (e.originalEvent.clientY > ($(window).height() - 100)) {
-            stop = false;
-            scroll(100)
-        }
+	$('.draggable').on('dragend', function (e) {
+		stop = true;
+	});
 
-    });
-
-    $(".draggable").on("dragend", function (e) {
-         stop = true;
-    });
-
-    var scroll = function (step) {
-        var scrollY = $(window).scrollTop();
-        $(window).scrollTop(scrollY + step);
-    }
-
+	var scroll = function (step) {
+		var scrollY = $(window).scrollTop();
+		$(window).scrollTop(scrollY + step);
+	};
 }
 
 function deleteCard() {
@@ -129,6 +126,6 @@ function deleteCard() {
 	else container.removeChild(this.parentNode.parentNode);
 }
 
-delete_buttons.forEach(a => a.addEventListener('click', deleteCard))
+delete_buttons.forEach((a) => a.addEventListener('click', deleteCard));
 
 add_button.addEventListener('click', createCard);
