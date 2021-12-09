@@ -2,7 +2,7 @@ const create_button = document.querySelector('.create-button');
 const add_button = document.querySelector('.add-button');
 const container = document.querySelector('.container');
 var draggables = document.querySelectorAll('.draggable')
-var containers = document.querySelectorAll('.container')
+var delete_buttons = document.querySelectorAll('.delete')
 
 var i = 10;
 var stop = true;
@@ -62,7 +62,9 @@ function createCard() {
 	//Index to specify which card
 	index = document.createElement('div');
 	index.className = 'index';
-	index.innerHTML = i;
+	// index.innerHTML = i;
+
+	delete_button.appendChild(bin_icon)
 
 	//Container for index and delete button
 	container_top = document.createElement('div');
@@ -84,6 +86,8 @@ function createCard() {
 
     draggables = document.querySelectorAll('.draggable');
     containers = document.querySelectorAll('.container');
+	delete_buttons = document.querySelectorAll('.delete')
+	delete_buttons.forEach(a => a.addEventListener('click', deleteCard))
 
     create_container.addEventListener('dragstart', () => {
     create_container.classList.add('dragging')
@@ -116,8 +120,15 @@ function createCard() {
         var scrollY = $(window).scrollTop();
         $(window).scrollTop(scrollY + step);
     }
-    console.log(create_container)
 
 }
+
+function deleteCard() {
+	var quantity = document.querySelectorAll('.create-container').length;
+	if (quantity == 1) return;
+	else container.removeChild(this.parentNode.parentNode);
+}
+
+delete_buttons.forEach(a => a.addEventListener('click', deleteCard))
 
 add_button.addEventListener('click', createCard);
