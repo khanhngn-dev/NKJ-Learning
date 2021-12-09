@@ -186,7 +186,9 @@ a {
 }
 
 .start-button {
-	background: #bb002d;
+	margin-top: 20px;
+	background: #ff0900;
+	width: 15vw;
 	height: 60px;
 	color: white;
 	font-weight: bold;
