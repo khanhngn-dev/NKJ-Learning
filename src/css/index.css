@@ -56,6 +56,11 @@ a {
 	font-size: 1.8rem;
 }
 
+.user-menu .user-pfp {
+	height: 50px;
+	border-radius: 50%;
+}
+
 .user-name {
 	margin-left: 10px;
 }
