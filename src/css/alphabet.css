@@ -82,6 +82,7 @@
 }
 
 .alphabet-table {
+	display: flex;
 	height: 100%;
 	flex-grow: 1;
 	flex-flow: column;
@@ -193,6 +194,10 @@
 		display: block;
 		width: 40px;
 		background-color: transparent;
+	}
+
+	.alphabet-table {
+		display: block;
 	}
 
 	.alphabet {
