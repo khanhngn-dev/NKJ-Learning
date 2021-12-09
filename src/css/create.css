@@ -22,6 +22,7 @@
 .main {
     display: block;
     padding-top: 70px;
+    height: auto;
 }
 
 .main-left {
@@ -134,3 +135,29 @@ label {
     opacity: .5;
 }
 
+.mobile {
+    display: none;
+}
+
+@media screen and (max-width: 767px) {
+    main {
+        padding: 0;
+    }
+
+    .main-left {
+        display: none;
+    }
+
+    .main-right {
+        padding-left: 0;
+        padding-top: 0;
+    }
+
+    .mobile {
+        display: flex;
+    }
+
+    .create-container {
+        width: 100%;
+    }
+}
