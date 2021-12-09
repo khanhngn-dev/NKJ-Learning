@@ -9,9 +9,17 @@ import {
 	onAuthStateChanged,
 	updateProfile,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js';
+import {
+	getStorage,
+	ref,
+	uploadBytes,
+	getDownloadURL,
+} from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-storage.js';
 
 const db = getFirestore();
 const auth = getAuth();
+const storage = getStorage();
+
 const signupForm = document.querySelector('.form');
 const password = signupForm.querySelector('#password');
 const confirmPassword = signupForm.querySelector('#confirm-password');
@@ -44,6 +52,71 @@ function comparePassword(password, confirm) {
 	}
 }
 
+function updateProfileImg(form, input, preview) {
+	var imgFile = input.files[0];
+	if (imgFile.type.startsWith('image/')) {
+		unlockSubmit(infoForm.querySelector('.submit'));
+		preview.innerHTML = '';
+		// Create Img element
+		var img = document.createElement('img');
+		img.file = imgFile;
+
+		// Add or replace if necessary
+		if (form.querySelector('img')) {
+			preview.replaceChild(img, form.querySelector('img'));
+		} else preview.appendChild(img);
+
+		// Read the file
+		const reader = new FileReader();
+		reader.onload = (function (aImg) {
+			return function (e) {
+				aImg.src = e.target.result;
+			};
+		})(img);
+		reader.readAsDataURL(img.file);
+		return img.file;
+	} else {
+		displayInfo('<span class="error">Please upload an image type</span>', form, preview);
+		lockSubmit(infoForm.querySelector('.submit'));
+	}
+}
+
+function setProfile() {
+	overlay.classList.add('show');
+	infoForm.classList.add('show');
+	const fileInput = infoForm.querySelector('#profile-picture');
+	const imgPreview = infoForm.querySelector('.preview');
+	var imgFile;
+
+	lockSubmit(infoForm.querySelector('.submit'));
+
+	fileInput.addEventListener('change', () => {
+		imgFile = updateProfileImg(infoForm, fileInput, imgPreview);
+	});
+
+	infoForm.addEventListener('submit', (e) => {
+		e.preventDefault();
+
+		// Update profile picture
+		uploadBytes(ref(storage, `pfp-user/${info.uid}`), imgFile).then((snapshot) => {
+			console.log(snapshot);
+			getDownloadURL(ref(storage, `pfp-user/${info.uid}`)).then((url) => {
+				// Update user profile with the provided photoURL
+				updateProfile(info, {
+					displayName: infoForm.username.value,
+					photoURL: url,
+				})
+					.then(() => {
+						window.location.assign('index.html');
+					})
+					.catch((err) => {
+						displayInfo(err, signupForm, error);
+					});
+			});
+		});
+	});
+}
+
 function sendSignup(auth, email, password) {
 	// Call the unsub if a signup is happening
 	unsub();
@@ -65,24 +138,6 @@ function sendSignup(auth, email, password) {
 		});
 }
 
-function setProfile() {
-	overlay.classList.add('show');
-	infoForm.classList.add('show');
-
-	infoForm.addEventListener('submit', (e) => {
-		e.preventDefault();
-		updateProfile(info, {
-			displayName: infoForm.username.value,
-		})
-			.then(() => {
-				window.location.assign('index.html');
-			})
-			.catch((err) => {
-				displayInfo(err, signupForm, error);
-			});
-	});
-}
-
 function signup() {
 	checkLogin();
 
@@ -99,7 +154,8 @@ function signup() {
 		const email = signupForm.querySelector('#email').value;
 
 		if (!invalid) {
-			sendSignup(auth, email, password.value);		}
+			sendSignup(auth, email, password.value);
+		}
 	});
 }
 
