@@ -145,7 +145,7 @@ a {
 
 .l-button:hover {
 	transform: scale(1.1);
-	background: #d81908;
+	background: #FA0000;
 }
 
 .learning-button a {
@@ -191,7 +191,9 @@ a {
 }
 
 .start-button {
-	background: #bb002d;
+	margin-top: 20px;
+	background: #ff0900;
+	width: 15vw;
 	height: 60px;
 	color: white;
 	font-weight: bold;

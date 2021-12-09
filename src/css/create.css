@@ -1,32 +1,35 @@
-body {
-    background-color: black;
-}
-
 .header {
 	position: fixed;
 }
 
 .create-part {
-    color: white;
+    font-weight: bold;
+}
+
+.sentence {
+    font-size: 1.2rem;
+    text-align: center;
 }
 
 .create-button, .add-button {
-    background-color: #c00734;
+    background-color: #FA0000;
     padding: 5px 20px 5px 20px;
     color: white;
     font-weight: bold;
+    font-size: 0.8em;
 }
 
 .main {
     display: block;
     padding-top: 70px;
+    height: auto;
 }
 
 .main-left {
     position: fixed;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     height: calc(100% - 70px);
     width: 30%;
@@ -56,11 +59,13 @@ img {
 }
 
 .studyset-name {
-    padding: 10px;
+    padding: 0.2em;
+    border: 1px solid black;
 }
 
 .main-right {
     padding-top: 50px;
+    padding-bottom: 20px;
     padding-left: 30%;
     height: auto;
     display: flex;
@@ -130,3 +135,29 @@ label {
     opacity: .5;
 }
 
+.mobile {
+    display: none;
+}
+
+@media screen and (max-width: 767px) {
+    main {
+        padding: 0;
+    }
+
+    .main-left {
+        display: none;
+    }
+
+    .main-right {
+        padding-left: 0;
+        padding-top: 0;
+    }
+
+    .mobile {
+        display: flex;
+    }
+
+    .create-container {
+        width: 100%;
+    }
+}

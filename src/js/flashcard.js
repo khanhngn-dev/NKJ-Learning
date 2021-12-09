@@ -232,7 +232,6 @@ function generateArray(N) {
 
 // Shuffle an array
 function shuffleArray(random) {
-	shuffleCount++;
 	var L = random.length;
 	for (var i = 0; i < L; i++) {
 		var j = randomIntFromInterval(0, L - 1);
