@@ -41,7 +41,7 @@ body {
 	text-decoration: none;
 	color: #bc002d;
 	height: 50px;
-	line-height: 65px;
+	line-height: 50px;
 }
 
 .head {
@@ -50,9 +50,9 @@ body {
 }
 
 .title {
-	font-size: 50px;
+	font-size: 60px;
 	color: #bc002d;
-	line-height: 60px;
+	line-height: 90px;
 }
 
 .error {
