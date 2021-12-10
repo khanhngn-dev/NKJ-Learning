@@ -7,6 +7,12 @@
 	font-style: normal;
 }
 
+body {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+
 a {
 	text-decoration: none;
 }
@@ -50,6 +56,7 @@ a {
 	background: transparent;
 	border: none;
 	color: white;
+	text-decoration: none;
 }
 
 .user-menu i {
@@ -57,6 +64,7 @@ a {
 }
 
 .user-menu .user-pfp {
+	width: 50px;
 	height: 50px;
 	border-radius: 50%;
 }
@@ -65,10 +73,15 @@ a {
 	margin-left: 10px;
 }
 
+.user-menu:hover {
+	color: white;
+	cursor: pointer;
+}
+
 .nav-bar {
+	padding: 0;
 	margin: 0;
 	height: 70px;
-	width: 50vw;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
@@ -113,11 +126,11 @@ a {
 }
 
 .main {
-	/* padding: 70px; */
 	display: flex;
 	position: relative;
 	justify-content: space-evenly;
 	align-items: center;
+	width: 100%;
 	height: calc(100vh - 70px);
 }
 

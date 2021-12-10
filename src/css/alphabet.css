@@ -1,6 +1,4 @@
 .header {
-	top: 0;
-	position: fixed;
 	width: 100%;
 	display: flex;
 	flex-flow: column;
@@ -8,7 +6,6 @@
 }
 
 .learn-nav {
-	top: 0;
 	display: flex;
 	justify-content: center;
 	background-color: #ffb8b1;
@@ -47,8 +44,7 @@
 }
 
 .main {
-	padding-top: 115px;
-	height: 100vh;
+	height: calc(100vh - 115px);
 	position: relative;
 	justify-content: center;
 }
@@ -92,7 +88,6 @@
 }
 
 .title {
-	/* padding-top: 100px; */
 	font-weight: bold;
 	font-size: 50px;
 	text-align: center;

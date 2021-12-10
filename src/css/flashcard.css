@@ -1,6 +1,4 @@
 .header {
-	top: 0;
-	position: fixed;
 	width: 100%;
 	display: flex;
 	flex-flow: column;
@@ -8,7 +6,6 @@
 }
 
 .learn-nav {
-	top: 0;
 	display: flex;
 	justify-content: center;
 	background-color: #ffb8b1;
@@ -47,8 +44,7 @@
 }
 
 .main {
-	padding-top: 115px;
-	height: 100vh;
+	height: calc(100vh - 115px);
 	position: relative;
 	justify-content: center;
 }
@@ -119,11 +115,12 @@ progress::-webkit-progress-bar {
 	height: 100%;
 	display: flex;
 	flex-flow: column;
-	justify-content: space-evenly;
+	justify-content: center;
 	align-items: center;
 }
 
 .flashcard {
+	margin: 20px 0;
 	position: relative;
 	width: 70%;
 	height: 50vh;
@@ -165,7 +162,6 @@ progress::-webkit-progress-bar {
 }
 
 .arrow {
-	margin-top: 20px;
 	display: flex;
 	justify-content: center;
 	background: white;
