@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Your Profile</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/profile.css" />
+	</head>
+	<body>
+		<div class="header">
+			<div class="left">
+				<div class="logo">
+					<a href="index.html">NKJ</a>
+				</div>
+				<button class="drop-menu-header">
+					<i class="fas fa-caret-down"></i>
+				</button>
+				<ul class="nav-bar">
+					<li class="learning notImportant-header">
+						<a href="#">LEARNING</a>
+					</li>
+					<li class="create notImportant-header">
+						<a href="create.html">CREATE</a>
+					</li>
+					<li class="exercise notImportant-header">
+						<a href="#">EXERCISE</a>
+					</li>
+				</ul>
+			</div>
+			<div class="right">
+				<div class="sign-up">
+					<button class="login-button rounded-pill">
+						<a href="login.html">Login</a>
+					</button>
+					<button class="logout-button rounded-pill">
+						<a href="#">Logout</a>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="main">
+			<div class="top-profile">
+				<div class="pfp-container">
+					<i class="fas fa-camera"></i>
+					<img class="main-pfp" />
+				</div>
+				<div class="display-name"></div>
+				<div class="user-settings">
+					<button class="button-setting" id="reset-password">Reset Password</button>
+				</div>
+			</div>
+			<div class="user-progress"></div>
+		</div>
+		<div class="outMenu"></div>
+
+		<script type="module">
+			// Import the functions you need from the SDKs you need
+			import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js';
+
+			// Your web app's Firebase configuration
+			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+			const firebaseConfig = {
+				apiKey: 'AIzaSyBmQDYmuecPbLe9v5SrsVxQAqsOaCVjMkg',
+				authDomain: 'nkj-login.firebaseapp.com',
+				projectId: 'nkj-login',
+				storageBucket: 'nkj-login.appspot.com',
+				messagingSenderId: '98244104367',
+				appId: '1:98244104367:web:dabf51724d7483ada5445a',
+				measurementId: 'G-2GK50TGJ53',
+			};
+
+			// Initialize Firebase
+			const app = initializeApp(firebaseConfig);
+		</script>
+		<script src="https://kit.fontawesome.com/3449a8ce9f.js" crossorigin="anonymous"></script>
+		<script type="module" src="js/checkuser.js"></script>
+		<script src="js/main_helper.js"></script>
+		<script type="module" src="js/profile.js"></script>
+	</body>
+</html>
