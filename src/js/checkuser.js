@@ -8,27 +8,33 @@ const auth = getAuth();
 const loginButton = document.querySelector('.login-button');
 const logoutButton = document.querySelector('.logout-button');
 const user = document.querySelector('.user');
-const user_name = document.querySelector('.user-name');
-const user_pfp = document.querySelector('.user-pfp');
-const default_icon = document.querySelector('.fa-user-circle');
+const user_name = user ? user.querySelector('.user-name') : false;
+const user_pfp = user ? user.querySelector('.user-pfp') : false;
+const default_icon = user ? user.querySelector('.fa-user-circle') : false;
 
 function checkLogin() {
 	onAuthStateChanged(auth, (cred) => {
 		if (cred) {
 			loginButton.style.display = 'none';
 			logoutButton.style.display = 'block';
-			user.style.display = 'flex';
-			user_name.appendChild(document.createTextNode(cred.displayName || cred.email));
-			if (cred.photoURL) {
-				user_pfp.setAttribute('src', cred.photoURL);
-				default_icon.style.display = 'none';
-			} else {
-				user_pfp.style.display = 'none';
+			// If the page has a user section
+			if (user) {
+				user.style.display = 'flex';
+				user_name.appendChild(document.createTextNode(cred.displayName || cred.email));
+				if (cred.photoURL) {
+					user_pfp.setAttribute('src', cred.photoURL);
+					default_icon.style.display = 'none';
+				} else {
+					user_pfp.style.display = 'none';
+				}
 			}
 		} else {
 			loginButton.style.display = 'block';
 			logoutButton.style.display = 'none';
-			user.style.display = 'none';
+			// If the page has a user section
+			if (user) {
+				user.style.display = 'none';
+			}
 		}
 	});
 }
