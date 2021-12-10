@@ -129,3 +129,6 @@ function deleteCard() {
 delete_buttons.forEach((a) => a.addEventListener('click', deleteCard));
 
 add_button.addEventListener('click', createCard);
+
+clickOverlay();
+clickDropDown();
