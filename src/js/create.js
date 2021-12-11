@@ -160,3 +160,8 @@ function createLearningSet() {
 }
 
 create_button.addEventListener('click', createLearningSet);
+
+window.onload = function() {
+	if (localStorage.getItem('loggedIn') == undefined) 
+	window.location.assign('login.html');
+}
