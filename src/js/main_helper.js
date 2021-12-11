@@ -28,3 +28,11 @@ function clickOverlay() {
 		closeMenu(document.querySelector('.open'));
 	});
 }
+
+function lockSubmit(submit) {
+	submit.setAttribute('disabled', true);
+}
+
+function unlockSubmit(submit) {
+	submit.removeAttribute('disabled');
+}
