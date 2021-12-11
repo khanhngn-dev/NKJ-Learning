@@ -54,14 +54,14 @@ function createCard() {
 	div_meaning_label.appendChild(label_meaning);
 
 	//Form
-	form = document.createElement('form');
+	var form = document.createElement('form');
 
 	form.appendChild(div_term_input);
 	form.appendChild(div_term_label);
 	form.appendChild(div_meaning_input);
 	form.appendChild(div_meaning_label);
 
-	bin_icon = document.createElement('i');
+	var bin_icon = document.createElement('i');
 	bin_icon.className = 'fas fa-trash-alt';
 
 	//Delete button in the head for card container
