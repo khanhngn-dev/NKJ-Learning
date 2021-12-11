@@ -95,29 +95,35 @@ function createCard() {
 	create_container.addEventListener('dragend', () => {
 		create_container.classList.remove('dragging');
 	});
-
 	var stop = true;
-	$('.draggable').on('drag', function (e) {
-		stop = true;
-		if (e.originalEvent.clientY < 100) {
-			stop = false;
-			scroll(-100);
-		}
 
-		if (e.originalEvent.clientY > $(window).height() - 100) {
-			stop = false;
-			scroll(100);
-		}
-	});
+	// $('.draggable').on('drag', function (e) {
+	// 	console.log(e.clientY);
+	// 	stop = true;
+	// 	if (e.clientY > $(window).height() / 2) {
+	// 		stop = false;
+	// 		e.scrollTop(200);
+	// 	}
 
-	$('.draggable').on('dragend', function (e) {
-		stop = true;
-	});
+	// 	if (e.clientY < $(window).height() / 2) {
+	// 		stop = false;
+	// 		e.scrollTop(200);
+	// 	}
+	// });
 
-	var scroll = function (step) {
-		var scrollY = $(window).scrollTop();
-		$(window).scrollTop(scrollY + step);
-	};
+	// draggables.forEach((drag) => {
+	// 	drag.addEventListener('drag')
+	// })
+
+	// $('.draggable').on('dragend', function (e) {
+	// 	stop = true;
+	// });
+
+	// var scroll = function (step) {
+	// 	console.log('lol');
+	// 	var scrollY = $(window).scrollTop();
+	// 	$(window).scrollTop(scrollY + step);
+	// };
 }
 
 function deleteCard() {
