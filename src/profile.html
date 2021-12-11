@@ -49,9 +49,16 @@
 					<i class="fas fa-camera"></i>
 					<img class="main-pfp" />
 				</div>
-				<div class="display-name"></div>
+				<!-- <div class="display-name"></div> -->
+				<div class="name">
+					<input class="display-name" placeholder="Username" maxlength="15" />
+					<button class="button-setting" id="update-name">
+						<i class="fas fa-save"></i>
+						<span class="button-text">Save</span>
+					</button>
+				</div>
 				<div class="user-settings">
-					<button class="button-setting" id="reset-password">
+					<button class="button-setting" id="update-password">
 						<i class="fas fa-key"></i>
 						<span class="button-text">Reset Password</span>
 					</button>
@@ -102,41 +109,28 @@
 			<div class="head">
 				<h1 class="title">Upload your new picture</h1>
 			</div>
-
-			<!-- <div class="form-username">
-				<input type="text" class="input" id="username" placeholder=" " autocomplete="username" />
-				<label for="username" class="label">Display name</label>
-			</div> -->
 			<div class="preview"></div>
 			<div class="form-pfp">
 				<label id="profile-upload" for="profile-picture">Upload your profile picture</label>
 				<input type="file" class="input" id="profile-picture" />
 			</div>
-
 			<input type="submit" class="submit bold" value="Continue" />
 		</form>
 
+		<form class="form" id="reset-form">
+						<div class="head">
+				<h1 class="title">Please re-enter your password</h1>
+			</div>
+			<div class="preview"></div>
+			<div class="form-pfp">
+				<label id="profile-upload" for="profile-picture">Upload your profile picture</label>
+				<input type="file" class="input" id="profile-picture" />
+			</div>
+			<input type="submit" class="submit bold" value="Continue" />
+		</form>
+		</form>
 		<div class="outMenu"></div>
 
-		<script type="module">
-			// Import the functions you need from the SDKs you need
-			import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js';
-
-			// Your web app's Firebase configuration
-			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-			const firebaseConfig = {
-				apiKey: 'AIzaSyBmQDYmuecPbLe9v5SrsVxQAqsOaCVjMkg',
-				authDomain: 'nkj-login.firebaseapp.com',
-				projectId: 'nkj-login',
-				storageBucket: 'nkj-login.appspot.com',
-				messagingSenderId: '98244104367',
-				appId: '1:98244104367:web:dabf51724d7483ada5445a',
-				measurementId: 'G-2GK50TGJ53',
-			};
-
-			// Initialize Firebase
-			const app = initializeApp(firebaseConfig);
-		</script>
 		<script src="https://kit.fontawesome.com/3449a8ce9f.js" crossorigin="anonymous"></script>
 		<script type="module" src="js/checkuser.js"></script>
 		<script src="js/main_helper.js"></script>
