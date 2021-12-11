@@ -31,6 +31,8 @@
 	border-radius: 50%;
 	border: 4px solid #bb002d;
 	cursor: pointer;
+	object-fit: cover; /* Do not scale the image */
+	object-position: center; /* Center the image within the element */
 }
 
 .pfp-container {
@@ -63,15 +65,25 @@
 	opacity: 1;
 }
 
+.name {
+	height: 84px;
+	width: 100%;
+	display: flex;
+	flex-flow: nowrap;
+}
+
 .display-name {
-	padding-left: 30px;
-	width: 60vw;
+	margin: 0 20px;
+	width: 60%;
+	border-bottom: 3px dashed #bb002d;
 	color: #bb002d;
-	font-size: 3vw;
+	font-size: 4vw;
 	font-weight: bold;
+	outline: none;
 }
 
 .button-setting {
+	margin: 15px 0;
 	width: 200px;
 	padding: 15px 5px;
 	border-radius: 15px;
@@ -81,6 +93,11 @@
 	color: #fff;
 	transition: all 0.3s ease;
 	box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
+}
+
+#update-name {
+	display: none;
+	width: 120px;
 }
 
 .button-text {
@@ -101,7 +118,7 @@
 }
 
 .search-bar {
-	border: 5px solid #bb002d;
+	border: 3px solid #bb002d;
 	border-radius: 15px;
 	padding: 10px 20px;
 	align-self: flex-end;
@@ -189,11 +206,9 @@ progress::-webkit-progress-bar {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	width: 60vw;
-	/* height: auto; */
 	height: 0;
 	background: #ffd7d3;
 	border-radius: 10px;
-	/* padding: 30px; */
 	padding: 0;
 	opacity: 0;
 	transition: all 0.5s ease;
@@ -203,7 +218,7 @@ progress::-webkit-progress-bar {
 
 .form .label {
 	position: absolute;
-	top: 58px;
+	top: 10px;
 	left: 20px;
 	color: #bc002d;
 	transition: all 0.5s ease;
@@ -244,6 +259,10 @@ progress::-webkit-progress-bar {
 	height: 50px;
 	background: #bc002d;
 	color: white;
+}
+
+.form div {
+	position: relative;
 }
 
 .form .submit:hover {
@@ -295,24 +314,24 @@ progress::-webkit-progress-bar {
 	background: grey;
 }
 
-#info-form .preview .error {
-	text-align: center;
-	margin-top: 30px;
-}
-
 #info-form .preview img {
 	display: block;
 	margin: auto;
 	margin-top: 10px;
 	width: 30vw;
+	border-radius: 50%;
+	object-fit: cover; /* Do not scale the image */
+	object-position: center; /* Center the image within the element */
 }
 
 #info-form.open .submit {
 	width: 100%;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 769px) {
 	.top-profile {
+		padding: 20px 0;
+		flex-flow: column;
 		justify-content: space-between;
 	}
 
@@ -321,29 +340,57 @@ progress::-webkit-progress-bar {
 		height: 40vw;
 	}
 
+	.pfp-container {
+		align-self: center;
+	}
+
 	.pfp-container:hover::before {
 		width: 40vw;
 		height: 40vw;
 	}
 
-	.button-setting {
+	.name {
+		margin: 10px 0;
+		justify-content: center;
+	}
+
+	.display-name {
+		text-align: center;
+		width: 100%;
+		padding: 0;
+		font-size: 24px;
+	}
+
+	.button-setting,
+	#update-name {
 		width: 80px;
+	}
+
+	#update-name {
+		display: none;
+		margin-right: 20px;
+	}
+
+	#update-password {
+		align-self: center;
 	}
 
 	.button-text {
 		display: none;
 	}
 
-	.display-name {
-		display: none;
+	.user-progress {
+		padding: 0 20px;
 	}
 
-	.user-progress {
-		padding: 0 30px;
+	.search-bar:hover > .bar,
+	.bar:focus,
+	.bar:not(:placeholder-shown) {
+		width: 120px;
 	}
 
 	.set {
-		margin: 20px 0;
+		margin: 15px 0;
 	}
 
 	.form {
