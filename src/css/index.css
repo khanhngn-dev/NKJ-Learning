@@ -119,6 +119,7 @@ a {
 	border: 0;
 	padding-left: 15px;
 	padding-right: 15px;
+	font-weight: bold;
 }
 
 .logout-button {
@@ -215,6 +216,22 @@ a {
 	align-self: flex-end;
 }
 
+.outMenu {
+	display: none;
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.608);
+	overflow: hidden;
+}
+
+.outMenu.open {
+	display: block;
+}
+
 @media screen and (max-width: 767px) {
 	.drop-menu-header {
 		display: block;
@@ -251,22 +268,6 @@ a {
 		transition: all 0.5s ease;
 		overflow: hidden;
 		background: #ffd7d3;
-	}
-
-	.outMenu {
-		display: none;
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100vw;
-		height: 100vh;
-		background: rgba(0, 0, 0, 0.608);
-		overflow: hidden;
-	}
-
-	.outMenu.open {
-		display: block;
 	}
 
 	.nav-bar.open .notImportant-header {
