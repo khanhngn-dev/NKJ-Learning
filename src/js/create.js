@@ -9,12 +9,7 @@ const create_button = document.querySelector('.create-button');
 const add_button = document.querySelector('.add-button');
 const container = document.querySelector('.container');
 const studyset_name = document.querySelector('.studyset-name');
-var draggables = document.querySelectorAll('.draggable');
 var delete_buttons = document.querySelectorAll('.delete');
-
-
-var i = 10;
-var stop = true;
 
 function createCard() {
 	i++;
@@ -26,7 +21,7 @@ function createCard() {
 	//Input field for meaning
 	var input_meaning = document.createElement('input');
 	input_meaning.type = 'text';
-	input_meaning.className = 'card-input';
+	input_meaning.classList.add('card-input', 'meaning');
 	input_meaning.placeholder = 'Enter meaning';
 	input_meaning.name = 'meaning';
 
@@ -38,7 +33,7 @@ function createCard() {
 	//Input field for term
 	var input_term = document.createElement('input');
 	input_term.type = 'text';
-	input_term.className = 'card-input';
+	input_term.classList.add('card-input', 'term');
 	input_term.placeholder = 'Enter term';
 	input_term.name = 'term';
 
@@ -106,33 +101,27 @@ function createCard() {
 	});
 	var stop = true;
 
-	// $('.draggable').on('drag', function (e) {
-	// 	console.log(e.clientY);
-	// 	stop = true;
-	// 	if (e.clientY > $(window).height() / 2) {
-	// 		stop = false;
-	// 		e.scrollTop(200);
-	// 	}
+	$('.draggable').on('drag', function (e) {
+		stop = true;
+		if (e.originalEvent.clientY < 100) {
+			stop = false;
+			scroll(-100);
+		}
 
-	// 	if (e.clientY < $(window).height() / 2) {
-	// 		stop = false;
-	// 		e.scrollTop(200);
-	// 	}
-	// });
+		if (e.originalEvent.clientY > $(window).height() - 100) {
+			stop = false;
+			scroll(100);
+		}
+	});
 
-	// draggables.forEach((drag) => {
-	// 	drag.addEventListener('drag')
-	// })
+	$('.draggable').on('dragend', function (e) {
+		stop = true;
+	});
 
-	// $('.draggable').on('dragend', function (e) {
-	// 	stop = true;
-	// });
-
-	// var scroll = function (step) {
-	// 	console.log('lol');
-	// 	var scrollY = $(window).scrollTop();
-	// 	$(window).scrollTop(scrollY + step);
-	// };
+	var scroll = function (step) {
+		var scrollY = $(window).scrollTop();
+		$(window).scrollTop(scrollY + step);
+	};
 }
 
 function deleteCard() {
@@ -154,16 +143,17 @@ const uid = localStorage.getItem('loggedIn');
 var userRef, userSnap;
 
 function createLearningSet() {
-	var termArray = [], meaningArray = [];
-	var terms = document.querySelectorAll(".term")
-	terms.forEach((term) => termArray.push(term.value))
-	var meanings= document.querySelectorAll(".meaning");
-	meanings.forEach((meaning) => meaningArray.push(meaning.value))
+	var termArray = [],
+		meaningArray = [];
+	var terms = document.querySelectorAll('.term');
+	terms.forEach((term) => termArray.push(term.value));
+	var meanings = document.querySelectorAll('.meaning');
+	meanings.forEach((meaning) => meaningArray.push(meaning.value));
 	userRef = doc(db, 'users', uid);
-	setDoc(doc(userRef, "learning", `${studyset_name.value}`), {
+	setDoc(doc(userRef, 'learning', `${studyset_name.value}`), {
 		term: termArray,
-		meaning: meaningArray
-	})
+		meaning: meaningArray,
+	});
 }
 
 create_button.addEventListener('click', createLearningSet);
