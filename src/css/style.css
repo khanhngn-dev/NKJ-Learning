@@ -253,7 +253,8 @@ main {
 	padding: 20px;
 }
 
-#forgot-form.show, #info-form.show {
+#forgot-form.show,
+#info-form.show {
 	opacity: 1;
 	height: auto;
 }
@@ -292,6 +293,9 @@ main {
 	margin: auto;
 	margin-top: 10px;
 	width: 30vw;
+	border-radius: 50%;
+	object-fit: cover; /* Do not scale the image */
+	object-position: center; /* Center the image within the element */
 }
 
 .big {
@@ -358,7 +362,8 @@ main {
 		height: 0;
 	}
 
-	#forgot-form.show, #info-form.show {
+	#forgot-form.show,
+	#info-form.show {
 		height: auto;
 	}
 
