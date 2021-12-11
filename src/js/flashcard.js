@@ -133,6 +133,7 @@ async function getUser() {
 		userSnap = await getDoc(userRef);
 		current_index = userSnap.data()['current index'] || 0;
 		current_display = userSnap.data()['current display'] || 1;
+		localStorage.setItem('index', current_index);
 	}
 }
 
@@ -181,6 +182,7 @@ function decrease() {
 	setTimeout(function () {
 		setCardStyle(0.6);
 	}, 100);
+	localStorage.setItem('index', current_index);
 }
 
 function increase() {
@@ -199,6 +201,7 @@ function increase() {
 	setTimeout(function () {
 		setCardStyle(0.6);
 	}, 100);
+	localStorage.setItem('index', current_index);
 }
 
 function addKeyBoardEvent(e) {
