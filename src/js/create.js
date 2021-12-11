@@ -156,6 +156,7 @@ function createLearningSet() {
 		term: termArray,
 		meaning: meaningArray,
 	});
+	alert('Create successfully');
 }
 
 create_button.addEventListener('click', createLearningSet);
