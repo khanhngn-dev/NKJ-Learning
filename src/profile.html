@@ -51,11 +51,71 @@
 				</div>
 				<div class="display-name"></div>
 				<div class="user-settings">
-					<button class="button-setting" id="reset-password">Reset Password</button>
+					<button class="button-setting" id="reset-password">
+						<i class="fas fa-key"></i>
+						<span class="button-text">Reset Password</span>
+					</button>
 				</div>
 			</div>
-			<div class="user-progress"></div>
+			<div class="user-progress">
+				<div class="search-bar">
+					<i class="fas fa-search"></i>
+					<input class="bar" type="text" id="term-search" placeholder="Search for a term..." />
+				</div>
+				<div class="set" id="hiragana">
+					<div class="top-set">
+						<h1 class="title">Hiragana</h1>
+						<div class="progress-count">
+							<span class="current-count">30</span>
+							<span class="divider">/</span>
+							<span class="total-count">46</span>
+						</div>
+					</div>
+					<progress class="progress-bar" max="46" value="30"></progress>
+				</div>
+				<div class="set" id="hiragana">
+					<div class="top-set">
+						<h1 class="title">Hiragana</h1>
+						<div class="progress-count">
+							<span class="current-count">30</span>
+							<span class="divider">/</span>
+							<span class="total-count">46</span>
+						</div>
+					</div>
+					<progress class="progress-bar" max="46" value="30"></progress>
+				</div>
+				<div class="set" id="hiragana">
+					<div class="top-set">
+						<h1 class="title">Hiragana</h1>
+						<div class="progress-count">
+							<span class="current-count">30</span>
+							<span class="divider">/</span>
+							<span class="total-count">46</span>
+						</div>
+					</div>
+					<progress class="progress-bar" max="46" value="30"></progress>
+				</div>
+			</div>
 		</div>
+
+		<form class="form" id="info-form">
+			<div class="head">
+				<h1 class="title">Upload your new picture</h1>
+			</div>
+
+			<!-- <div class="form-username">
+				<input type="text" class="input" id="username" placeholder=" " autocomplete="username" />
+				<label for="username" class="label">Display name</label>
+			</div> -->
+			<div class="preview"></div>
+			<div class="form-pfp">
+				<label id="profile-upload" for="profile-picture">Upload your profile picture</label>
+				<input type="file" class="input" id="profile-picture" />
+			</div>
+
+			<input type="submit" class="submit bold" value="Continue" />
+		</form>
+
 		<div class="outMenu"></div>
 
 		<script type="module">
