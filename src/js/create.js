@@ -19,34 +19,34 @@ var stop = true;
 function createCard() {
 	i++;
 	//Label for meaning
-	label_meaning = document.createElement('label');
+	var label_meaning = document.createElement('label');
 	label_meaning.for = 'meaning';
 	label_meaning.innerHTML = 'Meaning';
 
 	//Input field for meaning
-	input_meaning = document.createElement('input');
+	var input_meaning = document.createElement('input');
 	input_meaning.type = 'text';
 	input_meaning.className = 'card-input';
 	input_meaning.placeholder = 'Enter meaning';
 	input_meaning.name = 'meaning';
 
 	//Label for term
-	label_term = document.createElement('label');
+	var label_term = document.createElement('label');
 	label_term.for = 'term';
 	label_term.innerHTML = 'Term';
 
 	//Input field for term
-	input_term = document.createElement('input');
+	var input_term = document.createElement('input');
 	input_term.type = 'text';
 	input_term.className = 'card-input';
 	input_term.placeholder = 'Enter term';
 	input_term.name = 'term';
 
 	//Container for label and input
-	div_term_input = document.createElement('div');
-	div_meaning_input = document.createElement('div');
-	div_term_label = document.createElement('div');
-	div_meaning_label = document.createElement('div');
+	var div_term_input = document.createElement('div');
+	var div_meaning_input = document.createElement('div');
+	var div_term_label = document.createElement('div');
+	var div_meaning_label = document.createElement('div');
 
 	div_term_input.appendChild(input_term);
 	div_meaning_input.appendChild(input_meaning);
@@ -65,25 +65,25 @@ function createCard() {
 	bin_icon.className = 'fas fa-trash-alt';
 
 	//Delete button in the head for card container
-	delete_button = document.createElement('button');
+	var delete_button = document.createElement('button');
 	delete_button.className = 'delete';
 
 	//Index to specify which card
-	index = document.createElement('div');
+	var index = document.createElement('div');
 	index.className = 'index';
 	// index.innerHTML = i;
 
 	delete_button.appendChild(bin_icon);
 
 	//Container for index and delete button
-	container_top = document.createElement('div');
+	var container_top = document.createElement('div');
 	container_top.className = 'container-top';
 
 	container_top.appendChild(index);
 	container_top.appendChild(delete_button);
 
 	//Container for card
-	create_container = document.createElement('div');
+	var create_container = document.createElement('div');
 	create_container.classList.add('create-container');
 	create_container.classList.add('draggable');
 	create_container.draggable = true;
