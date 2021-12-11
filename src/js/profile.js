@@ -1,7 +1,6 @@
 import {
 	getAuth,
 	onAuthStateChanged,
-	updateProfile,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js';
 
 import {
@@ -10,9 +9,19 @@ import {
 	uploadBytes,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-storage.js';
 
+import {
+	getFirestore,
+	doc,
+	getDocs,
+	setDoc,
+	query,
+	collection,
+} from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
+
 const auth = getAuth();
 const storage = getStorage();
 const pfpContainer = document.querySelector('.pfp-container');
+const user_progress = document.querySelector(".user-progress");
 const mainImg = document.querySelector('.main-pfp');
 const displayName = document.querySelector('.display-name');
 const mainDiv = document.querySelector('.main');
@@ -24,8 +33,7 @@ function getUser() {
 		if (cred) {
 			info = cred;
 			mainImg.src = cred.photoURL;
-			// displayName.innerHTML = cred.displayName;
-			displayName.setAttribute('value', cred.displayName);
+			displayName.innerHTML = cred.displayName;
 		} else {
 			mainDiv.classList.add('no-user');
 			mainDiv.innerHTML = 'Please login to view your profile.';
@@ -77,6 +85,7 @@ function updateProfileImg() {
 	infoForm.addEventListener('submit', (e) => {
 		e.preventDefault();
 
+		// Update profile picture
 		uploadBytes(ref(storage, `pfp-user/${info.uid}`), imgFile).then((snapshot) => {
 			console.log(snapshot);
 			window.location.reload();
@@ -84,50 +93,70 @@ function updateProfileImg() {
 	});
 }
 
-function updateDisplayName() {
-	if (displayName.value.length != 0) {
-		updateProfile(info, {
-			displayName: displayName.value,
-		}).then(() => {
-			window.location.reload();
-		});
-	} else {
-		alert('Your username cannot be empty');
-	}
-}
-
-function checkDisplayName() {
-	const saveBtn = document.querySelector('#update-name');
-	displayName.addEventListener('keyup', () => {
-		if (displayName.value != info.displayName) {
-			saveBtn.style.display = 'block';
-		} else {
-			saveBtn.style.display = 'none';
-		}
-	});
-	saveBtn.addEventListener('click', updateDisplayName);
-}
-
-function updateProgress() {
-	const sets = document.querySelectorAll('.set');
-	sets.forEach((set) => {
-		const progress_bar = set.querySelector('.progress-bar');
-		const current_count = set.querySelector('.current-count');
-		const count = localStorage.getItem('index');
-		current_count.innerHTML = parseInt(count) + 1;
-		progress_bar.value = parseInt(count) + 1;
-	});
-}
-
 function profile() {
 	clickDropDown();
 	clickOverlay();
-	clickDropDown(pfpContainer, infoForm);
-
 	getUser();
+	clickDropDown(pfpContainer, infoForm);
 	updateProfileImg();
-	checkDisplayName();
-	updateProgress();
+}
+
+const db = getFirestore();
+const uid = localStorage.getItem('loggedIn');
+
+var userSnap;
+var nameArray = [];
+var dataArray = [];
+const userRef = doc(db, 'users', uid);
+const learningSet = collection(userRef, 'learning');
+const querySnapshot = await getDocs(learningSet);
+querySnapshot.forEach((doc) => {
+	doc.id, ' => ', nameArray.push(doc.id);
+	console.log(nameArray);
+	doc.id, ' => ', dataArray.push(doc.data());
+	console.log(dataArray);
+});
+for (let i=0; i<nameArray.length; i++) {
+	//progress bar
+	var progress_bar = document.createElement('progress')
+	progress_bar.className = "progress-bar"
+	progress_bar.max = "46";
+	progress_bar.value = "30";
+
+	//Progress count
+	var current_count = document.createElement('span')
+	current_count.innerHTML = "30"
+	var divider = document.createElement('span')
+	divider.innerHTML = "/";
+	var total_count = document.createElement('span')
+	total_count.innerHTML = "46"
+
+	//Progress count container
+	var progress_count = document.createElement('div')
+	progress_count.className = "progress-count"
+	progress_count.appendChild(current_count)
+	progress_count.appendChild(divider)
+	progress_count.appendChild(total_count)
+	
+	//Title
+	var title = document.createElement('h1');
+	title.className = "title";
+	title.innerHTML = nameArray[i];
+
+	//Top-set container
+	var top_set_container = document.createElement('div');
+	top_set_container.className = "top-set"
+	top_set_container.appendChild(title)
+	top_set_container.appendChild(progress_count)
+
+	//Container
+	var set_container = document.createElement('div');
+	set_container.className="set";
+
+	set_container.appendChild(top_set_container)
+	set_container.appendChild(progress_bar)
+	user_progress.appendChild(set_container)
 }
 
 window.onload = profile();
+
