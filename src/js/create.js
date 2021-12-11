@@ -11,6 +11,8 @@ const container = document.querySelector('.container');
 const studyset_name = document.querySelector('.studyset-name');
 var delete_buttons = document.querySelectorAll('.delete');
 
+var i = 10;
+
 function createCard() {
 	i++;
 	//Label for meaning
