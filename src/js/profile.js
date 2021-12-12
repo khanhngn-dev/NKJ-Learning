@@ -228,6 +228,11 @@ else {
 	
 		var delete_buttons = document.querySelectorAll('.delete');
 		delete_buttons.forEach((a) => a.addEventListener('click', deleteCard));
+
+		set_container.addEventListener('click', function() {
+			localStorage.setItem('learningSet', nameArray[i])
+			window.location.assign('learning.html');
+		})
 	}
 }
 
