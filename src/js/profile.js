@@ -178,11 +178,20 @@ for (let i=0; i<nameArray.length; i++) {
 	title.className = "title";
 	title.innerHTML = nameArray[i];
 
+	//Delete button in the head for card container
+	var bin_icon = document.createElement('i');
+	bin_icon.className = 'fas fa-trash-alt';
+
+	var delete_button = document.createElement('button');
+	delete_button.className = 'delete';
+
+	delete_button.appendChild(bin_icon);
 	//Top-set container
 	var top_set_container = document.createElement('div');
 	top_set_container.className = "top-set"
 	top_set_container.appendChild(title)
 	top_set_container.appendChild(progress_count)
+	top_set_container.appendChild(delete_button)
 
 	//Container
 	var set_container = document.createElement('div');

@@ -163,6 +163,11 @@
 	align-items: center;
 	margin-left: 10px;
 	margin-bottom: 40px;
+	justify-content: space-between;
+}
+
+.delete {
+	background: transparent;
 }
 
 .title {
