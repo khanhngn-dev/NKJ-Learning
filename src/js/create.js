@@ -145,23 +145,25 @@ const uid = localStorage.getItem('loggedIn');
 var userRef, userSnap;
 
 function createLearningSet() {
-	var termArray = [],
-		meaningArray = [];
-	var terms = document.querySelectorAll('.term');
-	terms.forEach((term) => termArray.push(term.value));
-	var meanings = document.querySelectorAll('.meaning');
-	meanings.forEach((meaning) => meaningArray.push(meaning.value));
-	userRef = doc(db, 'users', uid);
-	setDoc(doc(userRef, 'learning', `${studyset_name.value}`), {
-		term: termArray,
-		meaning: meaningArray,
-	});
-	alert('Create successfully');
+	if (studyset_name.value == '') alert('Please enter the name of your study set');
+	else {
+		var termArray = [],
+			meaningArray = [];
+		var terms = document.querySelectorAll('.term');
+		terms.forEach((term) => termArray.push(term.value));
+		var meanings = document.querySelectorAll('.meaning');
+		meanings.forEach((meaning) => meaningArray.push(meaning.value));
+		userRef = doc(db, 'users', uid);
+		setDoc(doc(userRef, 'learning', `${studyset_name.value}`), {
+			term: termArray,
+			meaning: meaningArray,
+		});
+		alert('Create successfully');
+	}
 }
 
 create_button.addEventListener('click', createLearningSet);
 
-window.onload = function() {
-	if (localStorage.getItem('loggedIn') == undefined) 
-	window.location.assign('login.html');
-}
+window.onload = function () {
+	if (localStorage.getItem('loggedIn') == undefined) window.location.assign('login.html');
+};

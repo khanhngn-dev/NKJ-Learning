@@ -33,11 +33,46 @@ function getUser() {
 		if (cred) {
 			info = cred;
 			mainImg.src = cred.photoURL;
-			displayName.innerHTML = cred.displayName;
+			displayName.setAttribute('value', cred.displayName);
 		} else {
 			mainDiv.classList.add('no-user');
 			mainDiv.innerHTML = 'Please login to view your profile.';
 		}
+	});
+}
+
+function updateDisplayName() {
+	if (displayName.value.length != 0) {
+		updateProfile(info, {
+			displayName: displayName.value,
+		}).then(() => {
+			window.location.reload();
+		});
+	} else {
+		alert('Your username cannot be empty');
+	}
+}
+
+function checkDisplayName() {
+	const saveBtn = document.querySelector('#update-name');
+	displayName.addEventListener('keyup', () => {
+		if (displayName.value != info.displayName) {
+			saveBtn.style.display = 'block';
+		} else {
+			saveBtn.style.display = 'none';
+		}
+	});
+	saveBtn.addEventListener('click', updateDisplayName);
+}
+
+function updateProgress() {
+	const sets = document.querySelectorAll('.set');
+	sets.forEach((set) => {
+		const progress_bar = set.querySelector('.progress-bar');
+		const current_count = set.querySelector('.current-count');
+		const count = localStorage.getItem('index');
+		current_count.innerHTML = parseInt(count) + 1;
+		progress_bar.value = parseInt(count) + 1;
 	});
 }
 
@@ -98,7 +133,7 @@ function profile() {
 	clickOverlay();
 	getUser();
 	clickDropDown(pfpContainer, infoForm);
-	updateProfileImg();
+	updateProfileImg();	
 }
 
 const db = getFirestore();
