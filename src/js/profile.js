@@ -157,17 +157,19 @@ if (nameArray.length == 0) {
 	var point_icon = document.createElement('i');
 	point_icon.className = 'fas fa-hand-point-right';
 
+	var span_text = document.createElement('span');
+	span_text.innerHTML = "Click to create your first learning set";
 	var empty_div_text = document.createElement('a');
 	var empty_div = document.createElement('div');
 	empty_div.className = "empty-div"
 	empty_div_text.className = 'empty-div-text'
-	empty_div_text.innerHTML = "Click to create your first learning set"
 	empty_div_text.href = 'create.html';
 	var cat_img = document.createElement('img');
 	cat_img.className = 'cat-img'
 	cat_img.src = 'img/cat.gif'
 
-	empty_div.appendChild(point_icon);
+	empty_div_text.appendChild(point_icon)
+	empty_div_text.appendChild(span_text)
 	empty_div.appendChild(empty_div_text);
 	empty_div.appendChild(cat_img);
 	user_progress.appendChild(empty_div)
