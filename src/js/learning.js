@@ -65,7 +65,7 @@ function updateMainFlashCard() {
 function saveProgress() {
 	if (uid != null) {
 		setDoc(
-			userRef,
+			learningRef,
 			{
 				'current index': current_index,
 				'current display': current_display,
