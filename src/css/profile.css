@@ -160,12 +160,23 @@
 }
 
 .top-set {
-	display: flex;
+	display: grid;
 	align-items: center;
 	margin-left: 10px;
 	margin-bottom: 40px;
 	justify-content: space-between;
+	grid-template-columns: repeat(10, 1fr);
 }
+
+.progress-count {
+	grid-column: 5/8;
+}
+
+.delete {
+	grid-column: 10/11;
+}
+
+
 
 .delete {
 	background: transparent;
