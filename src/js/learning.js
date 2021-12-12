@@ -3,6 +3,8 @@ import {
 	doc,
 	getDoc,
 	setDoc,
+	getDocs,
+	collection,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
 
 const $card = $('.flashcard');
@@ -10,14 +12,23 @@ const definition = document.querySelector('.definition');
 const meaning = document.querySelector('.meaning');
 const current_number = document.querySelector('.current-display');
 const current_number_progresses = document.querySelectorAll('.current-display-progress');
+const total_count = document.querySelectorAll('.total')
 const progress_bars = document.querySelectorAll('.progress-bar');
 const shuffleButton = document.querySelector('.flashcards-bot');
 
-
 const db = getFirestore();
 const uid = localStorage.getItem('loggedIn');
+const learningSet = localStorage.getItem('learningSet');
 var userRef, userSnap;
 var learningRef;
+
+userRef = doc(db, 'users', uid);
+learningRef = doc(userRef, 'learning', learningSet);
+userSnap = await getDoc(learningRef);
+
+var termArray = userSnap.data().term;
+var meaningArray = userSnap.data().meaning;
+
 var current_display = 1,
 	current_index = 0,
 	shuffleIndex = 0;
@@ -32,8 +43,8 @@ function flip() {
 async function getUser() {
 	if (uid != null) {
 		userRef = doc(db, 'users', uid);
-		learningRef = doc(userRef, 'learning')
-		userSnap = await getDoc(userRef);
+		learningRef = doc(userRef, 'learning', learningSet);
+		userSnap = await getDoc(learningRef);
 		current_index = userSnap.data()['current index'] || 0;
 		current_display = userSnap.data()['current display'] || 1;
 		localStorage.setItem('index', current_index);
@@ -47,8 +58,8 @@ function updateProgress() {
 }
 
 function updateMainFlashCard() {
-	// definition.innerHTML = alphabet_definition[current_index];
-	// meaning.innerHTML = alphabet_meaning[current_index];
+	definition.innerHTML = termArray[current_index];
+	meaning.innerHTML = meaningArray[current_index];
 }
 
 function saveProgress() {
@@ -89,7 +100,7 @@ function decrease() {
 }
 
 function increase() {
-	if (current_index == 45) {
+	if (current_index == termArray.length-1) {
 		return;
 	}
 	setCardStyle(0);
@@ -152,7 +163,7 @@ function shuffleArray(random) {
 let randomArray = [];
 
 function shuffleFlashCard() {
-	randomArray = shuffleArray(generateArray(46));
+	randomArray = shuffleArray(generateArray(termArray.length-1));
 	shuffleIndex = 0;
 	current_index = randomArray[shuffleIndex];
 	current_display = current_index + 1;
@@ -191,7 +202,7 @@ function decreaseShuffle() {
 }
 
 function increaseShuffle() {
-	if (shuffleIndex == 45) {
+	if (shuffleIndex == termArray.length) {
 		return;
 	}
 	setCardStyle(0);
@@ -220,6 +231,12 @@ function load() {
 	left_arrow.addEventListener('click', decrease);
 	right_arrow.addEventListener('click', increase);
 	shuffleButton.addEventListener('click', shuffleFlashCard);
+	progress_bars.forEach((a) => a.max = `${termArray.length}`)
+	total_count.forEach((a) => a.innerHTML = "/" + `${termArray.length}`)
+
+	if (localStorage.getItem('learningSet') == undefined) {
+		window.location.assign('flashcard.html');
+	}
 
 	getUser().then(() => {
 		updateProgress();
