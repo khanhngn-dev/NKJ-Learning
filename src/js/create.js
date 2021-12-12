@@ -153,12 +153,22 @@ function createLearningSet() {
 		terms.forEach((term) => termArray.push(term.value));
 		var meanings = document.querySelectorAll('.meaning');
 		meanings.forEach((meaning) => meaningArray.push(meaning.value));
-		userRef = doc(db, 'users', uid);
-		setDoc(doc(userRef, 'learning', `${studyset_name.value}`), {
-			term: termArray,
-			meaning: meaningArray,
+		var result_term = termArray.some((term, index) => {
+			return term == '';
 		});
-		alert('Create successfully');
+		var result_meaning = meaningArray.some((meaning, index) => {
+			return meaning == '';
+		});
+		if (result_term || result_meaning) {
+			alert('You must completed all lines');
+		} else {
+			userRef = doc(db, 'users', uid);
+			setDoc(doc(userRef, 'learning', `${studyset_name.value}`), {
+				term: termArray,
+				meaning: meaningArray,
+			});
+			alert('Create successfully');
+		}
 	}
 }
 
