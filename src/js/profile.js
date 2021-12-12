@@ -12,7 +12,8 @@ import {
 import {
 	getFirestore,
 	doc,
-	getDocs,
+	getDocs, 
+	getDoc,
 	setDoc,
 	query,
 	collection,
@@ -177,19 +178,22 @@ if (nameArray.length == 0) {
 }
 else {
 	for (let i=0; i<nameArray.length; i++) {
+		var current_learning_ref = doc(userRef, 'learning', nameArray[i]);
+		var learning_set_snap = await getDoc(current_learning_ref);
 		//progress bar
 		var progress_bar = document.createElement('progress')
 		progress_bar.className = "progress-bar"
-		progress_bar.max = "46";
-		progress_bar.value = "30";
+		progress_bar.max = `${learning_set_snap.data().term.length}`;
+		progress_bar.value = `${learning_set_snap.data()['current display'] || 1}`;
 	
 		//Progress count
 		var current_count = document.createElement('span')
-		current_count.innerHTML = "30"
+		current_count.innerHTML = `${learning_set_snap.data()['current display'] || 1}`;
+	
 		var divider = document.createElement('span')
 		divider.innerHTML = "/";
 		var total_count = document.createElement('span')
-		total_count.innerHTML = "46"
+		total_count.innerHTML = `${learning_set_snap.data().term.length}`;
 	
 		//Progress count container
 		var progress_count = document.createElement('div')
