@@ -240,6 +240,29 @@ progress::-webkit-progress-bar {
 	outline: none;
 }
 
+.empty-div-text {
+	text-align: center;
+	font-size: 2em;
+	color: black;
+}
+
+.empty-div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+}
+
+.fas.fa-hand-point-right {
+	font-size: 2em;
+	margin-right: 30px;
+}
+
+.cat-img {
+	margin-left: 50px;
+	max-width: 250px;
+	max-height: 250px;
+}
 .form .input:focus {
 	border: 2px solid #bc002d;
 }

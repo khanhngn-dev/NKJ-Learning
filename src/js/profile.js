@@ -27,6 +27,7 @@ const displayName = document.querySelector('.display-name');
 const mainDiv = document.querySelector('.main');
 const infoForm = document.querySelector('#info-form');
 var delete_buttons = document.querySelectorAll('.delete');
+var search_bar = document.querySelector('.search-bar');
 var info;
 
 function getUser() {
@@ -152,59 +153,82 @@ querySnapshot.forEach((doc) => {
 	doc.id, ' => ', dataArray.push(doc.data());
 	console.log(dataArray);
 });
-for (let i=0; i<nameArray.length; i++) {
-	//progress bar
-	var progress_bar = document.createElement('progress')
-	progress_bar.className = "progress-bar"
-	progress_bar.max = "46";
-	progress_bar.value = "30";
+if (nameArray.length == 0) {
+	var point_icon = document.createElement('i');
+	point_icon.className = 'fas fa-hand-point-right';
 
-	//Progress count
-	var current_count = document.createElement('span')
-	current_count.innerHTML = "30"
-	var divider = document.createElement('span')
-	divider.innerHTML = "/";
-	var total_count = document.createElement('span')
-	total_count.innerHTML = "46"
+	var empty_div_text = document.createElement('a');
+	var empty_div = document.createElement('div');
+	empty_div.className = "empty-div"
+	empty_div_text.className = 'empty-div-text'
+	empty_div_text.innerHTML = "Click to create your first learning set"
+	empty_div_text.href = 'create.html';
+	var cat_img = document.createElement('img');
+	cat_img.className = 'cat-img'
+	cat_img.src = 'img/cat.gif'
 
-	//Progress count container
-	var progress_count = document.createElement('div')
-	progress_count.className = "progress-count"
-	progress_count.appendChild(current_count)
-	progress_count.appendChild(divider)
-	progress_count.appendChild(total_count)
-	
-	//Title
-	var title = document.createElement('h1');
-	title.className = "title";
-	title.innerHTML = nameArray[i];
-
-	//Delete button in the head for card container
-	var bin_icon = document.createElement('i');
-	bin_icon.className = 'fas fa-trash-alt';
-
-	var delete_button = document.createElement('button');
-	delete_button.className = 'delete';
-
-	delete_button.appendChild(bin_icon);
-	//Top-set container
-	var top_set_container = document.createElement('div');
-	top_set_container.className = "top-set"
-	top_set_container.appendChild(title)
-	top_set_container.appendChild(progress_count)
-	top_set_container.appendChild(delete_button)
-
-	//Container
-	var set_container = document.createElement('div');
-	set_container.className="set";
-
-	set_container.appendChild(top_set_container)
-	set_container.appendChild(progress_bar)
-	user_progress.appendChild(set_container)
-
-	var delete_buttons = document.querySelectorAll('.delete');
-	delete_buttons.forEach((a) => a.addEventListener('click', deleteCard));
+	empty_div.appendChild(point_icon);
+	empty_div.appendChild(empty_div_text);
+	empty_div.appendChild(cat_img);
+	user_progress.appendChild(empty_div)
+	search_bar.style.display = 'none';
 }
+else {
+	for (let i=0; i<nameArray.length; i++) {
+		//progress bar
+		var progress_bar = document.createElement('progress')
+		progress_bar.className = "progress-bar"
+		progress_bar.max = "46";
+		progress_bar.value = "30";
+	
+		//Progress count
+		var current_count = document.createElement('span')
+		current_count.innerHTML = "30"
+		var divider = document.createElement('span')
+		divider.innerHTML = "/";
+		var total_count = document.createElement('span')
+		total_count.innerHTML = "46"
+	
+		//Progress count container
+		var progress_count = document.createElement('div')
+		progress_count.className = "progress-count"
+		progress_count.appendChild(current_count)
+		progress_count.appendChild(divider)
+		progress_count.appendChild(total_count)
+		
+		//Title
+		var title = document.createElement('h1');
+		title.className = "title";
+		title.innerHTML = nameArray[i];
+	
+		//Delete button in the head for card container
+		var bin_icon = document.createElement('i');
+		bin_icon.className = 'fas fa-trash-alt';
+	
+		var delete_button = document.createElement('button');
+		delete_button.className = 'delete';
+	
+		delete_button.appendChild(bin_icon);
+		//Top-set container
+		var top_set_container = document.createElement('div');
+		top_set_container.className = "top-set"
+		top_set_container.appendChild(title)
+		top_set_container.appendChild(progress_count)
+		top_set_container.appendChild(delete_button)
+	
+		//Container
+		var set_container = document.createElement('div');
+		set_container.className="set";
+	
+		set_container.appendChild(top_set_container)
+		set_container.appendChild(progress_bar)
+		user_progress.appendChild(set_container)
+	
+		var delete_buttons = document.querySelectorAll('.delete');
+		delete_buttons.forEach((a) => a.addEventListener('click', deleteCard));
+	}
+}
+
 
 function deleteCard() {
 	//notification (Are you sure ?)
