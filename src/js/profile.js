@@ -26,6 +26,7 @@ const mainImg = document.querySelector('.main-pfp');
 const displayName = document.querySelector('.display-name');
 const mainDiv = document.querySelector('.main');
 const infoForm = document.querySelector('#info-form');
+var delete_buttons = document.querySelectorAll('.delete');
 var info;
 
 function getUser() {
@@ -200,7 +201,17 @@ for (let i=0; i<nameArray.length; i++) {
 	set_container.appendChild(top_set_container)
 	set_container.appendChild(progress_bar)
 	user_progress.appendChild(set_container)
+
+	var delete_buttons = document.querySelectorAll('.delete');
+	delete_buttons.forEach((a) => a.addEventListener('click', deleteCard));
 }
+
+function deleteCard() {
+	//notification (Are you sure ?)
+	user_progress.removeChild(this.parentNode.parentNode);
+}
+
+delete_buttons.forEach((a) => a.addEventListener('click', deleteCard));
 
 window.onload = profile();
 
