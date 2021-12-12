@@ -17,6 +17,7 @@ import {
 	setDoc,
 	query,
 	collection,
+	deleteDoc
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
 
 const auth = getAuth();
@@ -125,7 +126,6 @@ function updateProfileImg() {
 
 		// Update profile picture
 		uploadBytes(ref(storage, `pfp-user/${info.uid}`), imgFile).then((snapshot) => {
-			console.log(snapshot);
 			window.location.reload();
 		});
 	});
@@ -150,9 +150,7 @@ const learningSet = collection(userRef, 'learning');
 const querySnapshot = await getDocs(learningSet);
 querySnapshot.forEach((doc) => {
 	doc.id, ' => ', nameArray.push(doc.id);
-	console.log(nameArray);
 	doc.id, ' => ', dataArray.push(doc.data());
-	console.log(dataArray);
 });
 if (nameArray.length == 0) {
 	var point_icon = document.createElement('i');
@@ -229,24 +227,17 @@ else {
 		set_container.appendChild(top_set_container)
 		set_container.appendChild(progress_bar)
 		user_progress.appendChild(set_container)
-	
-		var delete_buttons = document.querySelectorAll('.delete');
-		delete_buttons.forEach((a) => a.addEventListener('click', deleteCard));
 
-		set_container.addEventListener('click', function() {
+		title.addEventListener('click', function() {
 			localStorage.setItem('learningSet', nameArray[i])
 			window.location.assign('learning.html');
 		})
+
+		delete_button.addEventListener('click', function() {
+			user_progress.removeChild(this.parentNode.parentNode);
+			deleteDoc(doc(userRef, 'learning', `${nameArray[i]}`))
+		});
 	}
 }
-
-
-function deleteCard() {
-	//notification (Are you sure ?)
-	user_progress.removeChild(this.parentNode.parentNode);
-}
-
-delete_buttons.forEach((a) => a.addEventListener('click', deleteCard));
-
 window.onload = profile();
 
