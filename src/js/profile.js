@@ -1,6 +1,7 @@
 import {
 	getAuth,
 	onAuthStateChanged,
+	updateProfile,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js';
 
 import {
