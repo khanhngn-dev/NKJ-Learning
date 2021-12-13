@@ -137,6 +137,7 @@ function profile() {
 	getUser();
 	clickDropDown(pfpContainer, infoForm);
 	updateProfileImg();	
+	checkDisplayName();
 }
 
 const db = getFirestore();
