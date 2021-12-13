@@ -176,7 +176,7 @@ create_button.addEventListener('click', createLearningSet);
 
 window.onload = function () {
 	if (
-		localStorage.getItem('loggedIn') == undefined ||
+		localStorage.getItem('loggedIn') == undefined &&
 		sessionStorage.getItem('loggedIn') == undefined
 	)
 		window.location.assign('login.html');
