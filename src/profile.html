@@ -49,7 +49,6 @@
 					<i class="fas fa-camera"></i>
 					<img class="main-pfp" />
 				</div>
-				<!-- <div class="display-name"></div> -->
 				<div class="name">
 					<input class="display-name" placeholder="Username" maxlength="15" />
 					<button class="button-setting" id="update-name">
@@ -69,42 +68,6 @@
 					<i class="fas fa-search"></i>
 					<input class="bar" type="text" id="term-search" placeholder="Search for a term..." />
 				</div>
-				<!-- <div class="set" id="hiragana">
-					<div class="top-set">
-						<h1 class="title">Hiragana</h1>
-						<div class="progress-count">
-							<span class="current-count">30</span>
-							<span class="divider">/</span>
-							<span class="total-count">46</span>
-						</div>
-						<button class="delete"><i class="fas fa-trash-alt"></i></button>
-					</div>
-					<progress class="progress-bar" max="46" value="30"></progress>
-				</div>
-				<div class="set" id="hiragana">
-					<div class="top-set">
-						<h1 class="title">Hiragana</h1>
-						<div class="progress-count">
-							<span class="current-count">30</span>
-							<span class="divider">/</span>
-							<span class="total-count">46</span>
-						</div>
-						<button class="delete"><i class="fas fa-trash-alt"></i></button>
-					</div>
-					<progress class="progress-bar" max="46" value="30"></progress>
-				</div>
-				<div class="set" id="hiragana">
-					<div class="top-set">
-						<h1 class="title">Hiragana</h1>
-						<div class="progress-count">
-							<span class="current-count">30</span>
-							<span class="divider">/</span>
-							<span class="total-count">46</span>
-						</div>
-						<button class="delete"><i class="fas fa-trash-alt"></i></button>
-					</div>
-					<progress class="progress-bar" max="46" value="30"></progress>
-				</div> -->
 			</div>
 		</div>
 
@@ -121,16 +84,15 @@
 		</form>
 
 		<form class="form" id="reset-form">
-						<div class="head">
-				<h1 class="title">Please re-enter your password</h1>
+			<div class="head">
+				<h1 class="title">Please fill out your credentials for verification</h1>
 			</div>
 			<div class="preview"></div>
-			<div class="form-pfp">
-				<label id="profile-upload" for="profile-picture">Upload your profile picture</label>
-				<input type="file" class="input" id="profile-picture" />
+			<div class="form-password">
+				<input type="password" class="input password" id="password" minlength="6" required placeholder=" " autocomplete="current-password" />
+				<label for="password" class="label">Password</label>
 			</div>
 			<input type="submit" class="submit bold" value="Continue" />
-		</form>
 		</form>
 		<div class="outMenu"></div>
 
