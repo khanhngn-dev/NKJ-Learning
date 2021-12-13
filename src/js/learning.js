@@ -37,7 +37,7 @@ function flip() {
 }
 
 async function getUser() {
-	if (uid != null) {
+	if (uid != null && learningSet) {
 		userRef = doc(db, 'users', uid);
 		learningRef = doc(userRef, 'learning', learningSet);
 		userSnap = await getDoc(learningRef);
@@ -224,7 +224,7 @@ function load() {
 	clickDropDown();
 	clickOverlay();
 	getUser().then(() => {
-		if (uid) {
+		if (uid && learningSet) {
 			updateProgress();
 			updateMainFlashCard();
 			$('.flashcard').click(flip);
@@ -233,11 +233,7 @@ function load() {
 			shuffleButton.addEventListener('click', shuffleFlashCard);
 			progress_bars.forEach((a) => (a.max = `${termArray.length}`));
 			total_count.forEach((a) => (a.innerHTML = '/' + `${termArray.length}`));
-			if (localStorage.getItem('learningSet') == undefined) {
-				window.location.assign('flashcard.html');
-			} else {
-				flash_name.innerHTML = localStorage.getItem('learningSet');
-			}
+			flash_name.innerHTML = localStorage.getItem('learningSet');
 		} else {
 			window.location.assign('flashcard.html');
 		}
