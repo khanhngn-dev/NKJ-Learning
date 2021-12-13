@@ -289,7 +289,7 @@ progress::-webkit-progress-bar {
 
 .form i {
 	position: absolute;
-	bottom: 12px;
+	bottom: 15px;
 	right: 16px;
 	cursor: pointer;
 }
@@ -325,12 +325,19 @@ progress::-webkit-progress-bar {
 	background: white;
 }
 
+#info-form *,
+#reset-form * {
+	display: none;
+}
+
 #info-form.open *,
+#reset-form.open *,
 .open {
 	display: block;
 }
 
-#info-form.open {
+#info-form.open,
+#reset-form.open {
 	opacity: 1;
 	padding: 20px;
 	height: auto;
@@ -366,7 +373,20 @@ progress::-webkit-progress-bar {
 	object-position: center; /* Center the image within the element */
 }
 
-#info-form.open .submit {
+#reset-form .preview {
+	margin: 10px 0;
+	padding: 10px;
+	border: 1px solid #ff0000;
+	border-radius: 10px;
+	background: #eee7e7;
+	display: none;
+	font-size: larger;
+	font-weight: bold;
+	color: #bb002d;
+}
+
+#info-form.open .submit,
+#reset-form.open .submit {
 	width: 100%;
 }
 
