@@ -12,22 +12,18 @@ const definition = document.querySelector('.definition');
 const meaning = document.querySelector('.meaning');
 const current_number = document.querySelector('.current-display');
 const current_number_progresses = document.querySelectorAll('.current-display-progress');
-const total_count = document.querySelectorAll('.total')
+const total_count = document.querySelectorAll('.total');
 const progress_bars = document.querySelectorAll('.progress-bar');
 const shuffleButton = document.querySelector('.flashcards-bot');
+const flash_name = document.querySelector('.flashcards-word');
 
 const db = getFirestore();
-const uid = localStorage.getItem('loggedIn');
+const uid = localStorage.getItem('loggedIn') || sessionStorage.getItem('loggedIn');
 const learningSet = localStorage.getItem('learningSet');
 var userRef, userSnap;
 var learningRef;
-
-userRef = doc(db, 'users', uid);
-learningRef = doc(userRef, 'learning', learningSet);
-userSnap = await getDoc(learningRef);
-
-var termArray = userSnap.data().term;
-var meaningArray = userSnap.data().meaning;
+var termArray;
+var meaningArray;
 
 var current_display = 1,
 	current_index = 0,
@@ -48,6 +44,8 @@ async function getUser() {
 		current_index = userSnap.data()['current index'] || 0;
 		current_display = userSnap.data()['current display'] || 1;
 		localStorage.setItem('index', current_index);
+		termArray = userSnap.data().term;
+		meaningArray = userSnap.data().meaning;
 	}
 }
 
@@ -100,7 +98,7 @@ function decrease() {
 }
 
 function increase() {
-	if (current_index == termArray.length-1) {
+	if (current_index == termArray.length - 1) {
 		return;
 	}
 	setCardStyle(0);
@@ -163,7 +161,7 @@ function shuffleArray(random) {
 let randomArray = [];
 
 function shuffleFlashCard() {
-	randomArray = shuffleArray(generateArray(termArray.length-1));
+	randomArray = shuffleArray(generateArray(termArray.length - 1));
 	shuffleIndex = 0;
 	current_index = randomArray[shuffleIndex];
 	current_display = current_index + 1;
@@ -225,22 +223,24 @@ function increaseShuffle() {
 function load() {
 	clickDropDown();
 	clickOverlay();
-
-	$('.flashcard').click(flip);
-
-	left_arrow.addEventListener('click', decrease);
-	right_arrow.addEventListener('click', increase);
-	shuffleButton.addEventListener('click', shuffleFlashCard);
-	progress_bars.forEach((a) => a.max = `${termArray.length}`)
-	total_count.forEach((a) => a.innerHTML = "/" + `${termArray.length}`)
-
-	if (localStorage.getItem('learningSet') == undefined) {
-		window.location.assign('flashcard.html');
-	}
-
 	getUser().then(() => {
-		updateProgress();
-		updateMainFlashCard();
+		if (uid) {
+			updateProgress();
+			updateMainFlashCard();
+			$('.flashcard').click(flip);
+			left_arrow.addEventListener('click', decrease);
+			right_arrow.addEventListener('click', increase);
+			shuffleButton.addEventListener('click', shuffleFlashCard);
+			progress_bars.forEach((a) => (a.max = `${termArray.length}`));
+			total_count.forEach((a) => (a.innerHTML = '/' + `${termArray.length}`));
+			if (localStorage.getItem('learningSet') == undefined) {
+				window.location.assign('flashcard.html');
+			} else {
+				flash_name.innerHTML = localStorage.getItem('learningSet');
+			}
+		} else {
+			window.location.assign('flashcard.html');
+		}
 	});
 }
 
