@@ -142,6 +142,7 @@ function sendSignup(auth, email, password) {
 		.then((cred) => {
 			// Set login state
 			localStorage.setItem('loggedIn', `${cred.user.uid}`);
+			sessionStorage.setItem('loggedIn', `${cred.user.uid}`);
 			// Set default values
 			setDoc(doc(db, 'users', `${cred.user.uid}`), {
 				'current index': 0,

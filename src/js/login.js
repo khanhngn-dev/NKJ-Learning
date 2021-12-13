@@ -36,10 +36,14 @@ function checkLogin() {
 	});
 }
 
-function sendLogin(auth, email, password) {
+function sendLogin(auth, email, password, remember) {
 	signInWithEmailAndPassword(auth, email, password)
 		.then((cred) => {
-			localStorage.setItem('loggedIn', `${cred.user.uid}`);
+			if (!remember) {
+				sessionStorage.setItem('loggedIn', `${cred.user.uid}`);
+			} else {
+				localStorage.setItem('loggedIn', `${cred.user.uid}`);
+			}
 		})
 		.catch((err) => {
 			displayInfo(err, loginForm, error);
@@ -62,11 +66,11 @@ function login() {
 
 		if (!remember) {
 			setPersistence(auth, browserSessionPersistence).then(() => {
-				return sendLogin(auth, email, password);
+				return sendLogin(auth, email, password, remember);
 			});
 		} else {
 			setPersistence(auth, browserLocalPersistence).then(() => {
-				return sendLogin(auth, email, password);
+				return sendLogin(auth, email, password, remember);
 			});
 		}
 

@@ -140,7 +140,7 @@ clickOverlay();
 clickDropDown();
 
 const db = getFirestore();
-const uid = localStorage.getItem('loggedIn');
+const uid = localStorage.getItem('loggedIn') || sessionStorage.getItem('loggedIn');
 
 var userRef, userSnap;
 
@@ -175,5 +175,9 @@ function createLearningSet() {
 create_button.addEventListener('click', createLearningSet);
 
 window.onload = function () {
-	if (localStorage.getItem('loggedIn') == undefined) window.location.assign('login.html');
+	if (
+		localStorage.getItem('loggedIn') == undefined ||
+		sessionStorage.getItem('loggedIn') == undefined
+	)
+		window.location.assign('login.html');
 };

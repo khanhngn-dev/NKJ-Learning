@@ -114,7 +114,7 @@ const alphabet_meaning = [
 ];
 
 const db = getFirestore();
-const uid = localStorage.getItem('loggedIn');
+const uid = localStorage.getItem('loggedIn') || sessionStorage.getItem('loggedIn');
 var userRef, userSnap;
 var current_display = 1,
 	current_index = 0,
