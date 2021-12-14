@@ -142,7 +142,7 @@ clickDropDown();
 const db = getFirestore();
 const uid = localStorage.getItem('loggedIn') || sessionStorage.getItem('loggedIn');
 
-var userRef, userSnap;
+var userRef;
 
 function createLearningSet() {
 	if (studyset_name.value == '') alert('Please enter the name of your study set');
