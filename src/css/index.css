@@ -13,6 +13,23 @@
 	align-items: center;
 }
 
+.toast {
+    opacity: 1 !important;
+	animation: fade 0.5s ease-out;
+}
+
+@keyframes fade {
+	100% {
+		opacity: 1;
+		display: block;
+	}
+
+	0% {
+		opacity: 0;
+		display: none;
+	}
+}	
+
 a {
 	text-decoration: none;
 }

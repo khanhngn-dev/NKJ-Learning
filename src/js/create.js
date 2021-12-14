@@ -144,8 +144,15 @@ const uid = localStorage.getItem('loggedIn') || sessionStorage.getItem('loggedIn
 
 var userRef;
 
+toastr.options = {
+	"positionClass": "toast-bottom-right", 
+	"timeOut": 1000,
+	"preventDuplicates": true
+}
+// toastr.options.escapeHtml = true;
+
 function createLearningSet() {
-	if (studyset_name.value == '') alert('Please enter the name of your study set');
+	if (studyset_name.value == '') toastr.warning('Please enter your learning set name!');
 	else {
 		var termArray = [],
 			meaningArray = [];
@@ -160,7 +167,7 @@ function createLearningSet() {
 			return meaning == '';
 		});
 		if (result_term || result_meaning) {
-			alert('You must completed all lines');
+			toastr.warning('You must complete all fields!')
 		} else {
 			userRef = doc(db, 'users', uid);
 			setDoc(doc(userRef, 'learning', `${studyset_name.value}`), {

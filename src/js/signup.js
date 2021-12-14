@@ -151,6 +151,7 @@ function sendSignup(auth, email, password) {
 			// Get a reference of the created user
 			info = cred.user;
 			setProfile();
+			toastr.success('Signup successfully');
 		})
 		.catch((err) => {
 			displayInfo(err, signupForm, error);
