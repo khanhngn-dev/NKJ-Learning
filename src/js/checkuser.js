@@ -62,7 +62,6 @@ function checkLogout() {
 		e.preventDefault();
 		signOut(auth)
 			.then(() => {
-				console.log('User has been logged out successfully.');
 				localStorage.removeItem('loggedIn');
 				sessionStorage.removeItem('loggedIn');
 				window.location.reload();
