@@ -161,7 +161,7 @@ function shuffleArray(random) {
 let randomArray = [];
 
 function shuffleFlashCard() {
-	randomArray = shuffleArray(generateArray(termArray.length - 1));
+	randomArray = shuffleArray(generateArray(termArray.length));
 	shuffleIndex = 0;
 	current_index = randomArray[shuffleIndex];
 	current_display = current_index + 1;
@@ -200,7 +200,7 @@ function decreaseShuffle() {
 }
 
 function increaseShuffle() {
-	if (shuffleIndex == termArray.length) {
+	if (shuffleIndex == termArray.length-1) {
 		return;
 	}
 	setCardStyle(0);
