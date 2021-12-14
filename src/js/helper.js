@@ -9,7 +9,6 @@ function showPassword(eye, password) {
 	} else {
 		eye.className = 'fas fa-eye';
 		password.type = 'password';
-		z;
 	}
 }
 
