@@ -233,7 +233,7 @@ function load() {
 			shuffleButton.addEventListener('click', shuffleFlashCard);
 			progress_bars.forEach((a) => (a.max = `${termArray.length}`));
 			total_count.forEach((a) => (a.innerHTML = '/' + `${termArray.length}`));
-			flash_name.innerHTML = localStorage.getItem('learningSet');
+			// flash_name.innerHTML = localStorage.getItem('learningSet');
 		} else {
 			window.location.assign('flashcard.html');
 		}

@@ -9,65 +9,69 @@
 		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/loader.css">
 	</head>
 
 	<body>
-		<div class="header">
-			<div class="left">
-				<div class="logo">
-					<a href="index.html">NKJ</a>
-				</div>
-				<button class="drop-menu-header">
-					<i class="fas fa-caret-down"></i>
-				</button>
-				<ul class="nav-bar">
-					<li class="learning notImportant-header">
-						<a href="learning.html">LEARNING</a>
-					</li>
-					<li class="create notImportant-header">
-						<a href="create.html">CREATE</a>
-					</li>
-					<li class="exercise notImportant-header">
-						<a href="#">EXERCISE</a>
-					</li>
-				</ul>
-			</div>
-			<div class="right">
-				<div class="user">
-					<a class="drop-profile user-menu" href="profile.html">
-						<i class="fas fa-user-circle"></i>
-						<img class="user-pfp" alt="user-profile-picture" />
-						<span class="user-name"></span>
-					</a>
-				</div>
-				<div class="sign-up">
-					<button class="login-button rounded-pill">
-						<a href="login.html">Login</a>
+		<div class="preload"></div>
+		<div class="body">
+			<div class="header">
+				<div class="left">
+					<div class="logo">
+						<a href="index.html">NKJ</a>
+					</div>
+					<button class="drop-menu-header">
+						<i class="fas fa-caret-down"></i>
 					</button>
-					<button class="logout-button rounded-pill">
-						<a href="#">Logout</a>
-					</button>
+					<ul class="nav-bar">
+						<li class="learning notImportant-header">
+							<a href="learning.html">LEARNING</a>
+						</li>
+						<li class="create notImportant-header">
+							<a href="create.html">CREATE</a>
+						</li>
+						<li class="exercise notImportant-header">
+							<a href="#">EXERCISE</a>
+						</li>
+					</ul>
+				</div>
+				<div class="right">
+					<div class="user">
+						<a class="drop-profile user-menu" href="profile.html">
+							<i class="fas fa-user-circle"></i>
+							<img class="user-pfp" alt="user-profile-picture" />
+							<span class="user-name"></span>
+						</a>
+					</div>
+					<div class="sign-up">
+						<button class="login-button rounded-pill">
+							<a href="login.html">Login</a>
+						</button>
+						<button class="logout-button rounded-pill">
+							<a href="#">Logout</a>
+						</button>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="main">
-			<div class="learning-button">
-				<img class="body-img-phone" src="img/welcome.png" />
-				<a class="l-button alphabet" href="alphabet.html">ALPHABET</a>
-				<a class="l-button grammar" href="#">GRAMMAR</a>
-				<a class="l-button voca" href="#">VOCABULARY</a>
-				<a class="l-button exercise" href="#">EXERCISE</a>
+			<div class="main">
+				<div class="learning-button">
+					<img class="body-img-phone" src="img/welcome.png" />
+					<a class="l-button alphabet" href="alphabet.html">ALPHABET</a>
+					<a class="l-button grammar" href="#">GRAMMAR</a>
+					<a class="l-button voca" href="#">VOCABULARY</a>
+					<a class="l-button exercise" href="#">EXERCISE</a>
+				</div>
+				<div class="start-part">
+					<div class="body-img"></div>
+					<button class="l-button start-button">Get Started</button>
+				</div>
 			</div>
-			<div class="start-part">
-				<div class="body-img"></div>
-				<button class="l-button start-button">Get Started</button>
-			</div>
+			<div class="outMenu"></div>
 		</div>
-		<div class="outMenu"></div>
-
 		<script src="https://kit.fontawesome.com/3449a8ce9f.js" crossorigin="anonymous"></script>
 		<script type="module" src="js/checkuser.js"></script>
 		<script src="js/main_helper.js"></script>
 		<script src="js/index.js"></script>
+		<script src="js/loader.js"></script>
 	</body>
 </html>

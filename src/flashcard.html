@@ -11,118 +11,123 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="css/index.css" />
 		<link rel="stylesheet" href="css/flashcard.css" />
+		<link rel="stylesheet" href="css/loader.css">
 	</head>
 
 	<body>
-		<div class="header">
-			<div class="top">
-				<div class="left">
-					<div class="logo">
-						<a href="index.html">NKJ</a>
+		<div class="preload"></div>
+		<div class="body">
+			<div class="header">
+				<div class="top">
+					<div class="left">
+						<div class="logo">
+							<a href="index.html">NKJ</a>
+						</div>
+						<button class="drop-menu-header">
+							<i class="fas fa-caret-down"></i>
+						</button>
+						<ul class="nav-bar">
+							<li class="learning notImportant-header">
+								<a href="learning.html">LEARNING</a>
+							</li>
+							<li class="create notImportant-header">
+								<a href="create.html">CREATE</a>
+							</li>
+							<li class="exercise notImportant-header">
+								<a href="#">EXERCISE</a>
+							</li>
+						</ul>
 					</div>
-					<button class="drop-menu-header">
-						<i class="fas fa-caret-down"></i>
+					<div class="right">
+						<div class="user">
+							<a class="drop-profile user-menu" href="profile.html">
+								<i class="fas fa-user-circle"></i>
+								<img class="user-pfp" alt="user-profile-picture" />
+								<span class="user-name"></span>
+							</a>
+						</div>
+						<div class="sign-up">
+							<button class="login-button rounded-pill">
+								<a href="login.html">Login</a>
+							</button>
+							<button class="logout-button rounded-pill">
+								<a href="#">Logout</a>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="learn-nav">
+					<a class="hover-part current" href="alphabet.html">
+						<i class="fas fa-font"></i>
+						<span class="text">ALPHABET</span>
+					</a>
+					<a class="hover-part notImportant-nav" href="#">
+						<i class="fas fa-spell-check"></i>
+						<span class="text">GRAMMAR</span>
+					</a>
+					<a class="hover-part notImportant-nav" href="#">
+						<i class="fas fa-book"></i>
+						<span class="text">VOCABULARY</span>
+					</a>
+					<a class="hover-part notImportant-nav" href="#">
+						<i class="fas fa-marker"></i>
+						<span class="text">EXERCISE</span>
+					</a>
+				</div>
+			</div>
+			<div class="main">
+				<div class="flashcards-nav">
+					<div class="flashcards-top">
+						<div class="flashcards-top-1">
+							<img src="img/image 5.png" alt="" />
+							<div class="flashcards-word">FLASHCARDS</div>
+						</div>
+						<div class="flashcards-top-2">
+							<progress class="progress-bar" value="0" max="46">0%</progress>
+							<div class="progress-detail">
+								<div>PROGRESS:</div>
+								<div><span class="current-display-progress">1</span>/46</div>
+							</div>
+						</div>
+					</div>
+					<button class="flashcards-bot">
+						<img src="img/image 6.png" alt="" />
+						<div>Shuffle</div>
 					</button>
-					<ul class="nav-bar">
-						<li class="learning notImportant-header">
-							<a href="learning.html">LEARNING</a>
-						</li>
-						<li class="create notImportant-header">
-							<a href="create.html">CREATE</a>
-						</li>
-						<li class="exercise notImportant-header">
-							<a href="#">EXERCISE</a>
-						</li>
-					</ul>
 				</div>
-				<div class="right">
-					<div class="user">
-						<a class="drop-profile user-menu" href="profile.html">
-							<i class="fas fa-user-circle"></i>
-							<img class="user-pfp" alt="user-profile-picture" />
-							<span class="user-name"></span>
-						</a>
-					</div>
-					<div class="sign-up">
-						<button class="login-button rounded-pill">
-							<a href="login.html">Login</a>
-						</button>
-						<button class="logout-button rounded-pill">
-							<a href="#">Logout</a>
-						</button>
-					</div>
-				</div>
-			</div>
-			<div class="learn-nav">
-				<a class="hover-part current" href="alphabet.html">
-					<i class="fas fa-font"></i>
-					<span class="text">ALPHABET</span>
-				</a>
-				<a class="hover-part notImportant-nav" href="#">
-					<i class="fas fa-spell-check"></i>
-					<span class="text">GRAMMAR</span>
-				</a>
-				<a class="hover-part notImportant-nav" href="#">
-					<i class="fas fa-book"></i>
-					<span class="text">VOCABULARY</span>
-				</a>
-				<a class="hover-part notImportant-nav" href="#">
-					<i class="fas fa-marker"></i>
-					<span class="text">EXERCISE</span>
-				</a>
-			</div>
-		</div>
-		<div class="main">
-			<div class="flashcards-nav">
-				<div class="flashcards-top">
-					<div class="flashcards-top-1">
-						<img src="img/image 5.png" alt="" />
-						<div class="flashcards-word">FLASHCARDS</div>
-					</div>
-					<div class="flashcards-top-2">
-						<progress class="progress-bar" value="0" max="46">0%</progress>
+				<div class="flashcard-container">
+					<div class="flashcard-progress">
+						<progress class="progress-bar" value="0" max="46"></progress>
 						<div class="progress-detail">
 							<div>PROGRESS:</div>
 							<div><span class="current-display-progress">1</span>/46</div>
 						</div>
 					</div>
-				</div>
-				<button class="flashcards-bot">
-					<img src="img/image 6.png" alt="" />
-					<div>Shuffle</div>
-				</button>
-			</div>
-			<div class="flashcard-container">
-				<div class="flashcard-progress">
-					<progress class="progress-bar" value="0" max="46"></progress>
-					<div class="progress-detail">
-						<div>PROGRESS:</div>
-						<div><span class="current-display-progress">1</span>/46</div>
+					<!-- <button class="flashcards-bot-mobile">
+			<img src="img/image 6.png" alt="">
+			<span>Shuffle</span>
+		  </button> -->
+					<div class="flashcard">
+						<div class="definition"></div>
+						<div class="meaning"></div>
+					</div>
+					<div class="arrow">
+						<button class="left-arrow">
+							<img src="img/image 8.png" alt="" />
+						</button>
+						<div class="current-flashcard"><span class="current-display">1</span>/46</div>
+						<button class="right-arrow">
+							<img src="img/image 9.png" alt="" />
+						</button>
 					</div>
 				</div>
-				<!-- <button class="flashcards-bot-mobile">
-        <img src="img/image 6.png" alt="">
-        <span>Shuffle</span>
-      </button> -->
-				<div class="flashcard">
-					<div class="definition"></div>
-					<div class="meaning"></div>
-				</div>
-				<div class="arrow">
-					<button class="left-arrow">
-						<img src="img/image 8.png" alt="" />
-					</button>
-					<div class="current-flashcard"><span class="current-display">1</span>/46</div>
-					<button class="right-arrow">
-						<img src="img/image 9.png" alt="" />
-					</button>
-				</div>
 			</div>
-		</div>
+		</div>	
 		<div class="outMenu"></div>
 		<script src="https://kit.fontawesome.com/3449a8ce9f.js" crossorigin="anonymous"></script>
 		<script type="module" src="js/checkuser.js"></script>
 		<script src="js/main_helper.js"></script>
 		<script type="module" src="js/flashcard.js"></script>
+		<script src="js/loader.js"></script>
 	</body>
 </html>

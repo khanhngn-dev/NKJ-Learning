@@ -1,0 +1,11 @@
+.preload {
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    position: fixed;
+    background: url(../img/f339afd6cae98b4b926621f9aadc514b.gif) center center no-repeat;
+}
+
+.body {
+    opacity: 0.2;
+}

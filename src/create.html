@@ -11,119 +11,123 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="css/index.css" />
 		<link rel="stylesheet" href="css/create.css" />
+		<link rel="stylesheet" href="css/loader.css">
 	</head>
 	<body>
-		<div class="header">
-			<div class="left">
-				<div class="logo">
-					<a href="index.html">NKJ</a>
-				</div>
-				<button class="drop-menu-header">
-					<i class="fas fa-caret-down"></i>
-				</button>
-				<ul class="nav-bar">
-					<li class="learning notImportant-header">
-						<a href="learning.html">LEARNING</a>
-					</li>
-					<li class="create notImportant-header">
-						<a href="#">CREATE</a>
-					</li>
-					<li class="exercise notImportant-header">
-						<a href="#">EXERCISE</a>
-					</li>
-				</ul>
-			</div>
-			<div class="right">
-				<div class="user">
-					<a class="drop-profile user-menu" href="profile.html">
-						<i class="fas fa-user-circle"></i>
-						<img class="user-pfp" alt="user-profile-picture" />
-						<span class="user-name"></span>
-					</a>
-				</div>
-				<div class="sign-up">
-					<button class="login-button rounded-pill">
-						<a href="login.html">Login</a>
+		<div class="preload"></div>
+		<div class="body">
+			<div class="header">
+				<div class="left">
+					<div class="logo">
+						<a href="index.html">NKJ</a>
+					</div>
+					<button class="drop-menu-header">
+						<i class="fas fa-caret-down"></i>
 					</button>
-					<button class="logout-button rounded-pill">
-						<a href="#">Logout</a>
-					</button>
+					<ul class="nav-bar">
+						<li class="learning notImportant-header">
+							<a href="learning.html">LEARNING</a>
+						</li>
+						<li class="create notImportant-header">
+							<a href="#">CREATE</a>
+						</li>
+						<li class="exercise notImportant-header">
+							<a href="#">EXERCISE</a>
+						</li>
+					</ul>
+				</div>
+				<div class="right">
+					<div class="user">
+						<a class="drop-profile user-menu" href="profile.html">
+							<i class="fas fa-user-circle"></i>
+							<img class="user-pfp" alt="user-profile-picture" />
+							<span class="user-name"></span>
+						</a>
+					</div>
+					<div class="sign-up">
+						<button class="login-button rounded-pill">
+							<a href="login.html">Login</a>
+						</button>
+						<button class="logout-button rounded-pill">
+							<a href="#">Logout</a>
+						</button>
+					</div>
 				</div>
 			</div>
+			<div class="main">
+				<div class="main-left">
+					<div class="body-image">
+						<img src="img/Group 1378.png" alt="" />
+					</div>
+					<div class="create-part">
+						<div class="sentence">CREATE A NEW STUDY SET</div>
+						<div><input class="studyset-name rounded-pill" type="text" /></div>
+						<button class="create-button rounded-pill">CREATE</button>
+					</div>
+				</div>
+				<div class="main-right">
+					<div class="create-part mobile">
+						<div class="sentence">CREATE A NEW STUDY SET</div>
+						<div><input class="studyset-name rounded-pill" type="text" /></div>
+						<button class="create-button rounded-pill">CREATE</button>
+					</div>
+					<div class="container">
+						<div class="create-container draggable" draggable="true">
+							<div class="container-top">
+								<div class="index"></div>
+								<button class="delete"><i class="fas fa-trash-alt"></i></button>
+							</div>
+							<form>
+								<input type="text" class="card-input term" placeholder="Enter term" name="term" /><br />
+								<label for="term">Term</label><br />
+								<input type="text" class="card-input meaning" placeholder="Enter meaning" name="meaning" /><br />
+								<label for="meaning">Meaning</label><br />
+							</form>
+						</div>
+						<div class="create-container draggable" draggable="true">
+							<div class="container-top">
+								<div class="index"></div>
+								<button class="delete"><i class="fas fa-trash-alt"></i></button>
+							</div>
+							<form>
+								<div><input type="text" class="card-input term" placeholder="Enter term" name="term" /></div>
+								<div>
+									<label for="term">Term</label>
+								</div>
+								<div>
+									<input type="text" class="card-input meaning" placeholder="Enter meaning" name="meaning" />
+								</div>
+								<div>
+									<label for="meaning">Meaning</label>
+								</div>
+							</form>
+						</div>
+	
+						<div class="create-container draggable" draggable="true">
+							<div class="container-top">
+								<div class="index"></div>
+								<button class="delete"><i class="fas fa-trash-alt"></i></button>
+							</div>
+							<form>
+								<input type="text" class="card-input term" placeholder="Enter term" name="term" /><br />
+								<label for="term">Term</label><br />
+								<input type="text" class="card-input meaning" placeholder="Enter meaning" name="meaning" /><br />
+								<label for="meaning">Meaning</label><br />
+							</form>
+						</div>
+					</div>
+					<div class="add-create">
+						<button class="add-button rounded-pill">+ ADD CARD</button>
+					</div>
+				</div>
+			</div>
+			<div class="outMenu"></div>
 		</div>
-		<div class="main">
-			<div class="main-left">
-				<div class="body-image">
-					<img src="img/Group 1378.png" alt="" />
-				</div>
-				<div class="create-part">
-					<div class="sentence">CREATE A NEW STUDY SET</div>
-					<div><input class="studyset-name rounded-pill" type="text" /></div>
-					<button class="create-button rounded-pill">CREATE</button>
-				</div>
-			</div>
-			<div class="main-right">
-				<div class="create-part mobile">
-					<div class="sentence">CREATE A NEW STUDY SET</div>
-					<div><input class="studyset-name rounded-pill" type="text" /></div>
-					<button class="create-button rounded-pill">CREATE</button>
-				</div>
-				<div class="container">
-					<div class="create-container draggable" draggable="true">
-						<div class="container-top">
-							<div class="index"></div>
-							<button class="delete"><i class="fas fa-trash-alt"></i></button>
-						</div>
-						<form>
-							<input type="text" class="card-input term" placeholder="Enter term" name="term" /><br />
-							<label for="term">Term</label><br />
-							<input type="text" class="card-input meaning" placeholder="Enter meaning" name="meaning" /><br />
-							<label for="meaning">Meaning</label><br />
-						</form>
-					</div>
-					<div class="create-container draggable" draggable="true">
-						<div class="container-top">
-							<div class="index"></div>
-							<button class="delete"><i class="fas fa-trash-alt"></i></button>
-						</div>
-						<form>
-							<div><input type="text" class="card-input term" placeholder="Enter term" name="term" /></div>
-							<div>
-								<label for="term">Term</label>
-							</div>
-							<div>
-								<input type="text" class="card-input meaning" placeholder="Enter meaning" name="meaning" />
-							</div>
-							<div>
-								<label for="meaning">Meaning</label>
-							</div>
-						</form>
-					</div>
-
-					<div class="create-container draggable" draggable="true">
-						<div class="container-top">
-							<div class="index"></div>
-							<button class="delete"><i class="fas fa-trash-alt"></i></button>
-						</div>
-						<form>
-							<input type="text" class="card-input term" placeholder="Enter term" name="term" /><br />
-							<label for="term">Term</label><br />
-							<input type="text" class="card-input meaning" placeholder="Enter meaning" name="meaning" /><br />
-							<label for="meaning">Meaning</label><br />
-						</form>
-					</div>
-				</div>
-				<div class="add-create">
-					<button class="add-button rounded-pill">+ ADD CARD</button>
-				</div>
-			</div>
-		</div>
-		<div class="outMenu"></div>
-
 		<script src="https://kit.fontawesome.com/3449a8ce9f.js" crossorigin="anonymous"></script>
 		<script type="module" src="js/checkuser.js"></script>
 		<script src="js/main_helper.js"></script>
 		<script src="js/drag.js"></script>
-		<script type="module" src="js/create.js"></script>
+		<script type="module" src="js/create.js"></script>		
+		<script src="js/loader.js"></script>
 	</body>
 </html>

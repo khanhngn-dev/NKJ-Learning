@@ -10,313 +10,318 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="css/index.css" />
 		<link rel="stylesheet" href="css/alphabet.css" />
+		<link rel="stylesheet" href="css/loader.css">
 	</head>
 
 	<body>
-		<div class="header">
-			<div class="top">
-				<div class="left">
-					<div class="logo">
-						<a href="index.html">NKJ</a>
-					</div>
-					<button class="drop-menu-header">
-						<i class="fas fa-caret-down"></i>
-					</button>
-					<ul class="nav-bar">
-						<li class="learning notImportant-header">
-							<a href="learning.html">LEARNING</a>
-						</li>
-						<li class="create notImportant-header">
-							<a href="create.html">CREATE</a>
-						</li>
-						<li class="exercise notImportant-header">
-							<a href="#">EXERCISE</a>
-						</li>
-					</ul>
-				</div>
-				<div class="right">
-					<div class="user">
-						<a class="drop-profile user-menu" href="profile.html">
-							<i class="fas fa-user-circle"></i>
-							<img class="user-pfp" alt="user-profile-picture" />
-							<span class="user-name"></span>
-						</a>
-					</div>
-					<div class="sign-up">
-						<button class="login-button rounded-pill">
-							<a href="login.html">Login</a>
+		<div class="preload"></div>
+		<div class="body">
+			<div class="header">
+				<div class="top">
+					<div class="left">
+						<div class="logo">
+							<a href="index.html">NKJ</a>
+						</div>
+						<button class="drop-menu-header">
+							<i class="fas fa-caret-down"></i>
 						</button>
-						<button class="logout-button rounded-pill">
-							<a href="#">Logout</a>
-						</button>
+						<ul class="nav-bar">
+							<li class="learning notImportant-header">
+								<a href="learning.html">LEARNING</a>
+							</li>
+							<li class="create notImportant-header">
+								<a href="create.html">CREATE</a>
+							</li>
+							<li class="exercise notImportant-header">
+								<a href="#">EXERCISE</a>
+							</li>
+						</ul>
+					</div>
+					<div class="right">
+						<div class="user">
+							<a class="drop-profile user-menu" href="profile.html">
+								<i class="fas fa-user-circle"></i>
+								<img class="user-pfp" alt="user-profile-picture" />
+								<span class="user-name"></span>
+							</a>
+						</div>
+						<div class="sign-up">
+							<button class="login-button rounded-pill">
+								<a href="login.html">Login</a>
+							</button>
+							<button class="logout-button rounded-pill">
+								<a href="#">Logout</a>
+							</button>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="learn-nav">
-				<button class="drop-menu-nav">
-					<i class="fas fa-bars"></i>
-				</button>
-				<a class="hover-part current" href="alphabet.html">
-					<i class="fas fa-font"></i>
-					<span class="text">ALPHABET</span>
-				</a>
-				<a class="hover-part notImportant-nav" href="#">
-					<i class="fas fa-spell-check"></i>
-					<span class="text">GRAMMAR</span>
-				</a>
-				<a class="hover-part notImportant-nav" href="#">
-					<i class="fas fa-book"></i>
-					<span class="text">VOCABULARY</span>
-				</a>
-				<a class="hover-part notImportant-nav" href="#">
-					<i class="fas fa-marker"></i>
-					<span class="text">EXERCISE</span>
-				</a>
-			</div>
-		</div>
-		<div class="main">
-			<ul class="alphabet-nav">
-				<li class="hiragana">HIRAGANA</li>
-				<li class="katakana">KATAKANA</li>
-				<li class="kanji">KANJI</li>
-			</ul>
-			<div class="alphabet-table">
-				<div class="title">HIRAGANA</div>
-				<div class="alphabet">
-					<!-- a sound -->
-					<button class="letter">
-						<div class="hira-letter">あ</div>
-						<div class="meaning">a</div>
+				<div class="learn-nav">
+					<button class="drop-menu-nav">
+						<i class="fas fa-bars"></i>
 					</button>
-					<button class="letter">
-						<div class="hira-letter">か</div>
-						<div class="meaning">ka</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">さ</div>
-						<div class="meaning">sa</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">た</div>
-						<div class="meaning">ta</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">な</div>
-						<div class="meaning">na</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">は</div>
-						<div class="meaning">ha</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">ま</div>
-						<div class="meaning">ma</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">や</div>
-						<div class="meaning">ya</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">ら</div>
-						<div class="meaning">ra</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">わ</div>
-						<div class="meaning">wa</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">ん</div>
-						<div class="meaning">n</div>
-					</button>
-					<!-- i sound -->
-					<button class="letter">
-						<div class="hira-letter">い</div>
-						<div class="meaning">i</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">き</div>
-						<div class="meaning">ki</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">し</div>
-						<div class="meaning">shi</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">ち</div>
-						<div class="meaning">chi</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">に</div>
-						<div class="meaning">ni</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">ひ</div>
-						<div class="meaning">hi</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">み</div>
-						<div class="meaning">mi</div>
-					</button>
-					<button class="letter blank">
-						<div class="hira-letter"></div>
-						<div class="meaning"></div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">り</div>
-						<div class="meaning">ri</div>
-					</button>
-					<button class="letter blank">
-						<div class="hira-letter"></div>
-						<div class="meaning"></div>
-					</button>
-					<button class="letter blank">
-						<div class="hira-letter"></div>
-						<div class="meaning"></div>
-					</button>
-					<!-- u sound -->
-					<button class="letter">
-						<div class="hira-letter">う</div>
-						<div class="meaning">u</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">く</div>
-						<div class="meaning">ku</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">す</div>
-						<div class="meaning">su</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">つ</div>
-						<div class="meaning">tsu</div>
-					</button>
-
-					<button class="letter">
-						<div class="hira-letter">ぬ</div>
-						<div class="meaning">nu</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">ふ</div>
-						<div class="meaning">hu</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">む</div>
-						<div class="meaning">mu</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">ゆ</div>
-						<div class="meaning">yu</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">る</div>
-						<div class="meaning">ru</div>
-					</button>
-					<button class="letter blank">
-						<div class="hira-letter"></div>
-						<div class="meaning"></div>
-					</button>
-					<button class="letter blank">
-						<div class="hira-letter"></div>
-						<div class="meaning"></div>
-					</button>
-					<!-- e sound -->
-					<button class="letter">
-						<div class="hira-letter">え</div>
-						<div class="meaning">e</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">け</div>
-						<div class="meaning">ke</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">せ</div>
-						<div class="meaning">se</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">て</div>
-						<div class="meaning">te</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">ね</div>
-						<div class="meaning">ne</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">へ</div>
-						<div class="meaning">he</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">め</div>
-						<div class="meaning">me</div>
-					</button>
-					<button class="letter blank">
-						<div class="hira-letter"></div>
-						<div class="meaning"></div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">れ</div>
-						<div class="meaning">re</div>
-					</button>
-					<button class="letter blank">
-						<div class="hira-letter"></div>
-						<div class="meaning"></div>
-					</button>
-					<button class="letter blank">
-						<div class="hira-letter"></div>
-						<div class="meaning"></div>
-					</button>
-					<!-- o sound -->
-					<button class="letter">
-						<div class="hira-letter">お</div>
-						<div class="meaning">o</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">こ</div>
-						<div class="meaning">ko</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">そ</div>
-						<div class="meaning">so</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">と</div>
-						<div class="meaning">to</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">の</div>
-						<div class="meaning">no</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">ほ</div>
-						<div class="meaning">ho</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">も</div>
-						<div class="meaning">mo</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">よ</div>
-						<div class="meaning">yo</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">ろ</div>
-						<div class="meaning">ro</div>
-					</button>
-					<button class="letter">
-						<div class="hira-letter">を</div>
-						<div class="meaning">wo</div>
-					</button>
-					<button class="letter blank">
-						<div class="hira-letter"></div>
-						<div class="meaning"></div>
-					</button>
+					<a class="hover-part current" href="alphabet.html">
+						<i class="fas fa-font"></i>
+						<span class="text">ALPHABET</span>
+					</a>
+					<a class="hover-part notImportant-nav" href="#">
+						<i class="fas fa-spell-check"></i>
+						<span class="text">GRAMMAR</span>
+					</a>
+					<a class="hover-part notImportant-nav" href="#">
+						<i class="fas fa-book"></i>
+						<span class="text">VOCABULARY</span>
+					</a>
+					<a class="hover-part notImportant-nav" href="#">
+						<i class="fas fa-marker"></i>
+						<span class="text">EXERCISE</span>
+					</a>
 				</div>
-				<a class="flashcard-button" href="flashcard.html">FLASHCARD</a>
 			</div>
+			<div class="main">
+				<ul class="alphabet-nav">
+					<li class="hiragana">HIRAGANA</li>
+					<li class="katakana">KATAKANA</li>
+					<li class="kanji">KANJI</li>
+				</ul>
+				<div class="alphabet-table">
+					<div class="title">HIRAGANA</div>
+					<div class="alphabet">
+						<!-- a sound -->
+						<button class="letter">
+							<div class="hira-letter">あ</div>
+							<div class="meaning">a</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">か</div>
+							<div class="meaning">ka</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">さ</div>
+							<div class="meaning">sa</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">た</div>
+							<div class="meaning">ta</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">な</div>
+							<div class="meaning">na</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">は</div>
+							<div class="meaning">ha</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">ま</div>
+							<div class="meaning">ma</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">や</div>
+							<div class="meaning">ya</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">ら</div>
+							<div class="meaning">ra</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">わ</div>
+							<div class="meaning">wa</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">ん</div>
+							<div class="meaning">n</div>
+						</button>
+						<!-- i sound -->
+						<button class="letter">
+							<div class="hira-letter">い</div>
+							<div class="meaning">i</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">き</div>
+							<div class="meaning">ki</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">し</div>
+							<div class="meaning">shi</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">ち</div>
+							<div class="meaning">chi</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">に</div>
+							<div class="meaning">ni</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">ひ</div>
+							<div class="meaning">hi</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">み</div>
+							<div class="meaning">mi</div>
+						</button>
+						<button class="letter blank">
+							<div class="hira-letter"></div>
+							<div class="meaning"></div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">り</div>
+							<div class="meaning">ri</div>
+						</button>
+						<button class="letter blank">
+							<div class="hira-letter"></div>
+							<div class="meaning"></div>
+						</button>
+						<button class="letter blank">
+							<div class="hira-letter"></div>
+							<div class="meaning"></div>
+						</button>
+						<!-- u sound -->
+						<button class="letter">
+							<div class="hira-letter">う</div>
+							<div class="meaning">u</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">く</div>
+							<div class="meaning">ku</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">す</div>
+							<div class="meaning">su</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">つ</div>
+							<div class="meaning">tsu</div>
+						</button>
+	
+						<button class="letter">
+							<div class="hira-letter">ぬ</div>
+							<div class="meaning">nu</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">ふ</div>
+							<div class="meaning">hu</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">む</div>
+							<div class="meaning">mu</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">ゆ</div>
+							<div class="meaning">yu</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">る</div>
+							<div class="meaning">ru</div>
+						</button>
+						<button class="letter blank">
+							<div class="hira-letter"></div>
+							<div class="meaning"></div>
+						</button>
+						<button class="letter blank">
+							<div class="hira-letter"></div>
+							<div class="meaning"></div>
+						</button>
+						<!-- e sound -->
+						<button class="letter">
+							<div class="hira-letter">え</div>
+							<div class="meaning">e</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">け</div>
+							<div class="meaning">ke</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">せ</div>
+							<div class="meaning">se</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">て</div>
+							<div class="meaning">te</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">ね</div>
+							<div class="meaning">ne</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">へ</div>
+							<div class="meaning">he</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">め</div>
+							<div class="meaning">me</div>
+						</button>
+						<button class="letter blank">
+							<div class="hira-letter"></div>
+							<div class="meaning"></div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">れ</div>
+							<div class="meaning">re</div>
+						</button>
+						<button class="letter blank">
+							<div class="hira-letter"></div>
+							<div class="meaning"></div>
+						</button>
+						<button class="letter blank">
+							<div class="hira-letter"></div>
+							<div class="meaning"></div>
+						</button>
+						<!-- o sound -->
+						<button class="letter">
+							<div class="hira-letter">お</div>
+							<div class="meaning">o</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">こ</div>
+							<div class="meaning">ko</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">そ</div>
+							<div class="meaning">so</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">と</div>
+							<div class="meaning">to</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">の</div>
+							<div class="meaning">no</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">ほ</div>
+							<div class="meaning">ho</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">も</div>
+							<div class="meaning">mo</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">よ</div>
+							<div class="meaning">yo</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">ろ</div>
+							<div class="meaning">ro</div>
+						</button>
+						<button class="letter">
+							<div class="hira-letter">を</div>
+							<div class="meaning">wo</div>
+						</button>
+						<button class="letter blank">
+							<div class="hira-letter"></div>
+							<div class="meaning"></div>
+						</button>
+					</div>
+					<a class="flashcard-button" href="flashcard.html">FLASHCARD</a>
+				</div>
+			</div>
+			<div class="outMenu"></div>
 		</div>
-		<div class="outMenu"></div>
 		<script src="https://kit.fontawesome.com/3449a8ce9f.js" crossorigin="anonymous"></script>
 		<script type="module" src="js/checkuser.js"></script>
 		<script src="js/main_helper.js"></script>
 		<script type="module" src="js/alphabet.js"></script>
+		<script src="js/loader.js"></script>
 	</body>
 </html>
