@@ -174,7 +174,8 @@ function createLearningSet() {
 				term: termArray,
 				meaning: meaningArray,
 			});
-			alert('Create successfully');
+			// alert('Create successfully');
+			toastr.success('Create successfully');
 		}
 	}
 }
