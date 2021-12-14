@@ -92,6 +92,19 @@ img {
 	border-radius: 30px;
 }
 
+.main.no-user {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: calc(100vh - 70px);
+}
+
+.please-login {
+	font-size: 3em;
+	font-weight: bold;
+	color: #bb002d;
+}
+
 form {
 	width: 85%;
 }

@@ -179,5 +179,11 @@ window.onload = function () {
 		localStorage.getItem('loggedIn') == undefined &&
 		sessionStorage.getItem('loggedIn') == undefined
 	)
-		window.location.assign('login.html');
+		document.querySelector('.main-left').style.display = 'none';
+	document.querySelector('.main-right').style.display = 'none';
+	var pleaseLogin_text = document.createElement('div');
+	pleaseLogin_text.innerHTML = 'PLEASE LOGIN TO VIEW YOUR CREATE';
+	pleaseLogin_text.className = 'please-login';
+	document.querySelector('.main').appendChild(pleaseLogin_text);
+	document.querySelector('.main').classList.add('no-user');
 };
