@@ -41,8 +41,10 @@ function getUser() {
 	onAuthStateChanged(auth, (cred) => {
 		if (cred) {
 			info = cred;
-			mainImg.src = cred.photoURL;
-			displayName.setAttribute('value', cred.displayName);
+			mainImg.src = cred.photoURL || '../img/pfp-cat.jpg';
+			cred.displayName
+				? displayName.setAttribute('value', cred.displayName)
+				: displayName.setAttribute('value', cred.email);
 		} else {
 			mainDiv.classList.add('no-user');
 			mainDiv.innerHTML = 'Please login to view your profile.';
