@@ -300,6 +300,7 @@ function profile() {
 		updateProgress();
 		resetPassword();
 	}
+	preload(2150);
 }
 
 window.onload = profile();

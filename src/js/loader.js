@@ -1,9 +1,16 @@
 const body = document.querySelector('.body');
-const preload = document.querySelector('.preload');
+const preloader = document.querySelector('.preload');
 
-window.addEventListener('load', function () {
-	setTimeout(function () {
-		preload.style.display = 'none';
+// window.addEventListener('load', function () {
+// 	setTimeout(function () {
+// 		preload.style.display = 'none';
+// 		body.style.opacity = '1';
+// 	}, 500);
+// });
+
+function preload(time) {
+    setTimeout(function () {
+		preloader.style.display = 'none';
 		body.style.opacity = '1';
-	}, 500);
-});
+	}, time);
+}

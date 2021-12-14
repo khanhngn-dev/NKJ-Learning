@@ -322,6 +322,7 @@ function load() {
 		updateProgress();
 		updateMainFlashCard();
 	});
+	preload(1600);
 }
 
 window.onload = load();

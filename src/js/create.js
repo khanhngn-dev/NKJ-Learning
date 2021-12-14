@@ -188,4 +188,5 @@ window.onload = function () {
 		document.querySelector('.main').appendChild(pleaseLogin_text);
 		document.querySelector('.main').classList.add('no-user');
 	}
+	preload(400);
 };

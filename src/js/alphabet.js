@@ -33,7 +33,7 @@ function start() {
 	clickDropDown(navButton, navList, alphabetList);
 	clickDropDown(alphabetButton, alphabetList, navList);
 	clickOverlay();
-
+	preload(500);
 	loadSounds();
 }
 

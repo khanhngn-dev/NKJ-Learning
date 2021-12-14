@@ -238,6 +238,7 @@ function load() {
 			window.location.assign('flashcard.html');
 		}
 	});
+	preload(2000);
 }
 
 window.onload = load();
