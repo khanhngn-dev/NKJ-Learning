@@ -11,6 +11,7 @@ import {
 	getStorage,
 	ref,
 	uploadBytes,
+	getDownloadURL,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-storage.js';
 
 import {
@@ -218,9 +219,22 @@ function updateProfileImg() {
 	infoForm.addEventListener('submit', (e) => {
 		e.preventDefault();
 
-		// Update profile picture
 		uploadBytes(ref(storage, `pfp-user/${info.uid}`), imgFile).then((snapshot) => {
-			window.location.reload();
+			if (info.photoURL) {
+				window.location.reload();
+			} else {
+				getDownloadURL(ref(storage, `pfp-user/${info.uid}`)).then((url) => {
+					updateProfile(info, {
+						photoURL: url,
+					})
+						.then(() => {
+							window.location.reload();
+						})
+						.catch((err) => {
+							displayInfo(err, infoForm, imgPreview);
+						});
+				});
+			}
 		});
 	});
 }
