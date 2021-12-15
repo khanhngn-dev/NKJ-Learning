@@ -117,7 +117,6 @@ function setProfile() {
 
 		// Update profile picture
 		uploadBytes(ref(storage, `pfp-user/${info.uid}`), imgFile).then((snapshot) => {
-			console.log(snapshot);
 			getDownloadURL(ref(storage, `pfp-user/${info.uid}`)).then((url) => {
 				// Update user profile with the provided photoURL
 				updateProfile(info, {
@@ -128,7 +127,7 @@ function setProfile() {
 						window.location.assign('index.html');
 					})
 					.catch((err) => {
-						displayInfo(err, signupForm, error);
+						displayInfo(err, signupForm, imgPreview);
 					});
 			});
 		});
