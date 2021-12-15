@@ -368,6 +368,7 @@ progress::-webkit-progress-bar {
 	margin: auto;
 	margin-top: 10px;
 	width: 30vw;
+	max-width: 350px;
 	border-radius: 50%;
 	object-fit: cover; /* Do not scale the image */
 	object-position: center; /* Center the image within the element */
@@ -383,6 +384,18 @@ progress::-webkit-progress-bar {
 	font-size: larger;
 	font-weight: bold;
 	color: #bb002d;
+}
+
+#info-form .preview .error {
+	text-align: center;
+	margin-top: 30px;
+	color: #bb002d;
+	font-weight: bold;
+	font-size: larger;
+	background: #fff;
+	border-radius: 15px;
+	border: 3px solid #bb002d;
+	padding: 20px 10px;
 }
 
 #info-form.open .submit,
