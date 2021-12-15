@@ -84,12 +84,12 @@ img {
 	margin: 20px;
 	background-color: #ffb8b1;
 	width: 90%;
-	height: 25vh;
+	height: 180px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
-	border-radius: 30px;
+	border-radius: 15px;
 }
 
 .main.no-user {
@@ -153,7 +153,60 @@ label {
 }
 
 *:focus {
-    outline: none;
+	outline: none;
+}
+
+.confirm {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 20px;
+	border-radius: 15px;
+	height: auto;
+	width: 70vw;
+	display: flex;
+	flex-flow: column;
+	font-weight: bold;
+	align-items: center;
+	background: #ffb8b1;
+	transition: all 0.5s ease;
+	z-index: 1;
+}
+
+.confirm .message {
+	color: #bb002d;
+	font-size: 20px;
+}
+
+.confirm .button-container {
+	display: flex;
+}
+
+.confirm .button {
+	margin: 30px;
+	padding: 10px 20px;
+	border-radius: 15px;
+	font-size: 18px;
+	width: 120px;
+	transition: all 0.2s ease;
+}
+
+.button#confirm {
+	background: #bb002d;
+	color: white;
+	border: 3px solid #bb002d;
+}
+
+.button#cancel {
+	background: white;
+	border: 3px solid #000;
+}
+
+#confirm:hover,
+#cancel:hover {
+	background: #fa0000;
+	color: white;
 }
 
 @media screen and (max-width: 767px) {
@@ -176,5 +229,20 @@ label {
 
 	.create-container {
 		width: 100%;
+	}
+
+	.confirm {
+		width: 90vw;
+	}
+
+	.confirm .button {
+		margin: 20px;
+		width: 120px;
+	}
+}
+@media screen and (max-width: 321px) {
+		.confirm .button {
+		margin: 10px;
+		width: 120px;
 	}
 }
