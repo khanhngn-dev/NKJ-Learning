@@ -248,6 +248,10 @@ a {
 }
 
 @media screen and (max-width: 767px) {
+	.logo a{
+		margin: 0 10px;
+	}
+
 	.drop-menu-header {
 		display: block;
 		border-radius: 50%;
