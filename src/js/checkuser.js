@@ -28,7 +28,6 @@ const logoutButton = document.querySelector('.logout-button');
 const user = document.querySelector('.user');
 const user_name = user ? user.querySelector('.user-name') : false;
 const user_pfp = user ? user.querySelector('.user-pfp') : false;
-const default_icon = user ? user.querySelector('.fa-user-circle') : false;
 
 function checkLogin() {
 	onAuthStateChanged(auth, (cred) => {
@@ -41,9 +40,8 @@ function checkLogin() {
 				user_name.appendChild(document.createTextNode(cred.displayName || cred.email));
 				if (cred.photoURL) {
 					user_pfp.setAttribute('src', cred.photoURL);
-					default_icon.style.display = 'none';
 				} else {
-					user_pfp.style.display = 'none';
+					user_pfp.setAttribute('src', '../img/pfp-cat.jpg');
 				}
 			}
 		} else {
@@ -67,7 +65,7 @@ function checkLogout() {
 				window.location.reload();
 			})
 			.catch((err) => {
-				console.log(err.message);
+				console.error(err.message);
 			});
 	});
 }
