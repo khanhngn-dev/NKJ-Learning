@@ -156,6 +156,7 @@ function accept(btn, form) {
 	container.removeChild(btn.parentNode.parentNode);
 	bodyDiv.removeChild(form);
 	outMenu.classList.remove('open');
+	toastr.success('Delete successfully');
 }
 
 function cancel(form) {
@@ -165,7 +166,7 @@ function cancel(form) {
 
 function deleteCard(btn) {
 	if (container.querySelectorAll('.create-container').length == 1) {
-		alert('call TOAST ERROR CANNOT REMOVE THE LAST CARD');
+		toastr.warning('Cannot remove the only card');
 	} else {
 		const confirmForm = createForm();
 		bodyDiv.insertBefore(confirmForm, outMenu);
