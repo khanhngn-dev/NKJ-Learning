@@ -170,6 +170,7 @@ async function updateProgress() {
 			delete_button.addEventListener('click', function () {
 				user_progress.removeChild(this.parentNode.parentNode);
 				deleteDoc(doc(userRef, 'learning', `${nameArray[i]}`));
+				localStorage.removeItem('learning');
 			});
 		}
 	}
