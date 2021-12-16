@@ -1,8 +1,7 @@
 import {
 	getFirestore,
 	doc,
-	getDoc,
-	setDoc,
+	setDoc
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
 
 const create_button = document.querySelector('.create-button');
@@ -11,6 +10,7 @@ const container = document.querySelector('.container');
 const studyset_name = document.querySelector('.studyset-name');
 const bodyDiv = document.querySelector('.body');
 var delete_buttons = document.querySelectorAll('.delete');
+const learningSet_div = document.querySelector('.learning-set')
 
 var i = 10;
 
@@ -234,6 +234,11 @@ function createLearningSet() {
 			});
 			// alert('Create successfully');
 			toastr.success('Create successfully');
+
+			setTimeout(function() {
+				localStorage.setItem('learningSet', studyset_name.value)
+				window.location.assign('learning.html');
+			}, 1000)
 		}
 	}
 }
