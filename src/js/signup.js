@@ -73,26 +73,35 @@ function comparePassword(password, confirm) {
 function updateProfileImg(form, input, preview) {
 	var imgFile = input.files[0];
 	if (imgFile.type.startsWith('image/')) {
-		unlockSubmit(infoForm.querySelector('.submit'));
-		preview.innerHTML = '';
-		// Create Img element
-		var img = document.createElement('img');
-		img.file = imgFile;
+		if (imgFile.size <= 1000000) {
+			unlockSubmit(infoForm.querySelector('.submit'));
+			preview.innerHTML = '';
+			// Create Img element
+			var img = document.createElement('img');
+			img.file = imgFile;
 
-		// Add or replace if necessary
-		if (form.querySelector('img')) {
-			preview.replaceChild(img, form.querySelector('img'));
-		} else preview.appendChild(img);
+			// Add or replace if necessary
+			if (form.querySelector('img')) {
+				preview.replaceChild(img, form.querySelector('img'));
+			} else preview.appendChild(img);
 
-		// Read the file
-		const reader = new FileReader();
-		reader.onload = (function (aImg) {
-			return function (e) {
-				aImg.src = e.target.result;
-			};
-		})(img);
-		reader.readAsDataURL(img.file);
-		return img.file;
+			// Read the file
+			const reader = new FileReader();
+			reader.onload = (function (aImg) {
+				return function (e) {
+					aImg.src = e.target.result;
+				};
+			})(img);
+			reader.readAsDataURL(img.file);
+			return img.file;
+		} else {
+			displayInfo(
+				'<span class="error">Your image is too large, please choose a smaller file</span>',
+				form,
+				preview
+			);
+			lockSubmit(infoForm.querySelector('.submit'));
+		}
 	} else {
 		displayInfo('<span class="error">Please upload an image type</span>', form, preview);
 		lockSubmit(infoForm.querySelector('.submit'));
@@ -124,7 +133,10 @@ function setProfile() {
 					photoURL: url,
 				})
 					.then(() => {
-						window.location.assign('index.html');
+						toastr.success('Your profile has been created, redirecting..');
+						setTimeout(() => {
+							window.location.assign('index.html');
+						}, 2000);
 					})
 					.catch((err) => {
 						displayInfo(err, signupForm, imgPreview);
