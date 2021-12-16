@@ -439,6 +439,10 @@ progress::-webkit-progress-bar {
 		justify-content: space-between;
 	}
 
+	.empty-div {
+		flex-direction: column;
+	}
+
 	.main-pfp {
 		width: 40vw;
 		height: 40vw;
