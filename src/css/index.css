@@ -14,7 +14,7 @@
 }
 
 .toast {
-    opacity: 1 !important;
+	opacity: 1 !important;
 	animation: fade 0.5s ease-out;
 }
 
@@ -28,7 +28,7 @@
 		opacity: 0;
 		display: none;
 	}
-}	
+}
 
 a {
 	text-decoration: none;
@@ -57,12 +57,26 @@ a {
 	display: none;
 }
 
+.drop-menu-header-learning {
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+}
+
+.learning a {
+	margin-right: 10px;
+}
+
 .left,
 .right,
 .user-menu {
 	display: flex;
 	align-items: center;
 	height: 70px;
+}
+
+.left {
+	width: 600px;
 }
 
 .user {
@@ -111,9 +125,11 @@ a {
 
 .notImportant-header {
 	text-align: center;
-	width: 120px;
+	width: 150px;
 	height: 70px;
-	line-height: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .notImportant-header:hover {
@@ -243,12 +259,32 @@ a {
 	overflow: hidden;
 }
 
+.learning-set {
+	display: none;
+	content: '';
+	position: fixed;
+	top: 70px;
+	left: 450px;
+	width: 300px;
+	height: 80vh;
+	background: rgba(0, 0, 0, 0.608);
+	overflow: hidden;
+}
+
+.learning-set.open {
+	display: block;
+}
+
 .outMenu.open {
 	display: block;
 }
 
-@media screen and (max-width: 767px) {
-	.logo a{
+.set {
+	color: white;
+}
+
+@media screen and (max-width: 790px) {
+	.logo a {
 		margin: 0 10px;
 	}
 
@@ -280,7 +316,7 @@ a {
 	}
 
 	.notImportant-header {
-		line-height: 50px;
+		/* line-height: 50px; */
 		height: 0;
 		opacity: 0;
 		width: 100%;
@@ -297,6 +333,12 @@ a {
 	.nav-bar.open {
 		opacity: 1;
 		height: 150px;
+	}
+
+	.learning-set {
+		left: 0;
+		width: 100vw;
+		height: 70vh;
 	}
 
 	.nav-bar a {

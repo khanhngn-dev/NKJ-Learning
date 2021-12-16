@@ -306,7 +306,8 @@ function resetPassword() {
 }
 
 function profile() {
-	clickDropDown();
+	clickDropDown(navButton, navList, learningList);
+	clickDropDown(learning_drop_button, learningList, navList);
 	clickOverlay();
 	getUser();
 	if (uid) {

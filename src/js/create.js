@@ -156,7 +156,7 @@ function accept(btn, form) {
 	container.removeChild(btn.parentNode.parentNode);
 	bodyDiv.removeChild(form);
 	outMenu.classList.remove('open');
-	toastr.success('Delete successfully')
+	toastr.success('Delete successfully');
 }
 
 function cancel(form) {
@@ -193,8 +193,9 @@ outMenu.addEventListener('click', () => {
 	}
 });
 
+clickDropDown(navButton, navList, learningList);
+clickDropDown(learning_drop_button, learningList, navList);
 clickOverlay();
-clickDropDown();
 
 const db = getFirestore();
 const uid = localStorage.getItem('loggedIn') || sessionStorage.getItem('loggedIn');

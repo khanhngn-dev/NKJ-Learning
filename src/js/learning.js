@@ -221,7 +221,8 @@ function increaseShuffle() {
 }
 
 function load() {
-	clickDropDown();
+	clickDropDown(navButton, navList, learningList);
+	clickDropDown(learning_drop_button, learningList, navList);
 	clickOverlay();
 	getUser().then(() => {
 		if (uid && learningSet) {

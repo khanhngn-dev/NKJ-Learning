@@ -9,12 +9,12 @@
 		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="css/index.css" />
-		<link rel="stylesheet" href="css/loader.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+		<link rel="stylesheet" href="css/loader.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 	</head>
 
 	<body>
-		<div class="preload"></div>
+		<div class="preload"></div>		
 		<div class="body">
 			<div class="header">
 				<div class="left">
@@ -32,7 +32,10 @@
 							<a href="#">EXERCISE</a>
 						</li>
 						<li class="learning notImportant-header">
-							<a href="learning.html">LEARNING</a>
+								<a href="learning.html">LEARNING</a>
+								<button class="drop-menu-header-learning">
+									<i class="fas fa-caret-down"></i>
+								</button>
 						</li>
 					</ul>
 				</div>
@@ -67,15 +70,16 @@
 				</div>
 			</div>
 			<div class="outMenu"></div>
+			<div class="learning-set"></div>
+			</div>
 		</div>
-
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 		<script src="https://kit.fontawesome.com/3449a8ce9f.js" crossorigin="anonymous"></script>
 		<script type="module" src="js/checkuser.js"></script>
 		<script src="js/loader.js"></script>
 		<script src="js/main_helper.js"></script>
-		<script src="js/index.js"></script>
 		
+		<script type="module" src="js/index.js"></script>
 	</body>
 </html>

@@ -1,6 +1,8 @@
 const navButton = document.querySelector('.drop-menu-header');
+const learning_drop_button = document.querySelector('.drop-menu-header-learning');
 const navList = document.querySelector('.nav-bar');
 const outMenu = document.querySelector('.outMenu');
+const learningList = document.querySelector('.learning-set');
 
 function openMenu(list, otherList = undefined) {
 	list.classList.add('open');
@@ -13,7 +15,7 @@ function closeMenu(list) {
 	outMenu.classList.remove('open');
 }
 
-function clickDropDown(parent = navButton, list = navList, otherList = undefined) {
+function clickDropDown(parent, list, otherList) {
 	parent.addEventListener('click', function () {
 		if (!list.classList.contains('open')) {
 			openMenu(list, otherList);
@@ -26,6 +28,7 @@ function clickDropDown(parent = navButton, list = navList, otherList = undefined
 function clickOverlay() {
 	outMenu.addEventListener('click', function () {
 		closeMenu(document.querySelector('.open'));
+		closeMenu(learningList)
 	});
 }
 
@@ -46,4 +49,9 @@ function displayInfo(info, form, location) {
 	location.innerHTML = infoMessage.charAt(0).toUpperCase() + infoMessage.slice(1);
 	location.style.display = 'block';
 	form.reset();
+}
+
+
+function loadLearningSet() {
+
 }
