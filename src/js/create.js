@@ -166,7 +166,7 @@ function cancel(form) {
 
 function deleteCard(btn) {
 	if (container.querySelectorAll('.create-container').length == 1) {
-		toastr.warning('Cannot delete the only card');
+		toastr.warning('Cannot remove the only card');
 	} else {
 		const confirmForm = createForm();
 		bodyDiv.insertBefore(confirmForm, outMenu);

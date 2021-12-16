@@ -165,12 +165,12 @@ label {
 	border-radius: 15px;
 	height: auto;
 	width: 70vw;
+	max-width: 500px;
 	display: flex;
 	flex-flow: column;
 	font-weight: bold;
 	align-items: center;
 	background: #ffb8b1;
-	transition: all 0.5s ease;
 	z-index: 1;
 }
 
@@ -184,7 +184,7 @@ label {
 }
 
 .confirm .button {
-	margin: 30px;
+	margin: 40px 30px;
 	padding: 10px 20px;
 	border-radius: 15px;
 	font-size: 18px;
@@ -236,13 +236,14 @@ label {
 	}
 
 	.confirm .button {
-		margin: 20px;
+		margin: 40px 20px;
 		width: 120px;
 	}
 }
+
 @media screen and (max-width: 321px) {
 		.confirm .button {
-		margin: 10px;
+		margin: 40px 10px;
 		width: 120px;
 	}
 }

@@ -35,6 +35,7 @@ const mainDiv = document.querySelector('.main');
 const infoForm = document.querySelector('#info-form');
 const resetForm = document.querySelector('#reset-form');
 const resetBtn = document.querySelector('#update-password');
+const bodyDiv = document.querySelector('.body');
 var search_bar = document.querySelector('.search-bar');
 var info;
 
@@ -77,82 +78,108 @@ function checkDisplayName() {
 	saveBtn.addEventListener('click', updateDisplayName);
 }
 
+function emptyProgress() {
+	var point_icon = document.createElement('i');
+	point_icon.className = 'fas fa-hand-point-right';
+
+	var span_text = document.createElement('span');
+	span_text.innerHTML = 'Click to create your first learning set';
+	var empty_div_text = document.createElement('a');
+	var empty_div = document.createElement('div');
+	empty_div.className = 'empty-div';
+	empty_div_text.className = 'empty-div-text';
+	empty_div_text.href = 'create.html';
+	var cat_img = document.createElement('img');
+	cat_img.className = 'cat-img';
+	cat_img.src = 'img/cat.gif';
+
+	empty_div_text.appendChild(point_icon);
+	empty_div_text.appendChild(span_text);
+	empty_div.appendChild(empty_div_text);
+	empty_div.appendChild(cat_img);
+	user_progress.appendChild(empty_div);
+	// search_bar.style.display = 'none';
+}
+
+function createCounter(snap) {
+	//Progress count
+	var current_count = document.createElement('span');
+	current_count.innerHTML = snap.data()['current display'] || 1;
+
+	var divider = document.createElement('span');
+	divider.innerHTML = '/';
+
+	var total_count = document.createElement('span');
+	total_count.innerHTML = snap.data().term.length;
+
+	//Progress count container
+	var progress_count = document.createElement('div');
+	progress_count.className = 'progress-count';
+	progress_count.appendChild(current_count);
+	progress_count.appendChild(divider);
+	progress_count.appendChild(total_count);
+	return progress_count;
+}
+
+function createProgressBar(snap) {
+	var progress_bar = document.createElement('progress');
+	progress_bar.className = 'progress-bar';
+	progress_bar.max = snap.data().term.length;
+	progress_bar.value = snap.data()['current display'] || 1;
+	return progress_bar;
+}
+
+function createTopContainer(name, count) {
+	//Title
+	var title = document.createElement('h1');
+	title.className = 'title';
+	title.innerHTML = name;
+	title.addEventListener('click', function () {
+		localStorage.setItem('learningSet', name);
+		window.location.assign('learning.html');
+	});
+
+	//Delete button in the head for card container
+	var bin_icon = document.createElement('i');
+	bin_icon.className = 'fas fa-trash-alt';
+
+	var delete_button = document.createElement('button');
+	delete_button.className = 'delete';
+
+	delete_button.appendChild(bin_icon);
+
+	//Top-set container
+	var top_set_container = document.createElement('div');
+	top_set_container.className = 'top-set';
+	top_set_container.appendChild(title);
+	top_set_container.appendChild(count);
+	top_set_container.appendChild(delete_button);
+	return top_set_container;
+}
+
 async function updateProgress() {
 	var nameArray = [];
-	var dataArray = [];
 	const userRef = doc(db, 'users', uid);
 	const learningSet = collection(userRef, 'learning');
 	const querySnapshot = await getDocs(learningSet);
 	querySnapshot.forEach((doc) => {
 		doc.id, ' => ', nameArray.push(doc.id);
-		doc.id, ' => ', dataArray.push(doc.data());
 	});
 	if (nameArray.length == 0) {
-		var point_icon = document.createElement('i');
-		point_icon.className = 'fas fa-hand-point-right';
-
-		var span_text = document.createElement('span');
-		span_text.innerHTML = 'Click to create your first learning set';
-		var empty_div_text = document.createElement('a');
-		var empty_div = document.createElement('div');
-		empty_div.className = 'empty-div';
-		empty_div_text.className = 'empty-div-text';
-		empty_div_text.href = 'create.html';
-		var cat_img = document.createElement('img');
-		cat_img.className = 'cat-img';
-		cat_img.src = 'img/cat.gif';
-
-		empty_div_text.appendChild(point_icon);
-		empty_div_text.appendChild(span_text);
-		empty_div.appendChild(empty_div_text);
-		empty_div.appendChild(cat_img);
-		user_progress.appendChild(empty_div);
-		search_bar.style.display = 'none';
+		emptyProgress();
 	} else {
 		for (let i = 0; i < nameArray.length; i++) {
 			var current_learning_ref = doc(userRef, 'learning', nameArray[i]);
 			var learning_set_snap = await getDoc(current_learning_ref);
-			//progress bar
-			var progress_bar = document.createElement('progress');
-			progress_bar.className = 'progress-bar';
-			progress_bar.max = `${learning_set_snap.data().term.length}`;
-			progress_bar.value = `${learning_set_snap.data()['current display'] || 1}`;
 
-			//Progress count
-			var current_count = document.createElement('span');
-			current_count.innerHTML = `${learning_set_snap.data()['current display'] || 1}`;
+			// Progress count
+			const progress_count = createCounter(learning_set_snap);
 
-			var divider = document.createElement('span');
-			divider.innerHTML = '/';
-			var total_count = document.createElement('span');
-			total_count.innerHTML = `${learning_set_snap.data().term.length}`;
+			// Progress bar
+			const progress_bar = createProgressBar(learning_set_snap);
 
-			//Progress count container
-			var progress_count = document.createElement('div');
-			progress_count.className = 'progress-count';
-			progress_count.appendChild(current_count);
-			progress_count.appendChild(divider);
-			progress_count.appendChild(total_count);
-
-			//Title
-			var title = document.createElement('h1');
-			title.className = 'title';
-			title.innerHTML = nameArray[i];
-
-			//Delete button in the head for card container
-			var bin_icon = document.createElement('i');
-			bin_icon.className = 'fas fa-trash-alt';
-
-			var delete_button = document.createElement('button');
-			delete_button.className = 'delete';
-
-			delete_button.appendChild(bin_icon);
-			//Top-set container
-			var top_set_container = document.createElement('div');
-			top_set_container.className = 'top-set';
-			top_set_container.appendChild(title);
-			top_set_container.appendChild(progress_count);
-			top_set_container.appendChild(delete_button);
+			// Top container
+			const top_set_container = createTopContainer(nameArray[i], progress_count);
 
 			//Container
 			var set_container = document.createElement('div');
@@ -161,18 +188,11 @@ async function updateProgress() {
 			set_container.appendChild(top_set_container);
 			set_container.appendChild(progress_bar);
 			user_progress.appendChild(set_container);
-
-			title.addEventListener('click', function () {
-				localStorage.setItem('learningSet', nameArray[i]);
-				window.location.assign('learning.html');
-			});
-
-			delete_button.addEventListener('click', function () {
-				user_progress.removeChild(this.parentNode.parentNode);
-				deleteDoc(doc(userRef, 'learning', `${nameArray[i]}`));
-				localStorage.removeItem('learning');
-			});
 		}
+		// After all set has been loaded, add delete for each of the set
+		document.querySelectorAll('.delete').forEach((button) => {
+			button.addEventListener('click', () => deleteCard(button));
+		});
 	}
 }
 
@@ -272,7 +292,7 @@ function resetPassword() {
 		if (!reAuth) {
 			reauthenticateWithCredential(info, cred)
 				.then(() => {
-					alert('You have been re-authenticated');
+					toastr.success('You have been re-authenticated');
 					resetForm.reset();
 					updateResetForm();
 
@@ -295,14 +315,61 @@ function resetPassword() {
 		} else {
 			updatePassword(info, password)
 				.then(() => {
-					alert('Your password has been updated');
-					window.location.reload();
+					toastr.success('Your password has been updated');
+					setTimeout(() => {
+						window.location.reload();
+					}, 2000);
 				})
 				.catch((err) => {
 					console.log(err);
 				});
 		}
 	});
+}
+
+function createForm() {
+	var form = document.createElement('div');
+	form.className = 'confirm';
+	form.innerHTML = `
+				<div class="message">Are you sure you want to delete this card? There is no return (dun dun dun)</div>
+				<div class="button-container">
+					<button class="button" id="confirm">Confirm</button>
+					<button class="button" id="cancel">Cancel</button>
+				</div>`;
+	return form;
+}
+
+function accept(btn, form) {
+	user_progress.removeChild(btn.parentNode.parentNode);
+	bodyDiv.removeChild(form);
+	outMenu.classList.remove('open');
+
+	var userRef = doc(db, 'users', uid);
+	deleteDoc(doc(userRef, 'learning', btn.parentNode.parentNode.querySelector('.title').innerHTML));
+
+	toastr.success('Delete successfully');
+	if (!user_progress.querySelector('.set')) {
+		emptyProgress();
+	}
+}
+
+function cancel(form) {
+	bodyDiv.removeChild(form);
+	outMenu.classList.remove('open');
+}
+
+function deleteCard(btn) {
+	const confirmForm = createForm();
+	bodyDiv.insertBefore(confirmForm, outMenu);
+	outMenu.classList.add('open');
+
+	confirmForm
+		.querySelector('#confirm')
+		.addEventListener('click', () => accept(btn, confirmForm), { once: true });
+
+	confirmForm
+		.querySelector('#cancel')
+		.addEventListener('click', () => cancel(confirmForm), { once: true });
 }
 
 function profile() {
@@ -319,6 +386,11 @@ function profile() {
 		resetPassword();
 	}
 	preload(2150);
+	outMenu.addEventListener('click', () => {
+		if (document.querySelector('.confirm')) {
+			bodyDiv.removeChild(document.querySelector('.confirm'));
+		}
+	});
 }
 
 window.onload = profile();
