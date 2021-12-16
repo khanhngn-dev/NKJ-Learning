@@ -269,11 +269,35 @@ a {
 	height: 80vh;
 	background: rgba(0, 0, 0, 0.608);
 	overflow: hidden;
+	z-index: 10;
 }
 
 .learning-set.open {
-	display: block;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	align-items: center;
 }
+
+.learning-title {
+	padding-top: 15px;
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+}
+
+.set {
+	margin: 15px;
+	padding: 10px;
+	border: 1px solid white;
+	width: 90%;
+}
+
+.title {
+	cursor: pointer;
+}
+
 
 .outMenu.open {
 	display: block;
