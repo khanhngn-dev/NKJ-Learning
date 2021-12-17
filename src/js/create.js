@@ -1,16 +1,15 @@
 import {
 	getFirestore,
 	doc,
-	setDoc
+	setDoc,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
 
-const create_button = document.querySelector('.create-button');
+const create_buttons = document.querySelectorAll('.create-button');
 const add_button = document.querySelector('.add-button');
 const container = document.querySelector('.container');
-const studyset_name = document.querySelector('.studyset-name');
+const studyset_names = document.querySelectorAll('.studyset-name');
 const bodyDiv = document.querySelector('.body');
 var delete_buttons = document.querySelectorAll('.delete');
-const learningSet_div = document.querySelector('.learning-set')
 
 var i = 10;
 
@@ -210,7 +209,13 @@ toastr.options = {
 // toastr.options.escapeHtml = true;
 
 function createLearningSet() {
-	if (studyset_name.value == '') toastr.warning('Please enter your learning set name!');
+	var setName = '';
+	studyset_names.forEach((name) => {
+		if (name.value) {
+			setName = name.value;
+		}
+	});
+	if (setName== '') toastr.warning('Please enter your learning set name!');
 	else {
 		var termArray = [],
 			meaningArray = [];
@@ -228,34 +233,31 @@ function createLearningSet() {
 			toastr.warning('You must complete all fields!');
 		} else {
 			userRef = doc(db, 'users', uid);
-			setDoc(doc(userRef, 'learning', `${studyset_name.value}`), {
+			setDoc(doc(userRef, 'learning', `${setName}`), {
 				term: termArray,
 				meaning: meaningArray,
 			});
 			// alert('Create successfully');
 			toastr.success('Create successfully');
 
-			setTimeout(function() {
-				localStorage.setItem('learningSet', studyset_name.value)
+			setTimeout(function () {
+				localStorage.setItem('learningSet', setName);
 				window.location.assign('learning.html');
-			}, 1000)
+			}, 1000);
 		}
 	}
 }
 
-create_button.addEventListener('click', createLearningSet);
+create_buttons.forEach((button) => {
+	button.addEventListener('click', createLearningSet);
+});
 
 window.onload = function () {
 	if (
 		localStorage.getItem('loggedIn') == undefined &&
 		sessionStorage.getItem('loggedIn') == undefined
 	) {
-		document.querySelector('.main-left').style.display = 'none';
-		document.querySelector('.main-right').style.display = 'none';
-		var pleaseLogin_text = document.createElement('div');
-		pleaseLogin_text.innerHTML = 'PLEASE LOGIN TO CREATE YOUR OWN LEARNING SET';
-		pleaseLogin_text.className = 'please-login';
-		document.querySelector('.main').appendChild(pleaseLogin_text);
+		document.querySelector('.main').innerHTML = 'PLEASE LOGIN TO CREATE YOUR OWN LEARNING SET';
 		document.querySelector('.main').classList.add('no-user');
 	}
 	preload(400);
