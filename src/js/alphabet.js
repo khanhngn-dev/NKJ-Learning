@@ -30,8 +30,9 @@ function loadSounds() {
 }
 
 function start() {
-	clickDropDown(navButton, navList, alphabetList);
-	clickDropDown(alphabetButton, alphabetList, navList);
+	clickDropDown(navButton, navList, learningList);
+	clickDropDown(alphabetButton, alphabetList);
+	clickDropDown(learning_drop_button, learningList, navList);
 	clickOverlay();
 	preload(500);
 	loadSounds();
