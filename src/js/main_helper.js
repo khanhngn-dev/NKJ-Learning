@@ -15,7 +15,7 @@ function closeMenu(list) {
 	outMenu.classList.remove('open');
 }
 
-function clickDropDown(parent, list, otherList) {
+function clickDropDown(parent = navButton, list = navList, otherList = undefined) {
 	parent.addEventListener('click', function () {
 		if (!list.classList.contains('open')) {
 			openMenu(list, otherList);
@@ -49,9 +49,4 @@ function displayInfo(info, form, location) {
 	location.innerHTML = infoMessage.charAt(0).toUpperCase() + infoMessage.slice(1);
 	location.style.display = 'block';
 	form.reset();
-}
-
-
-function loadLearningSet() {
-
 }
