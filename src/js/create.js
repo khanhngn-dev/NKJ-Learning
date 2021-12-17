@@ -243,7 +243,7 @@ function createLearningSet() {
 			setTimeout(function () {
 				localStorage.setItem('learningSet', setName);
 				window.location.assign('learning.html');
-			}, 1000);
+			}, 2000);
 		}
 	}
 }
