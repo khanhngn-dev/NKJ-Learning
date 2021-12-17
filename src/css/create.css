@@ -1,5 +1,6 @@
 .header {
-	position: fixed;
+	position: sticky;
+	top: 0;
 }
 
 .create-part {
@@ -22,7 +23,6 @@
 
 .main {
 	display: block;
-	padding-top: 70px;
 	height: auto;
 }
 
@@ -93,13 +93,12 @@ img {
 }
 
 .main.no-user {
+	padding: 0 40px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: calc(100vh - 70px);
-}
-
-.please-login {
+	text-align: center;
 	font-size: 3em;
 	font-weight: bold;
 	color: #bb002d;
@@ -242,7 +241,7 @@ label {
 }
 
 @media screen and (max-width: 321px) {
-		.confirm .button {
+	.confirm .button {
 		margin: 40px 10px;
 		width: 120px;
 	}
