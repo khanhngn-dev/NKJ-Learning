@@ -122,17 +122,16 @@ function setProfile() {
 	infoForm.addEventListener('submit', (e) => {
 		e.preventDefault();
 
-		if (imgFile || infoForm.username.value) {
 			// Update profile picture
 			uploadBytes(ref(storage, `pfp-user/${info.uid}`), imgFile).then((snapshot) => {
 				getDownloadURL(ref(storage, `pfp-user/${info.uid}`)).then((url) => {
 					// Update user profile with the provided photoURL
+					var username = infoForm.username.value || info.email;
 					if (!imgFile) {
-						// If the imgFile doesn't exist
 						url = null;
 					}
 					updateProfile(info, {
-						displayName: infoForm.username.value,
+						displayName: username,
 						photoURL: url,
 					})
 						.then(() => {
@@ -146,20 +145,6 @@ function setProfile() {
 						});
 				});
 			});
-		} else {
-			updateProfile(info, {
-				displayName: info.email,
-			})
-				.then(() => {
-					toastr.success('Default profile has been created, redirecting..');
-					setTimeout(() => {
-						window.location.assign('index.html');
-					}, 2000);
-				})
-				.catch((err) => {
-					displayInfo(err, signupForm, imgPreview);
-				});
-		}
 	});
 }
 
@@ -188,7 +173,7 @@ function sendSignup(auth, email, password) {
 
 function signup() {
 	checkLogin();
-	
+
 	showPasswords();
 
 	password.addEventListener('keyup', () => comparePassword(password.value, confirmPassword.value));
