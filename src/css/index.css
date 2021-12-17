@@ -58,13 +58,18 @@ a {
 }
 
 .drop-menu-header-learning {
+	position: relative;
+	margin-left: 10px;
 	border-radius: 50%;
 	width: 20px;
 	height: 20px;
 }
 
-.learning a {
-	margin-right: 10px;
+.drop-menu-header-learning i {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .left,
@@ -76,7 +81,7 @@ a {
 }
 
 .left {
-	width: 600px;
+	width: 45vw;
 }
 
 .user {
@@ -115,6 +120,7 @@ a {
 	justify-content: flex-start;
 	align-items: center;
 	list-style-type: none;
+	width: 45vw;
 }
 
 .nav-bar a {
@@ -260,25 +266,25 @@ a {
 }
 
 .learning-set {
-	display: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	content: '';
 	position: fixed;
 	top: 70px;
-	left: 450px;
-	width: 300px;
-	height: 80vh;
+	left: min(45vw, 450px);
+	height: 0;
+	opacity: 0;
+	transition: all 0.5s ease;
+	width: 400px;
+	max-height: 80vh;
 	background: rgba(0, 0, 0, 0.608);
 	overflow: hidden;
 	z-index: 10;
 }
 
-.learning-set.open {
-	color: white;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	align-items: center;
-	overflow-y: scroll;	
+.learning-set * {
+	display: none;
 }
 
 .learning-title {
@@ -289,23 +295,52 @@ a {
 }
 
 .set {
-	margin: 15px;
-	padding: 10px;
-	border: 1px solid white;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 15px;
 	width: 85%;
+	background: #ffd7d3;
+	color: #bb002d;
+	font-weight: bold;
 }
 
-.title {
+.set .title {
+	margin-top: 15px;
 	cursor: pointer;
+	font-weight: bold;
 }
 
+.set .progress-count {
+	background: #fff;
+	border-radius: 15px;
+	padding: 10px;
+	width: 120px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.learning-set.open {
+	color: white;
+	overflow-y: auto;
+	min-height: 100px;
+	height: auto;
+	opacity: 1;
+}
+
+.learning-set.open * {
+	display: initial;
+}
+
+.learning-set.open .set {
+	display: flex;
+	margin: 15px;
+	padding: 20px;
+}
 
 .outMenu.open {
 	display: block;
-}
-
-.set {
-	color: white;
 }
 
 @media screen and (max-width: 790px) {
@@ -363,7 +398,7 @@ a {
 	.learning-set {
 		left: 0;
 		width: 100vw;
-		height: 70vh;
+		height: auto;
 	}
 
 	.nav-bar a {
