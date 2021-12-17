@@ -96,7 +96,7 @@ function updateProfileImg(form, input, preview) {
 			return img.file;
 		} else {
 			displayInfo(
-				'<span class="error">Your image is too large, please choose a smaller file</span>',
+				'<span class="error">Your image is too large, please choose a file less than 1MB</span>',
 				form,
 				preview
 			);
@@ -115,8 +115,6 @@ function setProfile() {
 	const imgPreview = infoForm.querySelector('.preview');
 	var imgFile;
 
-	lockSubmit(infoForm.querySelector('.submit'));
-
 	fileInput.addEventListener('change', () => {
 		imgFile = updateProfileImg(infoForm, fileInput, imgPreview);
 	});
@@ -124,25 +122,44 @@ function setProfile() {
 	infoForm.addEventListener('submit', (e) => {
 		e.preventDefault();
 
-		// Update profile picture
-		uploadBytes(ref(storage, `pfp-user/${info.uid}`), imgFile).then((snapshot) => {
-			getDownloadURL(ref(storage, `pfp-user/${info.uid}`)).then((url) => {
-				// Update user profile with the provided photoURL
-				updateProfile(info, {
-					displayName: infoForm.username.value,
-					photoURL: url,
-				})
-					.then(() => {
-						toastr.success('Your profile has been created, redirecting..');
-						setTimeout(() => {
-							window.location.assign('index.html');
-						}, 2000);
+		if (imgFile || infoForm.username.value) {
+			// Update profile picture
+			uploadBytes(ref(storage, `pfp-user/${info.uid}`), imgFile).then((snapshot) => {
+				getDownloadURL(ref(storage, `pfp-user/${info.uid}`)).then((url) => {
+					// Update user profile with the provided photoURL
+					if (!imgFile) {
+						// If the imgFile doesn't exist
+						url = null;
+					}
+					updateProfile(info, {
+						displayName: infoForm.username.value,
+						photoURL: url,
 					})
-					.catch((err) => {
-						displayInfo(err, signupForm, imgPreview);
-					});
+						.then(() => {
+							toastr.success('Your profile has been created, redirecting..');
+							setTimeout(() => {
+								window.location.assign('index.html');
+							}, 2000);
+						})
+						.catch((err) => {
+							displayInfo(err, signupForm, imgPreview);
+						});
+				});
 			});
-		});
+		} else {
+			updateProfile(info, {
+				displayName: info.email,
+			})
+				.then(() => {
+					toastr.success('Default profile has been created, redirecting..');
+					setTimeout(() => {
+						window.location.assign('index.html');
+					}, 2000);
+				})
+				.catch((err) => {
+					displayInfo(err, signupForm, imgPreview);
+				});
+		}
 	});
 }
 
@@ -171,7 +188,7 @@ function sendSignup(auth, email, password) {
 
 function signup() {
 	checkLogin();
-
+	
 	showPasswords();
 
 	password.addEventListener('keyup', () => comparePassword(password.value, confirmPassword.value));
