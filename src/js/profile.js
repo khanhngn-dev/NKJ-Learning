@@ -36,7 +36,8 @@ const infoForm = document.querySelector('#info-form');
 const resetForm = document.querySelector('#reset-form');
 const resetBtn = document.querySelector('#update-password');
 const bodyDiv = document.querySelector('.body');
-var search_bar = document.querySelector('.search-bar');
+learning_drop_button.style.display = 'none';
+// var search_bar = document.querySelector('.search-bar');
 var info;
 
 function getUser() {
@@ -59,7 +60,10 @@ function updateDisplayName() {
 		updateProfile(info, {
 			displayName: displayName.value,
 		}).then(() => {
-			window.location.reload();
+			toastr.success('Your profile has been updated');
+			setTimeout(() => {
+				window.location.reload();
+			}, 1200);
 		});
 	} else {
 		alert('Your username cannot be empty');
@@ -183,7 +187,7 @@ async function updateProgress() {
 
 			//Container
 			var set_container = document.createElement('div');
-			set_container.className = 'set';
+			set_container.className = 'progress-set';
 
 			set_container.appendChild(top_set_container);
 			set_container.appendChild(progress_bar);
@@ -199,26 +203,35 @@ async function updateProgress() {
 function updatePreview(form, input, preview) {
 	var imgFile = input.files[0];
 	if (imgFile.type.startsWith('image/')) {
-		unlockSubmit(infoForm.querySelector('.submit'));
-		preview.innerHTML = '';
-		// Create Img element
-		var img = document.createElement('img');
-		img.file = imgFile;
+		if (imgFile.size <= 1000000) {
+			unlockSubmit(infoForm.querySelector('.submit'));
+			preview.innerHTML = '';
+			// Create Img element
+			var img = document.createElement('img');
+			img.file = imgFile;
 
-		// Add or replace if necessary
-		if (form.querySelector('img')) {
-			preview.replaceChild(img, form.querySelector('img'));
-		} else preview.appendChild(img);
+			// Add or replace if necessary
+			if (form.querySelector('img')) {
+				preview.replaceChild(img, form.querySelector('img'));
+			} else preview.appendChild(img);
 
-		// Read the file
-		const reader = new FileReader();
-		reader.onload = (function (aImg) {
-			return function (e) {
-				aImg.src = e.target.result;
-			};
-		})(img);
-		reader.readAsDataURL(img.file);
-		return img.file;
+			// Read the file
+			const reader = new FileReader();
+			reader.onload = (function (aImg) {
+				return function (e) {
+					aImg.src = e.target.result;
+				};
+			})(img);
+			reader.readAsDataURL(img.file);
+			return img.file;
+		} else {
+			displayInfo(
+				'<span class="error">Your image is too large, please choose a file less than 1MB</span>',
+				form,
+				preview
+			);
+			lockSubmit(infoForm.querySelector('.submit'));
+		}
 	} else {
 		displayInfo('<span class="error">Please upload an image type</span>', form, preview);
 		lockSubmit(infoForm.querySelector('.submit'));
@@ -249,7 +262,10 @@ function updateProfileImg() {
 						photoURL: url,
 					})
 						.then(() => {
-							window.location.reload();
+							toastr.success('Your profile has been updated');
+							setTimeout(() => {
+								window.location.reload();
+							}, 1200);
 						})
 						.catch((err) => {
 							displayInfo(err, infoForm, imgPreview);
@@ -318,7 +334,7 @@ function resetPassword() {
 					toastr.success('Your password has been updated');
 					setTimeout(() => {
 						window.location.reload();
-					}, 2000);
+					}, 1200);
 				})
 				.catch((err) => {
 					console.log(err);
@@ -373,8 +389,7 @@ function deleteCard(btn) {
 }
 
 function profile() {
-	clickDropDown(navButton, navList, learningList);
-	clickDropDown(learning_drop_button, learningList, navList);
+	clickDropDown(navButton, navList);
 	clickOverlay();
 	getUser();
 	if (uid) {
@@ -384,8 +399,10 @@ function profile() {
 		checkDisplayName();
 		updateProgress();
 		resetPassword();
+		preload(2150);
+	} else {
+		preload(200);
 	}
-	preload(2150);
 	outMenu.addEventListener('click', () => {
 		if (document.querySelector('.confirm')) {
 			bodyDiv.removeChild(document.querySelector('.confirm'));
