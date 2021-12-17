@@ -309,7 +309,9 @@ function increaseShuffle() {
 }
 
 function load() {
-	clickDropDown();
+	clickDropDown(navButton, navList, learningList);
+	clickDropDown(learning_drop_button, learningList, navList);
+
 	clickOverlay();
 
 	$('.flashcard').click(flip);
