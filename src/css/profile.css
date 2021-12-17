@@ -177,9 +177,8 @@
 	padding-right: 20px;
 }
 
-.title {
+.set .title {
 	flex: 33.33%;
-	grid-column: 1/2;
 	cursor: pointer;
 	margin: 0;
 	color: #bb002d;
@@ -231,6 +230,12 @@ progress::-webkit-progress-bar {
 	transition: all 0.5s ease;
 	overflow: auto;
 	z-index: 1;
+}
+
+.form .title {
+	text-align: center;
+	color: #bb002d;
+	font-weight: bold;
 }
 
 .form .label {
