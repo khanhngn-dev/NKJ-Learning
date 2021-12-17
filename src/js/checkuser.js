@@ -27,26 +27,26 @@ import {
 	doc,
 	getDocs,
 	getDoc,
-	collection
+	collection,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
 
 const db = getFirestore();
 const uid = localStorage.getItem('loggedIn') || sessionStorage.getItem('loggedIn');
-const userRef = doc(db, 'users', uid);
-const learningSet = collection(userRef, 'learning');
-const querySnapshot = await getDocs(learningSet);
-const learningSet_div = document.querySelector('.learning-set')
 
 async function loadLearningSet() {
-    var nameArray = [];
-    querySnapshot.forEach((doc) => {
+	const userRef = doc(db, 'users', uid);
+	const learningSet = collection(userRef, 'learning');
+	const querySnapshot = await getDocs(learningSet);
+	const learningSet_div = document.querySelector('.learning-set');
+	var nameArray = [];
+	querySnapshot.forEach((doc) => {
 		doc.id, ' => ', nameArray.push(doc.id);
 	});
-    if (nameArray.length == 0) { 
-        div.innerHTML = 'Empty! Create one!';
-    }
-    else {
-        for (let i = 0; i < nameArray.length; i++) {
+	if (nameArray.length == 0) {
+		const emptyLearning = document.querySelector('.learning-set');
+		emptyLearning.innerHTML = 'Empty! Create one!';
+	} else {
+		for (let i = 0; i < nameArray.length; i++) {
 			var current_learning_ref = doc(userRef, 'learning', nameArray[i]);
 			var learning_set_snap = await getDoc(current_learning_ref);
 
@@ -73,8 +73,8 @@ async function loadLearningSet() {
 			//Container
 			var set_container = document.createElement('div');
 			set_container.className = 'set';
-			set_container.appendChild(progress_count)
-			set_container.appendChild(title)
+			set_container.appendChild(progress_count);
+			set_container.appendChild(title);
 
 			learningSet_div.appendChild(set_container);
 
@@ -82,8 +82,8 @@ async function loadLearningSet() {
 				localStorage.setItem('learningSet', nameArray[i]);
 				window.location.assign('learning.html');
 			});
-        }
-    }
+		}
+	}
 }
 
 const auth = getAuth();
@@ -108,6 +108,8 @@ function checkLogin() {
 					user_pfp.setAttribute('src', '../img/pfp-cat.jpg');
 				}
 			}
+			// Load learning set only when user is logged in
+			loadLearningSet();
 		} else {
 			loginButton.style.display = 'block';
 			logoutButton.style.display = 'none';
@@ -126,6 +128,7 @@ function checkLogout() {
 			.then(() => {
 				localStorage.removeItem('loggedIn');
 				sessionStorage.removeItem('loggedIn');
+				localStorage.removeItem('learningSet');
 				window.location.reload();
 			})
 			.catch((err) => {
@@ -137,6 +140,5 @@ function checkLogout() {
 function checkUser() {
 	checkLogin();
 	checkLogout();
-	loadLearningSet();
 }
 window.onload = checkUser();
