@@ -32,6 +32,7 @@ import {
 
 const db = getFirestore();
 const uid = localStorage.getItem('loggedIn') || sessionStorage.getItem('loggedIn');
+const emptyLearning = document.querySelector('.learning-set');
 
 async function loadLearningSet() {
 	const userRef = doc(db, 'users', uid);
@@ -42,8 +43,8 @@ async function loadLearningSet() {
 	querySnapshot.forEach((doc) => {
 		doc.id, ' => ', nameArray.push(doc.id);
 	});
+	console.log(nameArray);
 	if (nameArray.length == 0) {
-		const emptyLearning = document.querySelector('.learning-set');
 		emptyLearning.innerHTML = 'Empty! Create one!';
 	} else {
 		for (let i = 0; i < nameArray.length; i++) {
@@ -111,6 +112,7 @@ function checkLogin() {
 			// Load learning set only when user is logged in
 			loadLearningSet();
 		} else {
+			emptyLearning.innerHTML = '<span class="empty">Login to create your own set</span>';
 			loginButton.style.display = 'block';
 			logoutButton.style.display = 'none';
 			// If the page has a user section
