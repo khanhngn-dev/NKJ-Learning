@@ -236,14 +236,15 @@ function createLearningSet() {
 			setDoc(doc(userRef, 'learning', `${setName}`), {
 				term: termArray,
 				meaning: meaningArray,
-			});
-			// alert('Create successfully');
-			toastr.success('Create successfully');
-
-			setTimeout(function () {
+			}).then(() => {
+				toastr.success('Create successfully');
 				localStorage.setItem('learningSet', setName);
-				window.location.assign('learning.html');
-			}, 2000);
+				setTimeout(function () {
+					window.location.assign('learning.html');
+				}, 2000);
+			})
+			// alert('Create successfully');
+
 		}
 	}
 }
