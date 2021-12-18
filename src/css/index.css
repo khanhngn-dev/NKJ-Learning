@@ -278,7 +278,7 @@ a {
 	transition: all 0.5s ease;
 	width: 400px;
 	max-height: 80vh;
-	background: rgba(0, 0, 0, 0.608);
+	background: rgba(0, 0, 0, 0.758);
 	overflow: hidden;
 	z-index: 10;
 }
@@ -337,6 +337,12 @@ a {
 	display: flex;
 	margin: 15px;
 	padding: 20px;
+}
+
+.empty {
+	line-height: 100px;
+	font-weight: bold;
+	font-size: 20px;
 }
 
 .outMenu.open {
