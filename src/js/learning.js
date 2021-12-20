@@ -16,6 +16,7 @@ const total_count = document.querySelectorAll('.total');
 const progress_bars = document.querySelectorAll('.progress-bar');
 const shuffleButton = document.querySelector('.flashcards-bot');
 const flash_name = document.querySelector('.flashcards-word');
+const editBtn = document.querySelector('#edit');
 
 const db = getFirestore();
 const uid = localStorage.getItem('loggedIn') || sessionStorage.getItem('loggedIn');
@@ -154,7 +155,6 @@ function shuffleArray(random) {
 		random[j] = random[i];
 		random[i] = b;
 	}
-	console.log(random);
 	return random;
 }
 
@@ -200,7 +200,7 @@ function decreaseShuffle() {
 }
 
 function increaseShuffle() {
-	if (shuffleIndex == termArray.length-1) {
+	if (shuffleIndex == termArray.length - 1) {
 		return;
 	}
 	setCardStyle(0);
@@ -235,6 +235,10 @@ function load() {
 			progress_bars.forEach((a) => (a.max = `${termArray.length}`));
 			total_count.forEach((a) => (a.innerHTML = '/' + `${termArray.length}`));
 			flash_name.innerHTML = localStorage.getItem('learningSet');
+			editBtn.addEventListener('click', () => {
+				sessionStorage.setItem('editLearning', flash_name.innerText);
+				window.location.assign('create.html');
+			});
 		} else {
 			window.location.assign('flashcard.html');
 		}
