@@ -11,7 +11,7 @@ const meaning = document.querySelector('.meaning');
 const current_number = document.querySelector('.current-display');
 const current_number_progresses = document.querySelectorAll('.current-display-progress');
 const progress_bars = document.querySelectorAll('.progress-bar');
-const shuffleButton = document.querySelector('.flashcards-bot');
+const shuffleButton = document.querySelector('#shuffle');
 
 // prettier-ignore
 const alphabet_definition = [
@@ -242,7 +242,6 @@ function shuffleArray(random) {
 		random[j] = random[i];
 		random[i] = b;
 	}
-	console.log(random);
 	return random;
 }
 
