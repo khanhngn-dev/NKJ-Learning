@@ -2,6 +2,7 @@ import {
 	getFirestore,
 	doc,
 	setDoc,
+	getDoc,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
 
 const create_buttons = document.querySelectorAll('.create-button');
@@ -10,6 +11,7 @@ const container = document.querySelector('.container');
 const studyset_names = document.querySelectorAll('.studyset-name');
 const bodyDiv = document.querySelector('.body');
 var delete_buttons = document.querySelectorAll('.delete');
+const editSet = sessionStorage.getItem('editLearning');
 
 var i = 10;
 
@@ -20,12 +22,13 @@ function createLabel(forName, text) {
 	return label;
 }
 
-function createInput(type, placeholder, name, ...classList) {
+function createInput(content, type, placeholder, name, ...classList) {
 	var input = document.createElement('input');
 	input.type = type;
 	input.classList.add(...classList);
 	input.placeholder = placeholder;
 	input.name = name;
+	input.value = content || '';
 	return input;
 }
 
@@ -65,19 +68,26 @@ function createCardContainer(top, form) {
 	return card_container;
 }
 
-function createCard() {
+function createCard(term = undefined, meaning = undefined) {
 	i++;
 	//Label for meaning
 	var label_meaning = createLabel('meaning', 'Meaning');
 
 	//Input field for meaning
-	var input_meaning = createInput('text', 'Enter meaning', 'meaning', 'card-input', 'meaning');
+	var input_meaning = createInput(
+		meaning,
+		'text',
+		'Enter meaning',
+		'meaning',
+		'card-input',
+		'meaning'
+	);
 
 	//Label for term
 	var label_term = createLabel('term', 'Term');
 
 	//Input field for term
-	var input_term = createInput('text', 'Enter term', 'term', 'card-input', 'term');
+	var input_term = createInput(term, 'text', 'Enter term', 'term', 'card-input', 'term');
 
 	//Container for label and input
 	var div_term_input = document.createElement('div');
@@ -185,7 +195,9 @@ delete_buttons.forEach((btn) => {
 	btn.addEventListener('click', () => deleteCard(btn));
 });
 
-add_button.addEventListener('click', createCard);
+add_button.addEventListener('click', () => {
+	createCard();
+});
 outMenu.addEventListener('click', () => {
 	if (document.querySelector('.confirm')) {
 		bodyDiv.removeChild(document.querySelector('.confirm'));
@@ -198,8 +210,8 @@ clickOverlay();
 
 const db = getFirestore();
 const uid = localStorage.getItem('loggedIn') || sessionStorage.getItem('loggedIn');
-
-var userRef;
+var userRef, userSnap, learningRef;
+var termArray, meaningArray;
 
 toastr.options = {
 	positionClass: 'toast-bottom-right',
@@ -215,7 +227,7 @@ function createLearningSet() {
 			setName = name.value;
 		}
 	});
-	if (setName== '') toastr.warning('Please enter your learning set name!');
+	if (setName == '') toastr.warning('Please enter your learning set name!');
 	else {
 		var termArray = [],
 			meaningArray = [];
@@ -223,10 +235,10 @@ function createLearningSet() {
 		terms.forEach((term) => termArray.push(term.value));
 		var meanings = document.querySelectorAll('.meaning');
 		meanings.forEach((meaning) => meaningArray.push(meaning.value));
-		var result_term = termArray.some((term, index) => {
+		var result_term = termArray.some((term) => {
 			return term == '';
 		});
-		var result_meaning = meaningArray.some((meaning, index) => {
+		var result_meaning = meaningArray.some((meaning) => {
 			return meaning == '';
 		});
 		if (result_term || result_meaning) {
@@ -239,19 +251,32 @@ function createLearningSet() {
 			}).then(() => {
 				toastr.success('Create successfully');
 				localStorage.setItem('learningSet', setName);
+				sessionStorage.removeItem('editLearning');
 				setTimeout(function () {
 					window.location.assign('learning.html');
 				}, 2000);
-			})
+			});
 			// alert('Create successfully');
-
 		}
 	}
 }
 
 create_buttons.forEach((button) => {
-	button.addEventListener('click', createLearningSet);
+	button.addEventListener('click', () => {
+		createLearningSet();
+		sessionStorage.removeItem('editLearning');
+	});
 });
+
+async function getUser() {
+	if (uid != null && editSet) {
+		userRef = doc(db, 'users', uid);
+		learningRef = doc(userRef, 'learning', editSet);
+		userSnap = await getDoc(learningRef);
+		termArray = userSnap.data().term;
+		meaningArray = userSnap.data().meaning;
+	}
+}
 
 window.onload = function () {
 	if (
@@ -260,6 +285,25 @@ window.onload = function () {
 	) {
 		document.querySelector('.main').innerHTML = 'PLEASE LOGIN TO CREATE YOUR OWN LEARNING SET';
 		document.querySelector('.main').classList.add('no-user');
+		preload(400);
+	} else {
+		if (editSet) {
+			window.addEventListener('beforeunload', (e) => {
+				e.preventDefault();
+				sessionStorage.removeItem('editLearning');
+			});
+			getUser().then(() => {
+				container.innerHTML = '';
+				studyset_names.forEach((input) => {
+					input.value = editSet;
+				});
+				termArray.forEach((term, index) => {
+					createCard(term, meaningArray[index]);
+				});
+				preload(400);
+			});
+		} else {
+			preload(400);
+		}
 	}
-	preload(400);
 };
