@@ -58,7 +58,7 @@
 	border-radius: 50%;
 	width: 20vw;
 	height: 20vw;
-	z-index: 1000;
+	z-index: 1;
 }
 
 .pfp-container:hover .fas.fa-camera {
@@ -175,6 +175,11 @@
 	justify-content: flex-end;
 	background: transparent;
 	padding-right: 20px;
+	font-size: 18px;
+}
+
+.delete:hover {
+	color: #bb002d;
 }
 
 .progress-set .title {
@@ -197,6 +202,28 @@
 	font-weight: bold;
 	background: #fff;
 	color: #bb002d;
+}
+
+.bottom-set {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.edit-btn {
+	margin-left: 20px;
+	border-radius: 15px;
+	background: white;
+	width: 80px;
+	height: 50px;
+	font-weight: bold;
+	transition: all .3s ease;
+}
+
+.edit-btn:hover {
+	background: #bb002d;
+	color: white;
 }
 
 .progress-bar {
