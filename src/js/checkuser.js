@@ -34,6 +34,40 @@ const db = getFirestore();
 const uid = localStorage.getItem('loggedIn') || sessionStorage.getItem('loggedIn');
 const emptyLearning = document.querySelector('.learning-set');
 
+function createContainer(learning_set_snap, name) {
+	var current_count = document.createElement('span');
+	current_count.innerHTML = learning_set_snap.data()['current display'] || 1;
+
+	var divider = document.createElement('span');
+	divider.innerHTML = '/';
+	var total_count = document.createElement('span');
+	total_count.innerHTML = learning_set_snap.data().term.length;
+
+	//Progress count container
+	var progress_count = document.createElement('div');
+	progress_count.className = 'progress-count';
+	progress_count.appendChild(current_count);
+	progress_count.appendChild(divider);
+	progress_count.appendChild(total_count);
+
+	//Title
+	var title = document.createElement('h1');
+	title.className = 'title';
+	title.innerHTML = name;
+
+	title.addEventListener('click', function () {
+		localStorage.setItem('learningSet', name);
+		window.location.assign('learning.html');
+	});
+
+	//Container
+	var set_container = document.createElement('div');
+	set_container.className = 'set';
+	set_container.appendChild(progress_count);
+	set_container.appendChild(title);
+	return set_container;
+}
+
 async function loadLearningSet() {
 	const userRef = doc(db, 'users', uid);
 	const learningSet = collection(userRef, 'learning');
@@ -43,46 +77,15 @@ async function loadLearningSet() {
 	querySnapshot.forEach((doc) => {
 		doc.id, ' => ', nameArray.push(doc.id);
 	});
-	console.log(nameArray);
 	if (nameArray.length == 0) {
 		emptyLearning.innerHTML = 'Empty! Create one!';
 	} else {
 		for (let i = 0; i < nameArray.length; i++) {
 			var current_learning_ref = doc(userRef, 'learning', nameArray[i]);
 			var learning_set_snap = await getDoc(current_learning_ref);
-
-			var current_count = document.createElement('span');
-			current_count.innerHTML = `${learning_set_snap.data()['current display'] || 1}`;
-
-			var divider = document.createElement('span');
-			divider.innerHTML = '/';
-			var total_count = document.createElement('span');
-			total_count.innerHTML = `${learning_set_snap.data().term.length}`;
-
-			//Progress count container
-			var progress_count = document.createElement('div');
-			progress_count.className = 'progress-count';
-			progress_count.appendChild(current_count);
-			progress_count.appendChild(divider);
-			progress_count.appendChild(total_count);
-
-			//Title
-			var title = document.createElement('h1');
-			title.className = 'title';
-			title.innerHTML = nameArray[i];
-
-			//Container
-			var set_container = document.createElement('div');
-			set_container.className = 'set';
-			set_container.appendChild(progress_count);
-			set_container.appendChild(title);
+			var set_container = createContainer(learning_set_snap, nameArray[i]);
 
 			learningSet_div.appendChild(set_container);
-
-			title.addEventListener('click', function () {
-				localStorage.setItem('learningSet', nameArray[i]);
-				window.location.assign('learning.html');
-			});
 		}
 	}
 }
@@ -134,7 +137,7 @@ function checkLogout() {
 				window.location.reload();
 			})
 			.catch((err) => {
-				console.error(err.message);
+				toastr.error(err.message);
 			});
 	});
 }
