@@ -11,8 +11,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="css/index.css" />
 		<link rel="stylesheet" href="css/flashcard.css" />
-		<link rel="stylesheet" href="css/loader.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+		<link rel="stylesheet" href="css/loader.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 	</head>
 
 	<body>
@@ -39,7 +39,7 @@
 								<button class="drop-menu-header-learning">
 									<i class="fas fa-caret-down"></i>
 								</button>
-						</li>
+							</li>
 						</ul>
 					</div>
 					<div class="right">
@@ -93,9 +93,12 @@
 							</div>
 						</div>
 					</div>
-					<button class="flashcards-bot">
+					<button class="flashcards-bot" id="shuffle">
 						<img src="img/image 6.png" alt="" />
 						<div>Shuffle</div>
+					</button>
+					<button class="flashcards-bot" id="edit">
+						<div>Edit</div>
 					</button>
 				</div>
 				<div class="flashcard-container">
@@ -125,14 +128,14 @@
 					</div>
 				</div>
 			</div>
-		</div>	
-		
+		</div>
+
 		<div class="outMenu"></div>
-	<div class="learning-set">
-				<div class="learning-title">
-					<div>LEARNING SET</div>
-				</div>	
+		<div class="learning-set">
+			<div class="learning-title">
+				<div>LEARNING SET</div>
 			</div>
+		</div>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -141,7 +144,5 @@
 		<script src="js/loader.js"></script>
 		<script src="js/main_helper.js"></script>
 		<script type="module" src="js/learning.js"></script>
-		
-		
 	</body>
 </html>
