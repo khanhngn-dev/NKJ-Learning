@@ -58,7 +58,6 @@ main {
 }
 
 .title {
-	text-align: center;
 	font-size: 5vh;
 	color: #bc002d;
 }
@@ -242,6 +241,10 @@ main {
 
 #info-form #profile-picture {
 	background: white;
+}
+
+.form.show .title {
+	text-align: center;
 }
 
 #forgot-form.show *,
