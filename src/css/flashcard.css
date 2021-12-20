@@ -80,16 +80,27 @@
 	width: 100%;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-evenly;
 	padding-bottom: 30px;
 }
 
 .flashcards-bot {
 	position: relative;
 	width: 80%;
+	height: 80px;
 	text-align: center;
+	font-weight: bold;
 	border-radius: 10px;
 	box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
+	transition: all 0.2s ease;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.flashcards-bot:hover {
+	background: #ffa500;
 }
 
 .progress-detail {
@@ -106,7 +117,6 @@ progress::-webkit-progress-bar {
 
 .progress-bar {
 	position: relative;
-	width: 100%;
 	border-radius: 20px;
 }
 
