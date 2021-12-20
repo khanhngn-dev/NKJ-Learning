@@ -161,6 +161,23 @@ function createTopContainer(name, count) {
 	return top_set_container;
 }
 
+function createBottomContainer(name, bar) {
+	var editBtn = document.createElement('button');
+	editBtn.className = 'edit-btn';
+	editBtn.innerHTML = 'Edit';
+	editBtn.addEventListener('click', () => {
+		sessionStorage.setItem('editLearning', name);
+		window.location.assign('create.html');
+	});
+
+	var bottom_container = document.createElement('div');
+	bottom_container.className = 'bottom-set';
+
+	bottom_container.appendChild(bar);
+	bottom_container.appendChild(editBtn);
+	return bottom_container;
+}
+
 async function updateProgress() {
 	var nameArray = [];
 	const userRef = doc(db, 'users', uid);
@@ -185,12 +202,15 @@ async function updateProgress() {
 			// Top container
 			const top_set_container = createTopContainer(nameArray[i], progress_count);
 
+			// Bottom container
+			const bottom_set_container = createBottomContainer(nameArray[i], progress_bar);
+
 			//Container
 			var set_container = document.createElement('div');
 			set_container.className = 'progress-set';
 
 			set_container.appendChild(top_set_container);
-			set_container.appendChild(progress_bar);
+			set_container.appendChild(bottom_set_container);
 			user_progress.appendChild(set_container);
 		}
 		// After all set has been loaded, add delete for each of the set
@@ -337,7 +357,7 @@ function resetPassword() {
 					}, 1200);
 				})
 				.catch((err) => {
-					console.log(err);
+					toastr.error(err.message);
 				});
 		}
 	});
