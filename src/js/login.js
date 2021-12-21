@@ -38,7 +38,7 @@ function checkLogin() {
 
 function sendLogin(auth, email, password, remember) {
 	signInWithEmailAndPassword(auth, email, password)
-	.then((cred) => {
+		.then((cred) => {
 			if (!remember) {
 				sessionStorage.setItem('loggedIn', `${cred.user.uid}`);
 			} else {

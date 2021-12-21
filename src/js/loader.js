@@ -9,7 +9,7 @@ const preloader = document.querySelector('.preload');
 // });
 
 function preload(time) {
-    setTimeout(function () {
+	setTimeout(function () {
 		preloader.style.display = 'none';
 		body.style.opacity = '1';
 	}, time);

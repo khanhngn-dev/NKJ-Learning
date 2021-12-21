@@ -28,7 +28,7 @@ function clickDropDown(parent = navButton, list = navList, otherList = undefined
 function clickOverlay() {
 	outMenu.addEventListener('click', function () {
 		closeMenu(document.querySelector('.open'));
-		closeMenu(learningList)
+		closeMenu(learningList);
 	});
 }
 

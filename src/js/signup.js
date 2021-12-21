@@ -122,29 +122,29 @@ function setProfile() {
 	infoForm.addEventListener('submit', (e) => {
 		e.preventDefault();
 
-			// Update profile picture
-			uploadBytes(ref(storage, `pfp-user/${info.uid}`), imgFile).then((snapshot) => {
-				getDownloadURL(ref(storage, `pfp-user/${info.uid}`)).then((url) => {
-					// Update user profile with the provided photoURL
-					var username = infoForm.username.value || info.email;
-					if (!imgFile) {
-						url = null;
-					}
-					updateProfile(info, {
-						displayName: username,
-						photoURL: url,
+		// Update profile picture
+		uploadBytes(ref(storage, `pfp-user/${info.uid}`), imgFile).then((snapshot) => {
+			getDownloadURL(ref(storage, `pfp-user/${info.uid}`)).then((url) => {
+				// Update user profile with the provided photoURL
+				var username = infoForm.username.value || info.email;
+				if (!imgFile) {
+					url = null;
+				}
+				updateProfile(info, {
+					displayName: username,
+					photoURL: url,
+				})
+					.then(() => {
+						toastr.success('Your profile has been created, redirecting..');
+						setTimeout(() => {
+							window.location.assign('index.html');
+						}, 2000);
 					})
-						.then(() => {
-							toastr.success('Your profile has been created, redirecting..');
-							setTimeout(() => {
-								window.location.assign('index.html');
-							}, 2000);
-						})
-						.catch((err) => {
-							displayInfo(err, signupForm, imgPreview);
-						});
-				});
+					.catch((err) => {
+						displayInfo(err, signupForm, imgPreview);
+					});
 			});
+		});
 	});
 }
 
