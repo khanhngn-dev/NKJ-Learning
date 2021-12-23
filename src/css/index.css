@@ -241,6 +241,10 @@ a {
 	display: none;
 }
 
+.empty a {
+	color: white;
+}
+
 .start-button {
 	margin-top: 20px;
 	background: #ff0900;
@@ -349,7 +353,8 @@ a {
 	display: block;
 }
 
-@media screen and (max-width: 790px) {
+
+@media screen and (max-width: 900px) {
 	.logo a {
 		margin: 0 10px;
 	}

@@ -115,7 +115,7 @@ function checkLogin() {
 			// Load learning set only when user is logged in
 			loadLearningSet();
 		} else {
-			emptyLearning.innerHTML = '<span class="empty">Login to create your own set</span>';
+			emptyLearning.innerHTML = '<span class="empty"><i class="far fa-hand-point-right"></i><a href="login.html"> Login to create your own set</a></span>';
 			loginButton.style.display = 'block';
 			logoutButton.style.display = 'none';
 			// If the page has a user section
