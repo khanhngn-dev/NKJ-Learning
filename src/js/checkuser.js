@@ -78,7 +78,7 @@ async function loadLearningSet() {
 		doc.id, ' => ', nameArray.push(doc.id);
 	});
 	if (nameArray.length == 0) {
-		emptyLearning.innerHTML = 'Empty! Create one!';
+		emptyLearning.innerHTML = '<span class="empty-display">Empty! Create one!</span>';
 	} else {
 		for (let i = 0; i < nameArray.length; i++) {
 			var current_learning_ref = doc(userRef, 'learning', nameArray[i]);

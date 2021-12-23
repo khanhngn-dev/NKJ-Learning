@@ -257,6 +257,9 @@ a {
 	align-self: flex-end;
 }
 
+.empty-display {
+	padding-top: 20px;
+}
 .outMenu {
 	display: none;
 	content: '';
