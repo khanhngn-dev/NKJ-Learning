@@ -100,11 +100,9 @@ function updateProfileImg(form, input, preview) {
 				form,
 				preview
 			);
-			lockSubmit(infoForm.querySelector('.submit'));
 		}
 	} else {
 		displayInfo('<span class="error">Please upload an image type</span>', form, preview);
-		lockSubmit(infoForm.querySelector('.submit'));
 	}
 }
 
@@ -127,7 +125,7 @@ function setProfile() {
 			getDownloadURL(ref(storage, `pfp-user/${info.uid}`)).then((url) => {
 				// Update user profile with the provided photoURL
 				var username = infoForm.username.value || info.email;
-				if (!imgFile) {
+				if (!imgFile || !imgFile.type.startsWith('image/')) {
 					url = null;
 				}
 				updateProfile(info, {
