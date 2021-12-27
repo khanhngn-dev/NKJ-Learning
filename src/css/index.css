@@ -59,7 +59,6 @@ a {
 
 .drop-menu-header-learning {
 	position: relative;
-	margin-left: 10px;
 	border-radius: 50%;
 	width: 20px;
 	height: 20px;
@@ -124,9 +123,13 @@ a {
 }
 
 .nav-bar a {
+	line-height: 70px;
 	font-weight: bold;
 	font-size: 18px;
 	color: #ffffff;
+	display: block;
+	width: 90%;
+	height: 100%;
 }
 
 .notImportant-header {
@@ -147,15 +150,19 @@ a {
 }
 
 .sign-up a {
+	display: block;
 	color: #bb002d;
+	width: 100%;
+	height: 100%;
+	line-height: 40px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 .login-button,
 .logout-button {
 	height: 40px;
 	border: 0;
-	padding-left: 15px;
-	padding-right: 15px;
 	font-weight: bold;
 }
 
@@ -356,7 +363,6 @@ a {
 	display: block;
 }
 
-
 @media screen and (max-width: 900px) {
 	.logo a {
 		margin: 0 10px;
@@ -389,6 +395,15 @@ a {
 		overflow: hidden;
 	}
 
+	.nav-bar a {
+		width: 80%;
+	}
+
+	.drop-menu-header-learning {
+		width: 30px;
+		height: 30px;
+	}
+
 	.notImportant-header {
 		/* line-height: 50px; */
 		height: 0;
@@ -401,12 +416,12 @@ a {
 
 	.nav-bar.open .notImportant-header {
 		opacity: 1;
-		height: 50px;
+		height: 70px;
 	}
 
 	.nav-bar.open {
 		opacity: 1;
-		height: 150px;
+		height: 210px;
 	}
 
 	.learning-set {
