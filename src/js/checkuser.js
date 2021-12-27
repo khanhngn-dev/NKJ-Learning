@@ -109,7 +109,7 @@ function checkLogin() {
 				if (cred.photoURL) {
 					user_pfp.setAttribute('src', cred.photoURL);
 				} else {
-					user_pfp.setAttribute('src', '../img/pfp-cat.jpg');
+					user_pfp.setAttribute('src', './img/pfp-cat.jpg');
 				}
 			}
 			// Load learning set only when user is logged in
