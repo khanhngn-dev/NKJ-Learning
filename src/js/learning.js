@@ -41,13 +41,7 @@ async function getUser() {
 	if (uid != null && learningSet) {
 		userRef = doc(db, 'users', uid);
 		learningRef = doc(userRef, 'learning', learningSet);
-		console.log(learningRef)
-		console.log(typeof(learningRef))
 		userSnap = await getDoc(learningRef);
-		console.log(userSnap)
-		console.log(typeof(userSnap))
-		console.log(userSnap.data())
-		
 		current_index = userSnap.data()['current index'] || 0;
 		current_display = userSnap.data()['current display'] || 1;
 		localStorage.setItem('index', current_index);

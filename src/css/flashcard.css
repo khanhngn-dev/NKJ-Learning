@@ -71,8 +71,8 @@
 	font-weight: bold;
 }
 
-.progress-detail {
-	color: white;
+.flashcards-top {
+	width: 86%;
 }
 
 .flashcards-top-1 {
@@ -83,6 +83,7 @@
 	justify-content: space-evenly;
 	padding-bottom: 30px;
 }
+
 
 .flashcards-bot {
 	position: relative;
@@ -106,6 +107,8 @@
 .progress-detail {
 	display: flex;
 	justify-content: space-between;
+	margin-top: 20px;
+	color: white;
 }
 
 progress::-webkit-progress-value {
@@ -118,6 +121,7 @@ progress::-webkit-progress-bar {
 .progress-bar {
 	position: relative;
 	border-radius: 20px;
+	width: 100%;
 }
 
 .flashcard-container {

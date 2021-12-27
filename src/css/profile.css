@@ -173,12 +173,15 @@
 	flex: 33.33%;
 	display: flex;
 	justify-content: flex-end;
-	background: transparent;
 	padding-right: 20px;
 	font-size: 18px;
 }
 
-.delete:hover {
+.delete_btn {
+	background: transparent;
+}
+
+.delete_btn:hover {
 	color: #bb002d;
 }
 

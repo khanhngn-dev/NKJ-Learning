@@ -148,16 +148,20 @@ function createTopContainer(name, count) {
 	bin_icon.className = 'fas fa-trash-alt';
 
 	var delete_button = document.createElement('button');
-	delete_button.className = 'delete';
+	delete_button.className = 'delete_btn';
 
 	delete_button.appendChild(bin_icon);
+
+	var delete_container = document.createElement('div');
+	delete_container.appendChild(delete_button)
+	delete_container.className = 'delete'
 
 	//Top-set container
 	var top_set_container = document.createElement('div');
 	top_set_container.className = 'top-set';
 	top_set_container.appendChild(title);
 	top_set_container.appendChild(count);
-	top_set_container.appendChild(delete_button);
+	top_set_container.appendChild(delete_container);
 	return top_set_container;
 }
 
@@ -384,7 +388,7 @@ function accept(btn, form) {
 	deleteDoc(doc(userRef, 'learning', btn.parentNode.parentNode.querySelector('.title').innerHTML));
 
 	toastr.success('Delete successfully');
-	if (!user_progress.querySelector('.set')) {
+	if (!user_progress.querySelector('.progress-set')) {
 		emptyProgress();
 	}
 }
