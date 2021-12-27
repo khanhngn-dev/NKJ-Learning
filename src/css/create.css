@@ -59,7 +59,7 @@ img {
 }
 
 .studyset-name {
-	padding: 0.2em;
+	padding: 0.2em .5em;
 	border: 1px solid black;
 }
 
