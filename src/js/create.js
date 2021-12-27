@@ -161,7 +161,7 @@ function createCard(term = undefined, meaning = undefined) {
 $('*').mouseenter(function(){
 	var currentCursor = $(this).css('cursor') ;
 	containers = document.querySelectorAll('.create-container');
-	if (currentCursor === 'auto' && containers[1].draggable === true) {
+	if (!(currentCursor === 'move') && containers[1].draggable === true) {
 			containers.forEach((item) => item.setAttribute('draggable', false));
 	}
 	if (currentCursor === 'move' && !(containers[1].draggable === true)) {
