@@ -128,6 +128,7 @@ function createCard(term = undefined, meaning = undefined) {
 
 	card_container.addEventListener('dragstart', () => {
 		card_container.classList.add('dragging');
+		console.log(card_container.style.cursor)
 	});
 	card_container.addEventListener('dragend', () => {
 		card_container.classList.remove('dragging');
@@ -156,6 +157,17 @@ function createCard(term = undefined, meaning = undefined) {
 		$(window).scrollTop(scrollY + step);
 	};
 }
+
+$('*').mouseenter(function(){
+	var currentCursor = $(this).css('cursor') ;
+	containers = document.querySelectorAll('.create-container');
+	if (currentCursor === 'auto' && containers[1].draggable === true) {
+			containers.forEach((item) => item.setAttribute('draggable', false));
+	}
+	if (currentCursor === 'move' && !(containers[1].draggable === true)) {
+			containers.forEach((item) => item.setAttribute('draggable', true));
+	}  
+})
 
 function createForm() {
 	var form = document.createElement('div');
@@ -270,6 +282,8 @@ create_buttons.forEach((button) => {
 		sessionStorage.removeItem('editLearning');
 	});
 });
+
+
 
 async function getUser() {
 	if (uid != null && editSet) {
