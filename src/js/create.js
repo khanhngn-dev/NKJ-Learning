@@ -15,6 +15,14 @@ const editSet = sessionStorage.getItem('editLearning');
 
 var i = 10;
 
+studyset_names.forEach((set_name) => {
+	set_name.addEventListener('keyup', () => {
+		studyset_names.forEach((name) => {
+			name.value = set_name.value;
+		});
+	});
+});
+
 function createLabel(forName, text) {
 	var label = document.createElement('label');
 	label.for = forName;
@@ -221,12 +229,7 @@ toastr.options = {
 // toastr.options.escapeHtml = true;
 
 function createLearningSet() {
-	var setName = '';
-	studyset_names.forEach((name) => {
-		if (name.value) {
-			setName = name.value;
-		}
-	});
+	var setName = studyset_names[0].value;
 	if (setName == '') toastr.warning('Please enter your learning set name!');
 	else {
 		var termArray = [],
