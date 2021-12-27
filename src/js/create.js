@@ -158,6 +158,7 @@ function createCard(term = undefined, meaning = undefined) {
 	};
 }
 
+
 $('*').mouseenter(function(){
 	var currentCursor = $(this).css('cursor') ;
 	containers = document.querySelectorAll('.create-container');
@@ -217,6 +218,16 @@ delete_buttons.forEach((btn) => {
 
 add_button.addEventListener('click', () => {
 	createCard();
+	$('*').mouseenter(function(){
+		var currentCursor = $(this).css('cursor') ;
+		containers = document.querySelectorAll('.create-container');
+		if (!(currentCursor === 'move') && containers[1].draggable === true) {
+				containers.forEach((item) => item.setAttribute('draggable', false));
+		}
+		if (currentCursor === 'move' && !(containers[1].draggable === true)) {
+				containers.forEach((item) => item.setAttribute('draggable', true));
+		}  
+	})
 });
 outMenu.addEventListener('click', () => {
 	if (document.querySelector('.confirm')) {
