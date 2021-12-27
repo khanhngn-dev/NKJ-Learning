@@ -30,12 +30,12 @@ function loadSounds() {
 }
 
 function start() {
+	loadSounds();	
 	clickDropDown(navButton, navList, learningList);
 	clickDropDown(alphabetButton, alphabetList);
 	clickDropDown(learning_drop_button, learningList, navList);
 	clickOverlay();
-	preload(500);
-	loadSounds();
+	preload(2000);
 }
 
 window.onload = start();
