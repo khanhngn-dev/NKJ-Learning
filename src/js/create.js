@@ -37,6 +37,7 @@ function createInput(content, type, placeholder, name, ...classList) {
 	input.placeholder = placeholder;
 	input.name = name;
 	input.value = content || '';
+	input.style.cursor = 'text';
 	return input;
 }
 
@@ -98,23 +99,14 @@ function createCard(term = undefined, meaning = undefined) {
 	var input_term = createInput(term, 'text', 'Enter term', 'term', 'card-input', 'term');
 
 	//Container for label and input
-	var div_term_input = document.createElement('div');
-	var div_meaning_input = document.createElement('div');
-	var div_term_label = document.createElement('div');
-	var div_meaning_label = document.createElement('div');
-
-	div_term_input.appendChild(input_term);
-	div_meaning_input.appendChild(input_meaning);
-	div_term_label.appendChild(label_term);
-	div_meaning_label.appendChild(label_meaning);
-
+	
 	//Form
 	var form = document.createElement('form');
 
-	form.appendChild(div_term_input);
-	form.appendChild(div_term_label);
-	form.appendChild(div_meaning_input);
-	form.appendChild(div_meaning_label);
+	form.appendChild(input_term);
+	form.appendChild(label_term);
+	form.appendChild(input_meaning);
+	form.appendChild(label_meaning);
 
 	var container_top = createTopContainer();
 
@@ -128,7 +120,6 @@ function createCard(term = undefined, meaning = undefined) {
 
 	card_container.addEventListener('dragstart', () => {
 		card_container.classList.add('dragging');
-		console.log(card_container.style.cursor)
 	});
 	card_container.addEventListener('dragend', () => {
 		card_container.classList.remove('dragging');
@@ -158,17 +149,15 @@ function createCard(term = undefined, meaning = undefined) {
 	};
 }
 
-
-$('*').mouseenter(function(){
-	var currentCursor = $(this).css('cursor') ;
+$('*').mouseenter(function () {
+	var currentCursor = $(this).css('cursor');
 	containers = document.querySelectorAll('.create-container');
-	if (!(currentCursor === 'move') && containers[1].draggable === true) {
-			containers.forEach((item) => item.setAttribute('draggable', false));
+	if (!(currentCursor === 'move') && containers[0].draggable === true) {
+		containers.forEach((item) => item.setAttribute('draggable', false));
+	} else if (currentCursor === 'move' && containers[0].draggable === false) {
+		containers.forEach((item) => item.setAttribute('draggable', true));
 	}
-	if (currentCursor === 'move' && !(containers[1].draggable === true)) {
-			containers.forEach((item) => item.setAttribute('draggable', true));
-	}  
-})
+});
 
 function createForm() {
 	var form = document.createElement('div');
@@ -218,17 +207,19 @@ delete_buttons.forEach((btn) => {
 
 add_button.addEventListener('click', () => {
 	createCard();
-	$('*').mouseenter(function(){
-		var currentCursor = $(this).css('cursor') ;
+	$('*').mouseenter(function () {
+		var currentCursor = this.style.cursor;
 		containers = document.querySelectorAll('.create-container');
 		if (!(currentCursor === 'move') && containers[1].draggable === true) {
-				containers.forEach((item) => item.setAttribute('draggable', false));
+			containers.forEach((item) => item.setAttribute('draggable', false));
 		}
 		if (currentCursor === 'move' && !(containers[1].draggable === true)) {
-				containers.forEach((item) => item.setAttribute('draggable', true));
-		}  
-	})
+			containers.forEach((item) => item.setAttribute('draggable', true));
+		}
+	});
 });
+
+
 outMenu.addEventListener('click', () => {
 	if (document.querySelector('.confirm')) {
 		bodyDiv.removeChild(document.querySelector('.confirm'));
@@ -293,8 +284,6 @@ create_buttons.forEach((button) => {
 		sessionStorage.removeItem('editLearning');
 	});
 });
-
-
 
 async function getUser() {
 	if (uid != null && editSet) {
