@@ -6,6 +6,12 @@
 	background: url(../img/f339afd6cae98b4b926621f9aadc514b.gif) center center no-repeat;
 }
 
+@media only screen and (max-width: 768px) {
+	.preload {
+		background-size: contain;
+	}
+}
+
 .body {
 	opacity: 0.2;
 }
