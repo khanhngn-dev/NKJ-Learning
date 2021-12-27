@@ -44,7 +44,7 @@ function getUser() {
 	onAuthStateChanged(auth, (cred) => {
 		if (cred) {
 			info = cred;
-			mainImg.src = cred.photoURL || '../img/pfp-cat.jpg';
+			mainImg.src = cred.photoURL || './img/pfp-cat.jpg';
 			cred.displayName
 				? displayName.setAttribute('value', cred.displayName)
 				: displayName.setAttribute('value', cred.email);
