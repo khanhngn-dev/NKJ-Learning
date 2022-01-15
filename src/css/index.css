@@ -139,7 +139,6 @@ a {
 	height: 70px;
 	display: flex;
 	align-items: center;
-	justify-content: center;
 }
 
 .notImportant-header:hover {
@@ -397,7 +396,8 @@ a {
 	}
 
 	.nav-bar a {
-		width: 80%;
+		width: 70%;
+		margin-left: 15%;
 	}
 
 	.drop-menu-header-learning {

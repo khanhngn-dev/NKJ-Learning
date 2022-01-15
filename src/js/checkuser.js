@@ -55,16 +55,16 @@ function createContainer(learning_set_snap, name) {
 	title.className = 'title';
 	title.innerHTML = name;
 
-	title.addEventListener('click', function () {
-		localStorage.setItem('learningSet', name);
-		window.location.assign('learning.html');
-	});
-
 	//Container
 	var set_container = document.createElement('div');
 	set_container.className = 'set';
 	set_container.appendChild(progress_count);
 	set_container.appendChild(title);
+	set_container.style.cursor = 'pointer';
+	set_container.addEventListener('click', function() {
+		localStorage.setItem('learningSet', name);
+		window.location.assign('learning.html');
+	})
 	return set_container;
 }
 

@@ -106,6 +106,11 @@ function updateProfileImg(form, input, preview) {
 	}
 }
 
+toastr.options = {
+	"preventDuplicates": true,
+	"preventOpenDuplicates": true
+	};
+
 function setProfile() {
 	overlay.classList.add('show');
 	infoForm.classList.add('show');
