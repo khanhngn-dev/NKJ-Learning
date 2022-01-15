@@ -117,6 +117,7 @@ function increase() {
 	localStorage.setItem('index', current_index);
 }
 
+// Specify keycode
 function addKeyBoardEvent(e) {
 	if (e.keyCode == 32 || e.keyCode == 38 || e.keyCode == 40) {
 		flip();
@@ -124,6 +125,7 @@ function addKeyBoardEvent(e) {
 	else if (e.keyCode == 39) increase();
 }
 
+// Specify keycode
 function addKeyBoardEventShuffle(e) {
 	if (e.keyCode == 32 || e.keyCode == 38 || e.keyCode == 40) {
 		flip();
